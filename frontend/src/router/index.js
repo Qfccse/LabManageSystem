@@ -10,12 +10,12 @@ VueRouter.prototype.push = function push(location) {
 }
 const routes = [
     {
-        path:"/.",
+        path:"/",
         name:"hello",
         component:HelloWorld
     },
     {
-        path:"/",
+        path:"/.",
         name:"CoursePage",
         component:CoursePage
     },

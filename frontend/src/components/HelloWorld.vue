@@ -59,7 +59,7 @@ export default {
         }
     },
     mounted() {
-        this.test()
+        // this.test()
     },
     methods:{
         test(){
@@ -84,7 +84,7 @@ export default {
             }
             this.axios({
                 method:"post",
-                url:"/api/testFd",
+                url:"/api/test/uploadImage",
                 data:fd,
                 headers: {
                     'Content-Type': 'multipart/form-data'

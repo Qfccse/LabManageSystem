@@ -5,6 +5,9 @@
             <br/>
             获取的 name:{{course.name}}
         </div>
+        <div>上传图片</div>
+
+        <div>上传文件</div>
     </div>
 </template>
 
