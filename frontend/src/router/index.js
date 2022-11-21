@@ -15,12 +15,12 @@ const routes = [
         component:HelloWorld
     },
     {
-        path:"/.",
+        path:"/",
         name:"CoursePage",
         component:CoursePage
     },
     {
-        path:"/",
+        path:"/.",
         name:"pg",
         component:TEST
     }
