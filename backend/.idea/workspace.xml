@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/FileDownloader.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/PDFReader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/controller/FileUploaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/controller/FileUploaderController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +102,7 @@
       <workItem from="1669041008236" duration="4267000" />
       <workItem from="1669075653269" duration="3429000" />
       <workItem from="1669082672306" duration="4517000" />
-      <workItem from="1669097575405" duration="1824000" />
+      <workItem from="1669097575405" duration="2314000" />
     </task>
     <servers />
   </component>

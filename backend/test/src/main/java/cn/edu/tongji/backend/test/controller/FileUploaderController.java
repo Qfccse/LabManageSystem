@@ -2,7 +2,6 @@ package cn.edu.tongji.backend.test.controller;
 
 import cn.edu.tongji.backend.test.pojo.FileUploader;
 import cn.edu.tongji.backend.test.service.FileUploaderService;
-import com.google.common.io.Files;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLEncoder;
-import java.nio.file.Path;
 
 @Slf4j
 @RestController
@@ -25,7 +22,7 @@ public class FileUploaderController {
 
 
     @PostMapping("/uploadFile")
-    public String receiveImages(@RequestParam("test") int text,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
+    public String receive(@RequestParam("test") int text,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
         System.out.println(text);
         for (MultipartFile file : multipartFile) {
             System.out.println("file is " + file.getOriginalFilename());
@@ -40,15 +37,17 @@ public class FileUploaderController {
             if (!imagePath.exists()) {
                 imagePath.mkdirs();
             }
+            // 保存文件到路径
             file.transferTo(localFile);
 
+            // 保存路径到服务器
             fileUploaderService.uploadFile(fileName,filePath);
-
         }
 
         return null;
     }
 
+    //通过ID获取文件路径以及文件名
     @GetMapping("/getFilePathById")
     public FileUploader receiveImages(@RequestParam("id") Long id){
         return fileUploaderService.getFile(id);

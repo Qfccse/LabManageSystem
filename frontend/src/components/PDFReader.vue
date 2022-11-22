@@ -77,6 +77,6 @@ export default {
 
 <style scoped>
 .pdf_board{
-    width: 50%;
+    width: 800px;
 }
 </style>
