@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/FileUploader.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/controller/FileUploaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/controller/FileUploaderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/mapper/FileUpLoaderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/mapper/FileUpLoaderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/service/FileUploaderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/service/FileUploaderService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,25 +35,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/LabManageSystem/backend",
-    "spring.configuration.checksum": "cd8865110e2fc98615c8c9748be1feb1",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/LabManageSystem/backend&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;cd8865110e2fc98615c8c9748be1feb1&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -83,6 +82,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.TestApplication" />
+      <item itemvalue="Spring Boot.GateWayApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.GateWayApplication" />
@@ -99,7 +102,8 @@
       <updated>1669022766062</updated>
       <workItem from="1669022767364" duration="1000" />
       <workItem from="1669041008236" duration="4267000" />
-      <workItem from="1669075653269" duration="1942000" />
+      <workItem from="1669075653269" duration="3429000" />
+      <workItem from="1669082672306" duration="4107000" />
     </task>
     <servers />
   </component>
