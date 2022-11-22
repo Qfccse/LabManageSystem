@@ -10,7 +10,7 @@ VueRouter.prototype.push = function push(location) {
 }
 const routes = [
     {
-        path:"/",
+        path:"/.",
         name:"hello",
         component:HelloWorld
     },
@@ -20,8 +20,8 @@ const routes = [
         component:CoursePage
     },
     {
-        path:"/.",
-        name:"pg",
+        path:"/",
+        name:"TEST",
         component:TEST
     }
 ]
