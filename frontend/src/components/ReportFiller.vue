@@ -10,13 +10,7 @@
                           :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
             </template>
             <template v-else>
-                <el-upload
-                    action="http"
-                    list-type="picture-card"
-                >
-                    <i class="el-icon-plus"></i>
-                </el-upload>
-
+                <FileUploader ref="saveImage" :show="false" list-type="picture-card" url="/api/test/postReportImages" :id="idList[index]"></FileUploader>
             </template>
         </div>
         <div style="margin-top: 20px;">
@@ -27,11 +21,14 @@
 </template>
 
 <script>
+import FileUploader from "@/components/FileUploader";
 export default {
     name: "ReportFiller",
+    components: {FileUploader},
     data(){
         return{
-            formList:[]
+            formList:[],
+            idList:[],
         }
     },
     mounted() {
@@ -47,10 +44,11 @@ export default {
                     l_id:1,
                 }
             }).then(resp =>{
-                console.log(resp.data)
+                // console.log(resp.data)
                 for(let i in resp.data){
                     this.formList.push(
                         {
+                            rt_id:resp.data[i].rt_id,
                             icon:resp.data[i].icon,
                             label:resp.data[i].label,
                             title:resp.data[i].title,
@@ -65,13 +63,19 @@ export default {
             })
         },
         saveReport(type){
+            this.saveReportForm(type)
+            if(type===2){
+                setTimeout(this.saveReportImages,1000)
+            }
+        },
+        saveReportForm(type){
             console.log(type)
             let dataList = []
             for (let i in this.formList){
                 dataList.push(
                     {
                         l_id:1,
-                        s_id:1,
+                        s_id:2,
                         icon:this.formList[i].icon,
                         label:this.formList[i].label,
                         title:this.formList[i].title,
@@ -93,9 +97,17 @@ export default {
                 },
             }).then(resp =>{
                 //设置表格数据
-                console.log(resp.data)
-                console.log(resp.data.id)
+                for (let i in resp.data){
+                    this.idList.push(resp.data[i])
+                }
+                console.log(this.idList)
+                // console.log(resp.data.id)
             })
+        },
+        saveReportImages(){
+            for(let i in this.$refs.saveImage){
+                this.$refs.saveImage[i].fileUpload()
+            }
         }
     }
 }

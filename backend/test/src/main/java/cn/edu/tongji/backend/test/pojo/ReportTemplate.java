@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class ReportTemplate {
-    private int rtId;
-    private int lId;
-    private int tId;
+    private int rt_id;
+    private int l_id;
+    private int t_id;
     private String icon;
     private String label;
     private String title;
@@ -18,9 +18,9 @@ public class ReportTemplate {
     @Override
     public String toString() {
         return "ReportTemplate{" +
-                "rt_id=" + rtId +
-                ", l_id=" + lId +
-                ", t_id=" + tId +
+                "rt_id=" + rt_id +
+                ", l_id=" + l_id +
+                ", t_id=" + t_id +
                 ", icon='" + icon + '\'' +
                 ", label='" + label + '\'' +
                 ", title='" + title + '\'' +

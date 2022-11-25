@@ -22,8 +22,8 @@ public class FileUploaderController {
 
 
     @PostMapping("/uploadFile")
-    public String receive(@RequestParam("test") int text,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
-        System.out.println(text);
+    public String receive(@RequestParam("id") int id,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
+        System.out.println(id);
         for (MultipartFile file : multipartFile) {
             System.out.println("file is " + file.getOriginalFilename());
             String dirPath = "C:\\Users\\ASUS\\Desktop\\s";

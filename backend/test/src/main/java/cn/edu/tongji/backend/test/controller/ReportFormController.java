@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,10 +24,13 @@ public class ReportFormController {
     @PostMapping("/postReportForm")
     public String receiveReportForm(@RequestBody List<ReportForm> reports) {
         System.out.println(reports);
+        List<Integer> ids = new ArrayList<Integer>();
         for (ReportForm reportForm : reports) {
             reportFormService.insertReportForm(reportForm);
+            ids.add(reportForm.getRf_id());
         }
-        return null;
+
+        return ids.toString();
     }
 
     @GetMapping("/getReportForm")
@@ -42,8 +46,8 @@ public class ReportFormController {
     }
 
     @PostMapping("/postReportImages")
-    public String insertReportImages(@RequestParam("rf_id") int rf_id,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
-        System.out.println(rf_id);
+    public String insertReportImages(@RequestParam("id") int id,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
+        System.out.println(id);
         for (MultipartFile file : multipartFile) {
             System.out.println("file is " + file.getOriginalFilename());
             String dirPath = "C:\\Users\\ASUS\\Desktop\\ss";
@@ -61,7 +65,7 @@ public class ReportFormController {
             file.transferTo(localFile);
 
             // 保存路径到服务器
-            reportFormService.insertImage(rf_id,filePath,fileName);
+            reportFormService.insertImage(id,filePath,fileName);
         }
 
         return null;

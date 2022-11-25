@@ -1,32 +1,37 @@
 <template>
     <div class="test">
-        <div style="margin-top: 50px">普通接口测试</div>
-        <div>
-           获取的 id:{{course.id}}
-            <br/>
-            获取的 name:{{course.name}}
+        <div v-if="false">
+            <div style="margin-top: 50px" @click="test">普通接口测试</div>
+            <div>
+                获取的 id:{{course.id}}
+                <br/>
+                获取的 name:{{course.name}}
+            </div>
+
+            <div style="margin-top: 50px">上传图片</div>
+            <FileUploader list-type="picture-card" url="/api/test/uploadFile"></FileUploader>
+
+            <div style="margin-top: 50px">上传文件</div>
+            <FileUploader file-type="*" url="/api/test/uploadFile"></FileUploader>
+
+            <div style="margin-top: 50px">下载</div>
+            <FileDownloader
+                file-path="C:/Users/ASUS/Desktop/s/1669044608648.png"
+            >
+            </FileDownloader>
+
+            <div style="margin-top: 50px">pdf阅读</div>
+            <PDFReader
+                file-path="C:/Users/ASUS/Desktop/s/1.pdf"
+            >
+            </PDFReader>
+
+            <div style="margin-top: 50px">报告表单</div>
+            <ReportCreator></ReportCreator>
+            <ReportFiller></ReportFiller>
         </div>
 
-        <div style="margin-top: 50px">上传图片</div>
-        <FileUploader list-type="picture-card" url="/api/test/uploadFile"></FileUploader>
-
-        <div style="margin-top: 50px">上传文件</div>
-        <FileUploader file-type="*" url="/api/test/uploadFile"></FileUploader>
-
-        <div style="margin-top: 50px">下载</div>
-        <FileDownloader
-            file-path="C:/Users/ASUS/Desktop/s/1669044608648.png"
-        >
-        </FileDownloader>
-
-        <div style="margin-top: 50px">pdf阅读</div>
-        <PDFReader
-            file-path="C:/Users/ASUS/Desktop/s/1.pdf"
-        >
-        </PDFReader>
-
-        <div style="margin-top: 50px">报告表单</div>
-        <ReportCreator></ReportCreator>
+        <ReportFiller></ReportFiller>
     </div>
 </template>
 
@@ -35,16 +40,18 @@ import FileUploader from "@/components/FileUploader";
 import FileDownloader from "@/components/FileDownloader";
 import PDFReader from "@/components/PDFReader";
 import ReportCreator from "@/components/ReportCreator";
+import ReportFiller from "@/components/ReportFiller";
 export default {
     name: 'TEST',
-    components: {ReportCreator, PDFReader, FileDownloader, FileUploader},
+    components: {ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
     data(){
         return{
-            course:""
+            course:"",
+            id:3
         }
     },
     mounted() {
-        this.test()
+        // this.test()
     },
     methods:{
         test(){
@@ -72,6 +79,9 @@ export default {
                 console.log(resp.data.id)
             })
         },
+        testUp(){
+            this.$refs.saveImage.fileUpload()
+        }
     }
 }
 </script>

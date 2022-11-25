@@ -20,7 +20,7 @@
             <el-button style="margin-left: 10px;" size="small" v-if="this.listType!=='picture-card'">选择文件</el-button>
             <i v-else class="el-icon-plus"></i>
         </el-upload>
-        <el-button @click="testUpload">上传</el-button>
+        <el-button @click="fileUpload" v-if="show">上传</el-button>
     </div>
 </template>
 
@@ -43,6 +43,14 @@ export default {
         listType:{
             type: String,
             default:""
+        },
+        id:{
+            type:Number,
+            default:-1
+        },
+        show:{
+            type:Boolean,
+            default:true
         }
     },
     data() {
@@ -69,10 +77,11 @@ export default {
 
     },
     methods: {
-        testUpload(){
+        fileUpload(){
+            console.log(this.id)
             let fd = new FormData()
             // 也可以传非文件的数据，例如
-            fd.append("test","1")
+            fd.append("id",this.id)
             // 只需要在后端接收一下即可(注意)
             for(let i in this.upload.fileList){
                 fd.append('file',this.upload.fileList[i].raw)
@@ -86,8 +95,9 @@ export default {
                 }
             }).then(resp =>{
                 //设置表格数据
-                console.log(resp.data)
-                console.log(resp.data.id)
+                resp,
+                // console.log(resp.data)
+                // console.log(resp.data.id)
                 this.upload.fileList=[]
             })
         },

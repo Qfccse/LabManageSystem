@@ -2,6 +2,7 @@ package cn.edu.tongji.backend.test.mapper;
 
 import cn.edu.tongji.backend.test.pojo.ReportForm;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -9,7 +10,8 @@ import java.util.List;
 public interface ReportFormMapper {
 
     @Insert("insert into report_form VALUES(null,#{l_id},#{s_id},#{icon},#{label},#{title},#{placeholder},#{required},#{type},#{typeName},#{content})")
-    void insertIntoReport(ReportForm reportForm);
+    @Options(useGeneratedKeys = true, keyProperty = "rf_id", keyColumn = "rf_id")
+    void insertIntoReportForm(ReportForm reportForm);
 
     @Select("select * from report_form where l_id = #{l_id} and s_id=#{s_id}")
     List<ReportForm> getLabReportForm(int l_id, int s_id);

@@ -14,8 +14,8 @@ spring:
 
 mybatis:
   type-aliases-package: cn.edu.tongji.backend.test.pojo
-  configuration:
-    map-underscore-to-camel-case: true
+#  configuration:
+#    map-underscore-to-camel-case: true
 logging:
   level:
     cn.edu.tongji.backend: debug

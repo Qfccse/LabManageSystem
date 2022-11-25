@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class ReportForm {
-    private int rfId;
-    private int lId;
-    private int sId;
+    private int rf_id;
+    private int l_id;
+    private int s_id;
     private String icon;
     private String label;
     private String title;
@@ -18,9 +18,9 @@ public class ReportForm {
     @Override
     public String toString() {
         return "ReportForm{" +
-                "rf_id=" + rfId +
-                ", l_id=" + lId +
-                ", t_id=" + sId +
+                "rf_id=" + rf_id +
+                ", l_id=" + l_id +
+                ", t_id=" + s_id +
                 ", icon='" + icon + '\'' +
                 ", label='" + label + '\'' +
                 ", title='" + title + '\'' +

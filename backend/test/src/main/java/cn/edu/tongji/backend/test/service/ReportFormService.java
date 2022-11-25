@@ -13,7 +13,7 @@ public class ReportFormService {
     private ReportFormMapper reportFormMapper;
 
     public void insertReportForm(ReportForm reportForm) {
-        reportFormMapper.insertIntoReport(reportForm);
+        reportFormMapper.insertIntoReportForm(reportForm);
     }
 
     public List<ReportForm> selectLabReportForm(int l_id,int s_id){
