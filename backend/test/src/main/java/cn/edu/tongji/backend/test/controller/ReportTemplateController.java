@@ -17,7 +17,7 @@ public class ReportTemplateController {
     private ReportTemplateService reportTemplateService;
 
     @PostMapping("/postReportTemplate")
-    public String receiveReport(@RequestBody List<ReportTemplate> reports) {
+    public String receiveReportTemplate(@RequestBody List<ReportTemplate> reports) {
         //System.out.println(reports);
         for (ReportTemplate reportTemplate : reports) {
             reportTemplateService.insertReportTemplate(reportTemplate);
@@ -26,7 +26,8 @@ public class ReportTemplateController {
     }
 
     @GetMapping("/getReportTemplate")
-    public List<ReportTemplate> selectReport(@RequestParam("l_id") int l_id) {
+    public List<ReportTemplate> selectReportTemplate(@RequestParam("l_id") int l_id) {
+        System.out.println( reportTemplateService.selectLabReportTemplate(l_id));
         return reportTemplateService.selectLabReportTemplate(l_id);
     }
 

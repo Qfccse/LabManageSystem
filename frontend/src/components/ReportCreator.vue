@@ -9,7 +9,7 @@
                         {{item.label}}
                     </div>
                 </draggable>
-                <el-button @click="disp" style="margin-top: 200px">保存为模板</el-button>
+                <el-button @click="saveTemp" style="margin-top: 200px">保存为模板</el-button>
             </el-col>
 
             <el-col :span="16" style="border-left:1px solid #DCDFE6;border-right:1px solid #DCDFE6">
@@ -63,6 +63,7 @@
                                     <el-upload
                                         action="http"
                                         list-type="picture-card"
+                                        disabled
                                     >
                                         <i class="el-icon-plus"></i>
                                     </el-upload>
@@ -103,7 +104,7 @@
                 <template v-if="item.type === 'text'">
                     <div>{{item.title}}</div>
                     <el-input type="textarea"
-                              v-model="inputList"
+                              v-model="item.content"
                               :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
                 </template>
                 <template v-else>
@@ -122,7 +123,7 @@
 <script>
 import draggable from 'vuedraggable'
 export default {
-    name: 'CreateReportTemplate',
+    name: 'ReportCreator',
     components: {
         draggable,
     },
@@ -138,17 +139,17 @@ export default {
                     label: '文本框',
                     title:'',
                     icon: 'el-icon-document-remove',
-                    type: 'text'
+                    type: 'text',
+                    content:'',
                 },
                 {
                     label: '上传图片',
                     title:'',
                     icon: 'el-icon-picture-outline',
-                    type: 'image'
+                    type: 'image',
+                    content:''
                 },
-
             ],
-            inputList:"",
         }
     },
     mounted() {
@@ -162,14 +163,48 @@ export default {
     methods: {
         disp(){
             for(let i in this.formList){
-                // console.log(this.formList[i].icon)
-                // console.log(this.formList[i].label)
-                // console.log(this.formList[i].placeholder)
-                // console.log(this.formList[i].required)
-                // console.log(this.formList[i].type)
-                // console.log(this.formList[i].typeName)
+                console.log(this.formList[i].icon)
+                console.log(this.formList[i].label)
+                console.log(this.formList[i].title)
+                console.log(this.formList[i].placeholder)
+                console.log(this.formList[i].required)
+                console.log(this.formList[i].type)
+                console.log(this.formList[i].typeName)
                 console.log(this.formList[i])
             }
+        },
+        saveTemp(){
+            let dataList = []
+            for (let i in this.formList){
+                dataList.push(
+                    {
+                        l_id:2,
+                        t_id:2,
+                        icon:this.formList[i].icon,
+                        label:this.formList[i].label,
+                        title:this.formList[i].title,
+                        placeholder:this.formList[i].placeholder,
+                        required:this.formList[i].required,
+                        type:this.formList[i].type,
+                        typeName:this.formList[i].typeName,
+                        content:this.formList[i].content
+                    }
+                )
+            }
+            console.log(JSON.stringify(dataList))
+            this. axios({
+                method:"post",
+                url:"/api/test/postReportTemplate",
+                data: dataList ,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }).then(resp =>{
+                //设置表格数据
+                console.log(resp.data)
+                console.log(resp.data.id)
+            })
+
         },
         renderForm(newVal) {
             if (newVal == '[]' || newVal == '' || newVal == null) {

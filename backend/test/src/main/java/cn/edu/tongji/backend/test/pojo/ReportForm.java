@@ -3,10 +3,10 @@ package cn.edu.tongji.backend.test.pojo;
 import lombok.Data;
 
 @Data
-public class ReportTemplate {
-    private int rtId;
+public class ReportForm {
+    private int rfId;
     private int lId;
-    private int tId;
+    private int sId;
     private String icon;
     private String label;
     private String title;
@@ -17,10 +17,10 @@ public class ReportTemplate {
     private String content;
     @Override
     public String toString() {
-        return "ReportTemplate{" +
-                "rt_id=" + rtId +
+        return "ReportForm{" +
+                "rf_id=" + rfId +
                 ", l_id=" + lId +
-                ", t_id=" + tId +
+                ", t_id=" + sId +
                 ", icon='" + icon + '\'' +
                 ", label='" + label + '\'' +
                 ", title='" + title + '\'' +
@@ -31,6 +31,4 @@ public class ReportTemplate {
                 ", content='" + content + '\'' +
                 '}';
     }
-
-
 }
