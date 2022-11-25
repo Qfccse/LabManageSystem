@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/controller/FileUploaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/src/main/java/cn/edu/tongji/backend/test/controller/FileUploaderController.java" afterDir="false" />
-    </list>
+    <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +100,7 @@
       <workItem from="1669041008236" duration="4267000" />
       <workItem from="1669075653269" duration="3429000" />
       <workItem from="1669082672306" duration="4517000" />
-      <workItem from="1669097575405" duration="2314000" />
+      <workItem from="1669097575405" duration="2583000" />
     </task>
     <servers />
   </component>

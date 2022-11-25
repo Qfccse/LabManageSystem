@@ -24,6 +24,9 @@
             file-path="C:/Users/ASUS/Desktop/s/1.pdf"
         >
         </PDFReader>
+
+        <div style="margin-top: 50px">报告表单</div>
+        <ReportCreator></ReportCreator>
     </div>
 </template>
 
@@ -31,9 +34,10 @@
 import FileUploader from "@/components/FileUploader";
 import FileDownloader from "@/components/FileDownloader";
 import PDFReader from "@/components/PDFReader";
+import ReportCreator from "@/components/ReportCreator";
 export default {
     name: 'TEST',
-    components: {PDFReader, FileDownloader, FileUploader},
+    components: {ReportCreator, PDFReader, FileDownloader, FileUploader},
     data(){
         return{
             course:""
