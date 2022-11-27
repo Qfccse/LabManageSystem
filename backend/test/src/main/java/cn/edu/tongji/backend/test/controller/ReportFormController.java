@@ -1,7 +1,9 @@
 package cn.edu.tongji.backend.test.controller;
 
+import cn.edu.tongji.backend.test.pojo.Report;
 import cn.edu.tongji.backend.test.pojo.ReportForm;
 import cn.edu.tongji.backend.test.service.ReportFormService;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,24 +22,44 @@ import java.util.List;
 public class ReportFormController {
     @Autowired
     private ReportFormService reportFormService;
+    //ReportController reportController;
 
     @PostMapping("/postReportForm")
-    public String receiveReportForm(@RequestBody List<ReportForm> reports) {
-        System.out.println(reports);
+    public String receiveReportForm(@RequestParam("l_id") int l_id,@RequestParam("s_id") String s_id,
+                                    @RequestParam("status") int status,@RequestParam("forms") String[] reportForms) {
+
+        System.out.println(l_id);
+        System.out.println(s_id);
+        System.out.println(status);
         List<Integer> ids = new ArrayList<Integer>();
-        for (ReportForm reportForm : reports) {
-            reportFormService.insertReportForm(reportForm);
-            ids.add(reportForm.getRf_id());
+        System.out.println(reportForms);
+        for (String reportForm : reportForms) {
+            //System.out.println(reportForm);
+            ReportForm form = JSON.parseObject(reportForm,ReportForm.class);
+            System.out.println(form);
+            reportFormService.insertReportForm(form);
+            ids.add(form.getRf_id());
         }
+        //Report report = new Report();
+        //report.setStatus(status);
+        //
+        //String r_id = reportController.addReportToDB(report);
 
         return ids.toString();
     }
 
+    //@GetMapping("/getReportForm")
+    //public List<ReportForm> selectReportForm(@RequestParam("l_id") int l_id,@RequestParam("s_id") int s_id) {
+    //    System.out.println(l_id + " + "+ s_id);
+    //    System.out.println(reportFormService.selectLabReportForm(l_id, s_id));
+    //    return reportFormService.selectLabReportForm(l_id, s_id);
+    //}
+
     @GetMapping("/getReportForm")
-    public List<ReportForm> selectReportForm(@RequestParam("l_id") int l_id,@RequestParam("s_id") int s_id) {
-        System.out.println(l_id + " + "+ s_id);
-        System.out.println(reportFormService.selectLabReportForm(l_id, s_id));
-        return reportFormService.selectLabReportForm(l_id, s_id);
+    public List<ReportForm> selectReportForm(@RequestParam("r_id") int r_id) {
+        System.out.println(r_id);
+        System.out.println(reportFormService.selectLabReportForm(r_id));
+        return reportFormService.selectLabReportForm(r_id);
     }
 
     @GetMapping("/getReportImages")

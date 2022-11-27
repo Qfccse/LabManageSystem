@@ -1,7 +1,7 @@
 <template>
     <div>
-        <el-row :gutter="20">
-            <el-col :span="3">
+        <el-row :gutter="20"  style="width: 1000px; border: 1px red solid;margin: auto">
+            <el-col :span="5">
                 <h4>基础组件</h4>
                 <draggable :options="dragOptions" v-model="compList" @end="end1" :move="onMove1">
                     <div v-for="(item, index) in compList" :key="index" class="comp-item pointer">
@@ -11,8 +11,7 @@
                 </draggable>
                 <el-button @click="saveTemp" style="margin-top: 200px">保存为模板</el-button>
             </el-col>
-
-            <el-col :span="16" style="border-left:1px solid #DCDFE6;border-right:1px solid #DCDFE6">
+            <el-col :span="13" style="border-left:1px solid #DCDFE6;border-right:1px solid #DCDFE6">
                 <el-row>
                     <el-col :span="12">
                         <h4>实验报告表单内容</h4>
@@ -76,7 +75,7 @@
                     </div>
                 </draggable>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6" >
                 <template v-if="formList&&formList.length>0">
                     <h4>
                         <i :class="formList[activeIndex].icon"></i>
@@ -99,24 +98,6 @@
                 </template>
             </el-col>
         </el-row>
-        <div style="width: 500px;margin: 0 auto">
-            <div v-for="(item,index) in this.formList" :key="index">
-                <template v-if="item.type === 'text'">
-                    <div>{{item.title}}</div>
-                    <el-input type="textarea"
-                              v-model="item.content"
-                              :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
-                </template>
-                <template v-else>
-                    <el-upload
-                        action="http"
-                        list-type="picture-card"
-                    >
-                        <i class="el-icon-plus"></i>
-                    </el-upload>
-                </template>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -161,33 +142,18 @@ export default {
         }
     },
     methods: {
-        disp(){
-            for(let i in this.formList){
-                console.log(this.formList[i].icon)
-                console.log(this.formList[i].label)
-                console.log(this.formList[i].title)
-                console.log(this.formList[i].placeholder)
-                console.log(this.formList[i].required)
-                console.log(this.formList[i].type)
-                console.log(this.formList[i].typeName)
-                console.log(this.formList[i])
-            }
-        },
         saveTemp(){
             let dataList = []
             for (let i in this.formList){
                 dataList.push(
                     {
-                        l_id:2,
-                        t_id:2,
-                        icon:this.formList[i].icon,
-                        label:this.formList[i].label,
+                        l_id:1,
+                        t_id:"1",
                         title:this.formList[i].title,
+                        order:i,
                         placeholder:this.formList[i].placeholder,
                         required:this.formList[i].required,
                         type:this.formList[i].type,
-                        typeName:this.formList[i].typeName,
-                        content:this.formList[i].content
                     }
                 )
             }

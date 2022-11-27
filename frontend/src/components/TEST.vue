@@ -31,7 +31,7 @@
             <ReportFiller></ReportFiller>
         </div>
 
-        <ReportFiller></ReportFiller>
+        <ReportReader></ReportReader>
     </div>
 </template>
 
@@ -41,9 +41,10 @@ import FileDownloader from "@/components/FileDownloader";
 import PDFReader from "@/components/PDFReader";
 import ReportCreator from "@/components/ReportCreator";
 import ReportFiller from "@/components/ReportFiller";
+import ReportReader from "@/components/ReportReader";
 export default {
     name: 'TEST',
-    components: {ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
+    components: {ReportReader, ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
     data(){
         return{
             course:"",

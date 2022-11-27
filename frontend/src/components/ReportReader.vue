@@ -13,14 +13,14 @@
                           v-model="item.content"
                           :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
             </template>
-            <template v-else>
-                <el-upload
-                    action="http"
-                    list-type="picture-card"
-                >
-                    <i class="el-icon-plus"></i>
-                </el-upload>
-            </template>
+            <div v-else>
+                <div v-for="(image,i) in item.imgList" :key="i">
+                    <img :src="require('../assets/' + image)" style="max-width: 700px">
+<!--                    <img :src="require('../../../../LabImages/' + image)" style="max-width: 700px">-->
+<!--                    <img src="../../../../LabImages/1.png">-->
+                </div>
+                <el-button @click="receiveFromImages(index)" v-if="item.imgList.length===0">查看实验图片</el-button>
+            </div>
         </div>
     </div>
 </template>
@@ -34,7 +34,8 @@ export default {
                 name:"zy",
                 id:"123456"
             },
-            formList:[]
+            formList:[],
+            show:false,
         }
     },
     mounted() {
@@ -44,11 +45,11 @@ export default {
         receiveFormList(){
             this. axios({
                 method:"get",
-                url:"/api/test/getReportForm",
+                url:"/api/test/getReport",
                 params:{
                     //id 可以是lab的id
                     l_id:1,
-                    s_id:1
+                    s_id:"1952168"
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -56,19 +57,32 @@ export default {
                     this.formList.push(
                         {
                             rf_id:resp.data[i].rf_id,
-                            icon:resp.data[i].icon,
-                            label:resp.data[i].label,
                             title:resp.data[i].title,
-                            placeholder:resp.data[i].placeholder,
                             required:resp.data[i].required,
                             type:resp.data[i].type,
-                            typeName:resp.data[i].typeName,
-                            content:resp.data[i].content
+                            content:resp.data[i].content,
+                            imgList:[]
                         }
                     )
                 }
             })
         },
+        receiveFromImages(index){
+            this. axios({
+                method:"get",
+                url:"/api/test/getFormImages",
+                params:{
+                    //id 可以是lab的id
+                    rf_id:this.formList[index].rf_id
+                }
+            }).then(resp =>{
+                console.log(resp.data)
+                for(let i in resp.data){
+                    this.formList[index].imgList.push(resp.data[i])
+                }
+                this.show = true;
+            })
+        }
     }
 }
 </script>

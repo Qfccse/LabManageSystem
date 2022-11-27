@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ReportTemplateMapper {
 
-    @Insert("insert into report_template VALUES(null,#{l_id},#{t_id},#{icon},#{label},#{title},#{placeholder},#{required},#{type},#{typeName},#{content})")
+    @Insert("insert into report_template VALUES(null,#{l_id},#{t_id},#{title},#{order},#{placeholder},#{required},#{type})")
     void insertIntoReportTemplate(ReportTemplate reportTemplate);
 
     @Select("select * from report_template where l_id = #{l_id}")

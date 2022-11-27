@@ -16,8 +16,8 @@ public class ReportFormService {
         reportFormMapper.insertIntoReportForm(reportForm);
     }
 
-    public List<ReportForm> selectLabReportForm(int l_id,int s_id){
-        return reportFormMapper.getLabReportForm(l_id,s_id);
+    public List<ReportForm> selectLabReportForm(int r_id){
+        return reportFormMapper.getLabReportForm(r_id);
     }
 
     public List<String> selectLabReportImages(int rf_id){

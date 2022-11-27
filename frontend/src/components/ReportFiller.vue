@@ -49,14 +49,11 @@ export default {
                     this.formList.push(
                         {
                             rt_id:resp.data[i].rt_id,
-                            icon:resp.data[i].icon,
-                            label:resp.data[i].label,
                             title:resp.data[i].title,
                             placeholder:resp.data[i].placeholder,
                             required:resp.data[i].required,
                             type:resp.data[i].type,
-                            typeName:resp.data[i].typeName,
-                            content:resp.data[i].content
+                            content:"",
                         }
                     )
                 }
@@ -74,27 +71,40 @@ export default {
             for (let i in this.formList){
                 dataList.push(
                     {
-                        l_id:1,
-                        s_id:2,
-                        icon:this.formList[i].icon,
-                        label:this.formList[i].label,
-                        title:this.formList[i].title,
-                        placeholder:this.formList[i].placeholder,
-                        required:this.formList[i].required,
-                        type:this.formList[i].type,
-                        typeName:this.formList[i].typeName,
+                        rt_id:this.formList[i].rt_id,
+                        r_id:1,
                         content:this.formList[i].content
                     }
                 )
             }
             console.log(JSON.stringify(dataList))
+            let fd = new FormData()
+
+            fd.append("l_id",1)
+            fd.append("s_id","1952168")
+            fd.append("status",type)
+            for (let i in this.formList){
+                fd.append("forms",JSON.stringify({
+                    rt_id:this.formList[i].rt_id,
+                    r_id:1,
+                    content:this.formList[i].content
+                }))
+                dataList.push(
+                    {
+                        rt_id:this.formList[i].rt_id,
+                        r_id:1,
+                        content:this.formList[i].content
+                    }
+                )
+            }
+            // fd.append("forms",dataList)
             this. axios({
                 method:"post",
                 url:"/api/test/postReportForm",
-                data: dataList ,
+                data:fd,
                 headers: {
-                    'Content-Type': 'application/json'
-                },
+                    'Content-Type': 'multipart/form-data'
+                }
             }).then(resp =>{
                 //设置表格数据
                 for (let i in resp.data){

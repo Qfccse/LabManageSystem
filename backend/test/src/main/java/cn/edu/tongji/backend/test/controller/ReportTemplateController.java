@@ -18,7 +18,7 @@ public class ReportTemplateController {
 
     @PostMapping("/postReportTemplate")
     public String receiveReportTemplate(@RequestBody List<ReportTemplate> reports) {
-        //System.out.println(reports);
+        System.out.println(reports);
         for (ReportTemplate reportTemplate : reports) {
             reportTemplateService.insertReportTemplate(reportTemplate);
         }
