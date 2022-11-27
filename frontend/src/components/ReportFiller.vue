@@ -38,7 +38,7 @@ export default {
         receiveFormList(){
             this. axios({
                 method:"get",
-                url:"/api/test/getReportTemplate",
+                url:"/api/report/getReportTemplate",
                 params:{
                     //id 可以是lab的id
                     l_id:1,
@@ -100,7 +100,7 @@ export default {
             // fd.append("forms",dataList)
             this. axios({
                 method:"post",
-                url:"/api/test/postReportForm",
+                url:"/api/report/postReportForm",
                 data:fd,
                 headers: {
                     'Content-Type': 'multipart/form-data'

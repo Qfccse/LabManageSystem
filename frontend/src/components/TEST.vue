@@ -30,7 +30,8 @@
             <ReportCreator></ReportCreator>
             <ReportFiller></ReportFiller>
         </div>
-
+        <ReportCreator></ReportCreator>
+        <ReportFiller></ReportFiller>
         <ReportReader></ReportReader>
     </div>
 </template>

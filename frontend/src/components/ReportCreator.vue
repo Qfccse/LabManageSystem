@@ -160,7 +160,7 @@ export default {
             console.log(JSON.stringify(dataList))
             this. axios({
                 method:"post",
-                url:"/api/test/postReportTemplate",
+                url:"/api/report/postReportTemplate",
                 data: dataList ,
                 headers: {
                     'Content-Type': 'application/json'

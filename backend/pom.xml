@@ -10,6 +10,7 @@
   <modules>
     <module>test</module>
     <module>gateway</module>
+    <module>report</module>
   </modules>
 
   <packaging>pom</packaging>
