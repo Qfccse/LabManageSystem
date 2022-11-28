@@ -10,7 +10,7 @@
                           :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
             </template>
             <template v-else>
-                <FileUploader ref="saveImage" :show="false" list-type="picture-card" url="/api/test/postReportImages" :id="idList[index]"></FileUploader>
+                <FileUploader ref="saveImage" :show="false" list-type="picture-card" url="/api/report/postReportImages" :id="idList[index]"></FileUploader>
             </template>
         </div>
         <div style="margin-top: 20px;">
@@ -32,7 +32,8 @@ export default {
         }
     },
     mounted() {
-      this.receiveFormList()
+        // this.receiveFormList()
+        this.receiveReport();
     },
     methods:{
         receiveFormList(){
@@ -44,7 +45,7 @@ export default {
                     l_id:1,
                 }
             }).then(resp =>{
-                // console.log(resp.data)
+                console.log(resp.data)
                 for(let i in resp.data){
                     this.formList.push(
                         {
@@ -54,6 +55,33 @@ export default {
                             required:resp.data[i].required,
                             type:resp.data[i].type,
                             content:"",
+                        }
+                    )
+                }
+            })
+        },
+        receiveReport(){
+            this. axios({
+                method:"get",
+                url:"/api/report/getReportFiller",
+                params:{
+                    //id 可以是lab的id
+                    l_id:1,
+                    s_id:"1952168"
+                }
+            }).then(resp =>{
+                console.log("1234545")
+                console.log(resp.data)
+                for(let i in resp.data){
+                    this.formList.push(
+                        {
+                            rt_id:resp.data[i].rt_id,
+                            rf_id:resp.data[i].rf_id,
+                            title:resp.data[i].title,
+                            placeholder:resp.data[i].placeholder,
+                            required:resp.data[i].required,
+                            type:resp.data[i].type,
+                            content:resp.data[i].content,
                         }
                     )
                 }
@@ -77,15 +105,16 @@ export default {
                     }
                 )
             }
-            console.log(JSON.stringify(dataList))
+            // console.log(JSON.stringify(dataList))
             let fd = new FormData()
 
             fd.append("l_id",1)
-            fd.append("s_id","1952168")
+            fd.append("s_id","1952166")
             fd.append("status",type)
             for (let i in this.formList){
                 fd.append("forms",JSON.stringify({
                     rt_id:this.formList[i].rt_id,
+                    rf_id:this.formList[i].rf_id,
                     r_id:1,
                     content:this.formList[i].content
                 }))
@@ -98,6 +127,7 @@ export default {
                 )
             }
             // fd.append("forms",dataList)
+            console.log(fd)
             this. axios({
                 method:"post",
                 url:"/api/report/postReportForm",

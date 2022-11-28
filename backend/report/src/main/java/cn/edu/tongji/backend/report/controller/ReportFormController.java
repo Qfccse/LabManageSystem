@@ -1,7 +1,9 @@
 package cn.edu.tongji.backend.report.controller;
 
+import cn.edu.tongji.backend.report.pojo.Report;
 import cn.edu.tongji.backend.report.pojo.ReportForm;
 import cn.edu.tongji.backend.report.service.ReportFormService;
+import cn.edu.tongji.backend.report.service.ReportService;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -21,7 +25,9 @@ import java.util.List;
 public class ReportFormController {
     @Autowired
     private ReportFormService reportFormService;
-    //ReportController reportController;
+
+    @Autowired
+    private ReportService reportService;
 
     @PostMapping("/postReportForm")
     public String receiveReportForm(@RequestParam("l_id") int l_id,@RequestParam("s_id") String s_id,
@@ -31,28 +37,33 @@ public class ReportFormController {
         System.out.println(s_id);
         System.out.println(status);
         List<Integer> ids = new ArrayList<Integer>();
+        int update = 1;
+        int r_id = 0;
         System.out.println(reportForms);
         for (String reportForm : reportForms) {
             //System.out.println(reportForm);
             ReportForm form = JSON.parseObject(reportForm,ReportForm.class);
             System.out.println(form);
-            reportFormService.insertReportForm(form);
+            r_id = form.getR_id();
+            if (update==2)
+            {
+                reportFormService.insertReportForm(form);
+            }
+            else {
+                reportFormService.updateReportForm(form);
+            }
+
             ids.add(form.getRf_id());
         }
-        //Report report = new Report();
-        //report.setStatus(status);
-        //
-        //String r_id = reportController.addReportToDB(report);
+
+        Report report = new Report();
+        report.setR_id(r_id);
+        report.setStatus(status);
+        report.setSubmit_time(new Timestamp(new Date().getTime()));
+        reportService.updateReportStatus(report);
 
         return ids.toString();
     }
-
-    //@GetMapping("/getReportForm")
-    //public List<ReportForm> selectReportForm(@RequestParam("l_id") int l_id,@RequestParam("s_id") int s_id) {
-    //    System.out.println(l_id + " + "+ s_id);
-    //    System.out.println(reportFormService.selectLabReportForm(l_id, s_id));
-    //    return reportFormService.selectLabReportForm(l_id, s_id);
-    //}
 
     @GetMapping("/getReportForm")
     public List<ReportForm> selectReportForm(@RequestParam("r_id") int r_id) {
@@ -71,7 +82,7 @@ public class ReportFormController {
         System.out.println(id);
         for (MultipartFile file : multipartFile) {
             System.out.println("file is " + file.getOriginalFilename());
-            String dirPath = "C:\\Users\\ASUS\\Desktop\\ss";
+            String dirPath = "D:/LabAssets/ss";
             //https://www.jianshu.com/p/dd0f20a6e44f
             String fileName = file.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
@@ -84,9 +95,9 @@ public class ReportFormController {
             }
             // 保存文件到路径
             file.transferTo(localFile);
-
+            String serverFilePath = localFileName;
             // 保存路径到服务器
-            reportFormService.insertImage(id,filePath,fileName);
+            reportFormService.insertImage(id,serverFilePath,fileName);
         }
 
         return null;

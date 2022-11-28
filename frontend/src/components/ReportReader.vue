@@ -15,7 +15,7 @@
             </template>
             <div v-else>
                 <div v-for="(image,i) in item.imgList" :key="i">
-                    <img :src="require('../../../../LabImages/' + image)" style="max-width: 700px">
+                    <img :src="require('../../../../LabAssets/' + image)" style="max-width: 700px">
 
                 </div>
                 <el-button @click="receiveFromImages(index)" v-if="item.imgList.length===0">查看实验图片</el-button>
@@ -67,9 +67,10 @@ export default {
             })
         },
         receiveFromImages(index){
+            console.log(this.formList[index].rf_id)
             this. axios({
                 method:"get",
-                url:"/api/test/getFormImages",
+                url:"/api/report/getFormImages",
                 params:{
                     //id 可以是lab的id
                     rf_id:this.formList[index].rf_id

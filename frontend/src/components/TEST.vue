@@ -29,9 +29,8 @@
             <div style="margin-top: 50px">报告表单</div>
             <ReportCreator></ReportCreator>
             <ReportFiller></ReportFiller>
+            <ReportReader></ReportReader>
         </div>
-        <ReportCreator></ReportCreator>
-        <ReportFiller></ReportFiller>
         <ReportReader></ReportReader>
     </div>
 </template>

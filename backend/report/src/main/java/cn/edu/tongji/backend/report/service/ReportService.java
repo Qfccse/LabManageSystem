@@ -14,11 +14,19 @@ public class ReportService {
         reportMapper.insertIntoReport(report);
     }
 
-    public int getReportId(int l_id, int s_id){
+    public int getReportId(int l_id, String s_id){
         return reportMapper.selectIdFromReport(l_id, s_id);
     }
 
     public String[] getReportFormImage(int rf_id){
         return reportMapper.selectImagesFromReportImage(rf_id);
+    }
+
+    public void updateReportStatus(Report report){
+        reportMapper.updateReport(report);
+    }
+
+    public Report selectStuReport(int l_id, String s_id){
+        return reportMapper.selectReportById(l_id,s_id);
     }
 }

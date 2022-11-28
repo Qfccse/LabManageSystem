@@ -4,6 +4,7 @@ import cn.edu.tongji.backend.report.pojo.ReportForm;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -12,6 +13,9 @@ public interface ReportFormMapper {
     @Insert("insert into report_form VALUES(null,#{rt_id},#{r_id},#{content})")
     @Options(useGeneratedKeys = true, keyProperty = "rf_id", keyColumn = "rf_id")
     void insertIntoReportForm(ReportForm reportForm);
+
+    @Update("update report_form set content=#{content} where rf_id=#{rf_id}")
+    void updateReportForm(ReportForm reportForm);
 
     //@Select("select * from report_form where " +
     //        "(rf_id = (select rf_id from report_template where l_id=#{l_id})) and" +

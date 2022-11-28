@@ -16,6 +16,9 @@ public class ReportFormService {
         reportFormMapper.insertIntoReportForm(reportForm);
     }
 
+    public void updateReportForm(ReportForm reportForm){
+        reportFormMapper.updateReportForm(reportForm);
+    }
     public List<ReportForm> selectLabReportForm(int r_id){
         return reportFormMapper.getLabReportForm(r_id);
     }

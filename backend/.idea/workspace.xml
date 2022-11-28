@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/report/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/report/src/test/java/cn/edu/tongji/backend/report/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/cn/edu/tongji/backend/gateway/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/cn/edu/tongji/backend/gateway/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/report/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportFormMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportFormMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/pojo/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/pojo/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/pojo/ReportRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/pojo/ReportRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportFormService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportFormService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/test/java/cn/edu/tongji/backend/report/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/test/java/cn/edu/tongji/backend/report/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ReportFiller.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ReportFiller.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/ReportReader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ReportReader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +61,7 @@
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "spring.configuration.checksum": "ed07b067c19151298c4a055d7325e36d",
+    "spring.configuration.checksum": "b321872b84e7950b006492eada749768",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -82,7 +90,23 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ReportApplication">
+  <component name="RunManager" selected="JUnit.AppTest.shouldAnswerWithTrue">
+    <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="report" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.tongji.backend.report.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.tongji.backend.report" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.tongji.backend.report.AppTest" />
+      <option name="METHOD_NAME" value="shouldAnswerWithTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GateWayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.tongji.backend.gateway.GateWayApplication" />
@@ -117,14 +141,16 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
       <item itemvalue="Spring Boot.TestApplication" />
       <item itemvalue="Spring Boot.ReportApplication" />
       <item itemvalue="Spring Boot.GateWayApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="Spring Boot.ReportApplication" />
+        <item itemvalue="Spring Boot.GateWayApplication" />
+        <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
       </list>
     </recent_temporary>
   </component>
@@ -146,7 +172,8 @@
       <workItem from="1669365438908" duration="497000" />
       <workItem from="1669365960581" duration="1002000" />
       <workItem from="1669368806514" duration="8966000" />
-      <workItem from="1669527226823" duration="18147000" />
+      <workItem from="1669527226823" duration="25723000" />
+      <workItem from="1669594728119" duration="2439000" />
     </task>
     <servers />
   </component>
