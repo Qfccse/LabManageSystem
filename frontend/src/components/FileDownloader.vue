@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-button @click="download">下载文件</el-button>
+        <el-button @click="click2Download">下载文件</el-button>
     </div>
 </template>
 
@@ -8,9 +8,17 @@
 export default {
     name: "FileDownloader",
     props: {
-        filePath:{
+        url:{
             type: String,
             default: ""
+        },
+        gid:{
+            type: Number,
+            default: 0
+        },
+        fileName:{
+            type: String,
+            default: "0"
         },
     },
     data(){
@@ -21,18 +29,18 @@ export default {
     mounted() {
     },
     methods:{
-        download(){
+        click2Download(){
             this. axios({
                 method:"get",
-                url:"/api/test/download",
+                url:this.url,
                 params:{
-                    path: this.filePath
+                    g_id: this.gid
                 },
                 responseType: 'blob'
             }).then((res)=>{
                 console.log('文件下载成功');
                 const blob = new Blob([res.data]);
-                const fileName = "1.png";
+                const fileName = this.fileName;
 
                 //对于<a>标签，只有 Firefox 和 Chrome（内核） 支持 download 属性
                 //IE10以上支持blob，但是依然不支持download

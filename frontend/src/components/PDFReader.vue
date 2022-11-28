@@ -19,9 +19,13 @@ export default {
         pdf
     },
     props:{
-        filePath:{
+        url:{
             type: String,
             default: ""
+        },
+        gid:{
+            type: Number,
+            default: 0
         },
     },
 
@@ -42,14 +46,14 @@ export default {
         pdfBytesReader(){
             this. axios({
                 method:"get",
-                url:"/api/test/download",
+                url:this.url,
                 params:{
-                    path: this.filePath
+                    g_id: this.gid
                 },
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
                 responseType: 'arraybuffer',
             }).then((res)=>{
-                console.log('pdf 传输成功');
+                console.log('gid' + this.gid + 'pdf 传输成功');
                 this.pdfSrc = new Blob([res.data]);
                 const binaryData = [];
                 binaryData.push(res.data);

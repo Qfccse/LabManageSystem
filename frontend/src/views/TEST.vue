@@ -26,12 +26,28 @@
             >
             </PDFReader>
 
-            <div style="margin-top: 50px">报告表单</div>
+            <div style="margin-top: 50px">发布报告表单</div>
             <ReportCreator></ReportCreator>
+            <div style="margin-top: 50px">填写报告</div>
             <ReportFiller></ReportFiller>
+            <div style="margin-top: 50px">阅读报告</div>
             <ReportReader></ReportReader>
+            <div style="margin-top: 50px">上传文档</div>
+            <FileUploader ref="saveImage" file-type="*" url="/api/guidebook/postLabGuidebook" :id="{
+             g_id:0,
+             l_id:1,
+             t_id:'1',
+             type:1,
+             name:'123',
+             path:'123',}"></FileUploader>
+            <div style="margin-top: 50px">阅读pdf</div>
+            <PDFReader
+                url="/api/guidebook/getGuidebookBytes"
+                :gid=7
+            >
+            </PDFReader>
         </div>
-        <ReportReader></ReportReader>
+      <GuidebookPage></GuidebookPage>
     </div>
 </template>
 
@@ -42,9 +58,10 @@ import PDFReader from "@/components/PDFReader";
 import ReportCreator from "@/components/ReportCreator";
 import ReportFiller from "@/components/ReportFiller";
 import ReportReader from "@/components/ReportReader";
+import GuidebookPage from "@/views/GuidebookPage";
 export default {
     name: 'TEST',
-    components: {ReportReader, ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
+    components: {GuidebookPage, ReportReader, ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
     data(){
         return{
             course:"",

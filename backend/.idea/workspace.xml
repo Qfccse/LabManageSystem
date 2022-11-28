@@ -5,20 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/cn/edu/tongji/backend/gateway/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/cn/edu/tongji/backend/gateway/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/report/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportFormMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportFormMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/pojo/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/pojo/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/pojo/ReportRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/pojo/ReportRow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportFormService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportFormService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/test/java/cn/edu/tongji/backend/report/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/test/java/cn/edu/tongji/backend/report/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ReportFiller.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ReportFiller.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ReportReader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ReportReader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidebook/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidebook/src/test/java/cn/edu/tongji/backend/guidebook/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/GuidebookPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/FileDownloader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/FileDownloader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/FileUploader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/FileUploader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/PDFReader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/PDFReader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "corretto-1.8",
-    "last_opened_file_path": "D:/LabManageSystem/backend/report/src/main/java/cn/edu/tongji/backend/report/controller",
+    "last_opened_file_path": "D:/LabManageSystem/backend/guidebook/src/main/resources",
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -72,13 +68,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\LabManageSystem\backend\guidebook\src\main\resources" />
       <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\controller" />
       <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\service" />
       <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\mapper" />
       <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\pojo" />
-      <recent name="D:\LabManageSystem\backend\report\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.edu.tongji.backend.guidebook" />
       <recent name="cn.edu.tongji.backend.report" />
       <recent name="cn.edu.tongji.backend.test.controller" />
     </key>
@@ -90,7 +87,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AppTest.shouldAnswerWithTrue">
+  <component name="RunManager" selected="Spring Boot.GuidebookApplication">
     <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="report" />
       <extension name="coverage">
@@ -113,6 +110,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.edu.tongji.backend.gateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuidebookApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="guidebook" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.tongji.backend.guidebook.GuidebookApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.tongji.backend.guidebook.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,11 +153,13 @@
     <list>
       <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
       <item itemvalue="Spring Boot.TestApplication" />
+      <item itemvalue="Spring Boot.GuidebookApplication" />
       <item itemvalue="Spring Boot.ReportApplication" />
       <item itemvalue="Spring Boot.GateWayApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.GuidebookApplication" />
         <item itemvalue="Spring Boot.ReportApplication" />
         <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
@@ -173,7 +185,7 @@
       <workItem from="1669365960581" duration="1002000" />
       <workItem from="1669368806514" duration="8966000" />
       <workItem from="1669527226823" duration="25723000" />
-      <workItem from="1669594728119" duration="2439000" />
+      <workItem from="1669594728119" duration="9838000" />
     </task>
     <servers />
   </component>

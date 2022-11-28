@@ -17,9 +17,14 @@ spring:
           uri: lb://report
           predicates:
             - Path=/report/**
+        - id: guidebook
+          uri: lb://guidebook
+          predicates:
+            - Path=/guidebook/**
 
 
-#          filters:
+
+      #          filters:
 #            - AddRequestHeader=Truth, hd is lj # 添加请求头
 #        新增网关路由在这里注册
 #        - id: course # 路由id，自定义，只要唯一即可

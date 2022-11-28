@@ -45,8 +45,7 @@ export default {
             default:""
         },
         id:{
-            type:Number,
-            default:-1
+
         },
         show:{
             type:Boolean,
@@ -78,10 +77,10 @@ export default {
     },
     methods: {
         fileUpload(){
-            console.log(this.id)
+            console.log(JSON.stringify(this.id))
             let fd = new FormData()
             // 也可以传非文件的数据，例如
-            fd.append("id",this.id)
+            fd.append("id",JSON.stringify(this.id))
             // 只需要在后端接收一下即可(注意)
             for(let i in this.upload.fileList){
                 fd.append('file',this.upload.fileList[i].raw)
