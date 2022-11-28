@@ -12,6 +12,7 @@
     <module>gateway</module>
     <module>report</module>
     <module>guidebook</module>
+    <module>laboratory</module>
   </modules>
 
   <packaging>pom</packaging>

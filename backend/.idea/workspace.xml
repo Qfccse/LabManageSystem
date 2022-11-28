@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/guidebook/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidebook/src/test/java/cn/edu/tongji/backend/guidebook/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/views/GuidebookPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/laboratory/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/laboratory/src/test/java/cn/edu/tongji/backend/laboratory/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/LabCreator.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/LabList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/LaboratoryPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/FileDownloader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/FileDownloader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/FileUploader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/FileUploader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/PDFReader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/PDFReader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +51,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "corretto-1.8",
-    "last_opened_file_path": "D:/LabManageSystem/backend/guidebook/src/main/resources",
+    "last_opened_file_path": "D:/LabManageSystem/backend/laboratory/src/main/resources",
     "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "spring.configuration.checksum": "b321872b84e7950b006492eada749768",
     "vue.rearranger.settings.migration": "true"
   },
@@ -68,13 +66,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\LabManageSystem\backend\laboratory\src\main\resources" />
       <recent name="D:\LabManageSystem\backend\guidebook\src\main\resources" />
       <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\controller" />
       <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\service" />
       <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\mapper" />
-      <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\pojo" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.edu.tongji.backend.laboratory" />
       <recent name="cn.edu.tongji.backend.guidebook" />
       <recent name="cn.edu.tongji.backend.report" />
       <recent name="cn.edu.tongji.backend.test.controller" />
@@ -87,7 +86,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GuidebookApplication">
+  <component name="RunManager" selected="Spring Boot.LaboratoryApplication">
     <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="report" />
       <extension name="coverage">
@@ -130,6 +129,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LaboratoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="laboratory" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.tongji.backend.laboratory.LaboratoryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ReportApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="report" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.tongji.backend.report.ReportApplication" />
@@ -152,6 +158,7 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
+      <item itemvalue="Spring Boot.LaboratoryApplication" />
       <item itemvalue="Spring Boot.TestApplication" />
       <item itemvalue="Spring Boot.GuidebookApplication" />
       <item itemvalue="Spring Boot.ReportApplication" />
@@ -159,9 +166,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="Spring Boot.GuidebookApplication" />
         <item itemvalue="Spring Boot.ReportApplication" />
-        <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
       </list>
     </recent_temporary>
@@ -185,7 +192,7 @@
       <workItem from="1669365960581" duration="1002000" />
       <workItem from="1669368806514" duration="8966000" />
       <workItem from="1669527226823" duration="25723000" />
-      <workItem from="1669594728119" duration="9838000" />
+      <workItem from="1669594728119" duration="19300000" />
     </task>
     <servers />
   </component>

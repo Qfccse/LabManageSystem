@@ -46,8 +46,11 @@
                 :gid=7
             >
             </PDFReader>
+            <GuidebookPage></GuidebookPage>
+            <LabCreator></LabCreator>
         </div>
-      <GuidebookPage></GuidebookPage>
+<!--        <LabCreator></LabCreator>-->
+        <LaboratoryPage></LaboratoryPage>
     </div>
 </template>
 
@@ -59,9 +62,14 @@ import ReportCreator from "@/components/ReportCreator";
 import ReportFiller from "@/components/ReportFiller";
 import ReportReader from "@/components/ReportReader";
 import GuidebookPage from "@/views/GuidebookPage";
+import LabCreator from "@/components/LabCreator";
+import LaboratoryPage from "@/views/LaboratoryPage";
 export default {
     name: 'TEST',
-    components: {GuidebookPage, ReportReader, ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
+    components: {
+        LaboratoryPage,
+        LabCreator,
+        GuidebookPage, ReportReader, ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
     data(){
         return{
             course:"",

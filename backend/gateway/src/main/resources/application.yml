@@ -21,7 +21,10 @@ spring:
           uri: lb://guidebook
           predicates:
             - Path=/guidebook/**
-
+        - id: laboratory
+          uri: lb://laboratory
+          predicates:
+            - Path=/laboratory/**
 
 
       #          filters:
