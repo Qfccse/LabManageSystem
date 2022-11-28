@@ -1,6 +1,5 @@
 <template>
     <div style="width: 800px;margin:  auto">
-        <h1>XXX实验报告</h1>
         <div v-for="(item,index) in this.formList" :key="index">
             <h3>{{item.title}}</h3>
             <template v-if="item.type === 'text'">
@@ -25,6 +24,16 @@ import FileUploader from "@/components/FileUploader";
 export default {
     name: "ReportFiller",
     components: {FileUploader},
+    props:{
+        lid:{
+            type: Number,
+            default: 0
+        },
+        sid:{
+            type: String,
+            default: ""
+        },
+    },
     data(){
         return{
             formList:[],
@@ -66,8 +75,8 @@ export default {
                 url:"/api/report/getReportFiller",
                 params:{
                     //id 可以是lab的id
-                    l_id:1,
-                    s_id:"1952168"
+                    l_id:this.lid,
+                    s_id:this.sid
                 }
             }).then(resp =>{
                 console.log("1234545")

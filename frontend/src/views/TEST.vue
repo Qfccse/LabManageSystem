@@ -48,8 +48,14 @@
             </PDFReader>
             <GuidebookPage></GuidebookPage>
             <LabCreator></LabCreator>
+            <LabList></LabList>
+            <LaboratoryPage :lid="7"></LaboratoryPage>
+            <PDFReader
+                url="/api/guidebook/getGuidebookBytes"
+                :gid=this.$route.query.g_id
+            >
+            </PDFReader>
         </div>
-<!--        <LabCreator></LabCreator>-->
         <LaboratoryPage></LaboratoryPage>
     </div>
 </template>
@@ -64,9 +70,11 @@ import ReportReader from "@/components/ReportReader";
 import GuidebookPage from "@/views/GuidebookPage";
 import LabCreator from "@/components/LabCreator";
 import LaboratoryPage from "@/views/LaboratoryPage";
+import LabList from "@/components/LabList";
 export default {
     name: 'TEST',
     components: {
+        LabList,
         LaboratoryPage,
         LabCreator,
         GuidebookPage, ReportReader, ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
@@ -78,6 +86,7 @@ export default {
     },
     mounted() {
         // this.test()
+        console.log(this.$route.query.l_id)
     },
     methods:{
         test(){

@@ -2,14 +2,14 @@
     <div>
         <el-row :gutter="20" v-for="(lab,index) in labs" :key="index">
             <el-col :span="20">{{lab.name}}</el-col>
-            <el-col :span="4" v-if="compareDate(lab.start_time,lab.end_time)===0">
+            <el-col :span="4" v-if="labStatus[index]===0">
                 <i class="el-icon-circle-check"></i>未开始
             </el-col>
-            <el-col :span="4" v-else-if="compareDate(lab.start_time,lab.end_time)===1">
-                <i class="el-icon-error" style="color: red"></i>已结束
+            <el-col :span="4" v-else-if="labStatus[index]===1">
+                <i class="el-icon-error"></i>已结束
             </el-col>
             <el-col :span="4" v-else>
-                <i class="el-icon-success" style="color: green"></i>进行中
+                <i class="el-icon-success"></i>进行中
             </el-col>
         </el-row>
     </div>
@@ -26,7 +26,8 @@ export default {
     },
     data(){
         return{
-            labs:[]
+            labs:[],
+            labStatus:[],
         }
     },
     mounted() {
@@ -51,12 +52,15 @@ export default {
                         desc:resp.data[i].desc,
                         proportion:resp.data[i].proportion,
                     })
+                    this.labStatus.push(this.compareDate(resp.data[i].start_time,resp.data[i].end_time))
                 }
+                console.log(this.labStatus)
             })
         },
         compareDate(st,ed){
             // 0 未开始
             // 1 已结束
+            // 2 正在进行
             let std = new Date(st)
             let edd = new Date(ed)
             if(std > new Date() && edd > new Date()){
@@ -65,9 +69,20 @@ export default {
             else if(edd < new Date() && std < new Date()) {
                 return 1
             }
+            else {
+                return 2
+            }
         },
-        trimDate(date){
-            return date.getDate()
+        changeClass(index){
+            let type = this.labStatus[index]
+            if(type===0){
+                this.labStatus[index] = 2
+            }else if(type===2){
+                this.labStatus[index] = 1
+            }else {
+                this.labStatus[index] = 0
+            }
+            console.log(this.labStatus)
         }
     }
 }
@@ -79,6 +94,16 @@ export default {
     height: 50px;
     line-height: 50px;
     width: 600px;
+}
+
+.el-icon-error{
+    color: red;
+}
+.el-icon-success{
+    color: green;
+}
+.el-icon-circle-check{
+    color: gray;
 }
 
 </style>
