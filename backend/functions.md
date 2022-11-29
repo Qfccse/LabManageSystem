@@ -30,7 +30,7 @@
 ## Lab-service
 - [x] 开设实验 
 - [x] 查看课程实验
-- [ ] 实验反馈
+- [x] 实验反馈
 - [x] 结束实验
 
 ## Report-service
