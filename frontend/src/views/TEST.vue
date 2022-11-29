@@ -55,8 +55,9 @@
                 :gid=this.$route.query.g_id
             >
             </PDFReader>
+            <LaboratoryPage></LaboratoryPage>
         </div>
-        <LaboratoryPage></LaboratoryPage>
+        <BulletinPage></BulletinPage>
     </div>
 </template>
 
@@ -71,9 +72,11 @@ import GuidebookPage from "@/views/GuidebookPage";
 import LabCreator from "@/components/LabCreator";
 import LaboratoryPage from "@/views/LaboratoryPage";
 import LabList from "@/components/LabList";
+import BulletinPage from "@/views/BulletinPage";
 export default {
     name: 'TEST',
     components: {
+        BulletinPage,
         LabList,
         LaboratoryPage,
         LabCreator,
@@ -86,7 +89,7 @@ export default {
     },
     mounted() {
         // this.test()
-        console.log(this.$route.query.l_id)
+        // console.log(this.$route.query.l_id)
     },
     methods:{
         test(){

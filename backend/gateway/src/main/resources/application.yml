@@ -25,7 +25,10 @@ spring:
           uri: lb://laboratory
           predicates:
             - Path=/laboratory/**
-
+        - id: todo
+          uri: lb://todo
+          predicates:
+            - Path=/todo/**
 
       #          filters:
 #            - AddRequestHeader=Truth, hd is lj # 添加请求头

@@ -28,7 +28,7 @@
 ## 张宇
 
 ## Lab-service
-- [ ] 开设实验 
+- [x] 开设实验 
 - [ ] 实验反馈
 - [ ] 结束实验
 
@@ -46,4 +46,4 @@
 ## Bulletin-service
 - [ ] 创建todo 
 - [ ] 删除todo 
-
+- [ ] 查看课程todo 

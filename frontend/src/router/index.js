@@ -23,7 +23,7 @@ const routes = [
         component:CoursePage
     },
     {
-        path:"/test?l_id=:l_id",
+        path:"/",
         name:"TEST",
         component:TEST,
     },
@@ -38,7 +38,7 @@ const routes = [
         component:ReportPage,
     },
     {
-        path:"/",
+        path:"/.",
         name:"Lab",
         component:LaboratoryPage
     },
