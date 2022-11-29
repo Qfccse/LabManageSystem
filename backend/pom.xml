@@ -13,7 +13,8 @@
     <module>report</module>
     <module>guidebook</module>
     <module>laboratory</module>
-      <module>todo</module>
+    <module>todo</module>
+    <module>admin</module>
   </modules>
 
   <packaging>pom</packaging>

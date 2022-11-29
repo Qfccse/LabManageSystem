@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/functions.md" beforeDir="false" afterPath="$PROJECT_DIR$/functions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/test/java/cn/edu/tongji/backend/admin/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "corretto-1.8",
-    "last_opened_file_path": "D:/LabManageSystem/backend/todo/src/main",
+    "last_opened_file_path": "D:/LabManageSystem/backend/admin/src/main/resources",
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -59,18 +63,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\LabManageSystem\backend\admin\src\main\resources" />
       <recent name="D:\LabManageSystem\backend\todo\src\main" />
       <recent name="D:\LabManageSystem\backend\laboratory\src\main\resources" />
       <recent name="D:\LabManageSystem\backend\guidebook\src\main\resources" />
       <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\controller" />
-      <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.edu.tongji.backend.admin" />
       <recent name="cn.edu.tongji.backend.todo" />
       <recent name="cn.edu.tongji.backend.laboratory" />
       <recent name="cn.edu.tongji.backend.guidebook" />
       <recent name="cn.edu.tongji.backend.report" />
-      <recent name="cn.edu.tongji.backend.test.controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -80,7 +84,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.LaboratoryApplication">
+  <component name="RunManager" selected="Spring Boot.AdminApplication">
     <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="report" />
       <extension name="coverage">
@@ -93,6 +97,13 @@
       <option name="MAIN_CLASS_NAME" value="cn.edu.tongji.backend.report.AppTest" />
       <option name="METHOD_NAME" value="shouldAnswerWithTrue" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.tongji.backend.admin.AdminApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,6 +170,7 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
+      <item itemvalue="Spring Boot.AdminApplication" />
       <item itemvalue="Spring Boot.TodoApplication" />
       <item itemvalue="Spring Boot.LaboratoryApplication" />
       <item itemvalue="Spring Boot.TestApplication" />
@@ -168,9 +180,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="Spring Boot.GuidebookApplication" />
         <item itemvalue="Spring Boot.ReportApplication" />
-        <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
       </list>
     </recent_temporary>
@@ -196,7 +208,7 @@
       <workItem from="1669527226823" duration="25723000" />
       <workItem from="1669594728119" duration="24667000" />
       <workItem from="1669680538854" duration="4971000" />
-      <workItem from="1669703461348" duration="11301000" />
+      <workItem from="1669703461348" duration="23186000" />
     </task>
     <servers />
   </component>

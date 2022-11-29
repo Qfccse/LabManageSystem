@@ -94,8 +94,7 @@ export default {
                 }
             }).then(resp =>{
                 //设置表格数据
-                resp,
-                // console.log(resp.data)
+                console.log(resp.data)
                 // console.log(resp.data.id)
                 this.upload.fileList=[]
             })

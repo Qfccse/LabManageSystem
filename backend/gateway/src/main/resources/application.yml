@@ -29,6 +29,10 @@ spring:
           uri: lb://todo
           predicates:
             - Path=/todo/**
+        - id: admin
+          uri: lb://admin
+          predicates:
+            - Path=/admin/**
 
       #          filters:
 #            - AddRequestHeader=Truth, hd is lj # 添加请求头
