@@ -56,8 +56,9 @@
             >
             </PDFReader>
             <LaboratoryPage></LaboratoryPage>
+            <BulletinPage></BulletinPage>
         </div>
-        <BulletinPage></BulletinPage>
+        <LabList></LabList>
     </div>
 </template>
 

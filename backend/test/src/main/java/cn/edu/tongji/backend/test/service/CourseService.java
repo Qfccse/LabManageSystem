@@ -13,4 +13,8 @@ public class CourseService {
     public Course queryById(Long id) {
         return userMapper.selectById(id);
     }
+
+    public void insert(int num){
+        userMapper.insertTest(num);
+    }
 }

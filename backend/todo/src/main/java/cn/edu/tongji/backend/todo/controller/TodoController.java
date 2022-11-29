@@ -20,4 +20,6 @@ public class TodoController {
     public List<Todo> getCourseTodo(@RequestParam("c_id") int c_id){
         return todoService.selectCourseTodo(c_id);
     }
+
+
 }

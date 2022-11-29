@@ -16,8 +16,8 @@ public interface LaboratoryMapper {
     @Options(useGeneratedKeys = true, keyProperty = "l_id", keyColumn = "l_id")
     void insertIntoLab(Laboratory laboratory);
 
-    @Update("update laboratory set c_id=#{c_id},name=#{name},start_time=#{start_time}," +
-            "end_time=#{end_time},desc=#{desc},proportion=#{proportion} where l_id=#{l_id}")
+    @Update("update laboratory set c_id=#{c_id},laboratory.name=#{name},start_time=#{start_time}," +
+            " end_time=#{end_time},laboratory.desc=#{desc},proportion=#{proportion} where l_id=#{l_id}")
     void updateLab(Laboratory laboratory);
 
     @Delete("delete from laboratory where l_id=#{l_id}")

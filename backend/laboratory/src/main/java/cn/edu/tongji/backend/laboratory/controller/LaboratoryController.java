@@ -32,6 +32,12 @@ public class LaboratoryController {
         laboratoryService.updateLab(laboratory);
         return null;
     }
+    //@PostMapping("/postLabInfo")
+    //public String postLabInfo(@RequestBody List<Laboratory> laboratory){
+    //    System.out.println(laboratory);
+    //    //laboratoryService.updateLab(laboratory);
+    //    return null;
+    //}
 
     @PostMapping("/postNewLab")
     public int postNewLab(@RequestBody Laboratory laboratory){

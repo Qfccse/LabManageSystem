@@ -29,8 +29,9 @@
 
 ## Lab-service
 - [x] 开设实验 
+- [x] 查看课程实验
 - [ ] 实验反馈
-- [ ] 结束实验
+- [x] 结束实验
 
 ## Report-service
 - [x] 设置报告模板
@@ -46,4 +47,4 @@
 ## Bulletin-service
 - [ ] 创建todo 
 - [ ] 删除todo 
-- [ ] 查看课程todo 
+- [x] 查看课程todo 
