@@ -28,19 +28,20 @@ const routes = [
         component:TEST,
     },
     {
-        path:"/guidebook?g_id=:g_id?name=:name",
+        path:"/guidebook",
         name:"GuidebookPage",
         component:GuidebookPage,
     },
     {
-        path:"/report?l_id:=l_id?s_id=s_id?l_name=l_name",
+        path:"/report",
         name:"ReportPage",
         component:ReportPage,
     },
     {
-        path:"/.",
+        path:"/lab",
         name:"Lab",
-        component:LaboratoryPage
+        component:LaboratoryPage,
+        props:true
     },
 ]
 

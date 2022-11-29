@@ -1,7 +1,11 @@
 <template>
     <div>
         <el-row :gutter="20" v-for="(lab,index) in labs" :key="index">
-            <el-col :span="20">{{lab.name}}</el-col>
+            <el-col :span="20">
+                <router-link :to="{name:'Lab',query:{l_id:lab.l_id}}">
+                    {{lab.name}}
+                </router-link>
+            </el-col>
             <div>
 <!--                <el-col :span="4" v-if="labStatus[index]===0">-->
 <!--                    <i class="el-icon-circle-check"></i>未开始-->

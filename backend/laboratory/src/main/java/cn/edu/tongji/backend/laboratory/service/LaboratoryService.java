@@ -1,6 +1,7 @@
 package cn.edu.tongji.backend.laboratory.service;
 
 import cn.edu.tongji.backend.laboratory.mapper.LaboratoryMapper;
+import cn.edu.tongji.backend.laboratory.pojo.Feedback;
 import cn.edu.tongji.backend.laboratory.pojo.Laboratory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,9 @@ public class LaboratoryService {
 
     public void removeLab(int l_id){
         laboratoryMapper.deleteFromLab(l_id);
+    }
+
+    public void createFeedback(Feedback feedback){
+        laboratoryMapper.insertFeedback(feedback);
     }
 }

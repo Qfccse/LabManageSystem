@@ -1,5 +1,6 @@
 package cn.edu.tongji.backend.laboratory.mapper;
 
+import cn.edu.tongji.backend.laboratory.pojo.Feedback;
 import cn.edu.tongji.backend.laboratory.pojo.Laboratory;
 import org.apache.ibatis.annotations.*;
 
@@ -22,4 +23,7 @@ public interface LaboratoryMapper {
 
     @Delete("delete from laboratory where l_id=#{l_id}")
     void deleteFromLab(int l_id);
+
+    @Update("update operates set feedback=#{feedback} where l_id=#{l_id} and s_id=#{s_id}")
+    void insertFeedback(Feedback feedback);
 }
