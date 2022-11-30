@@ -4,9 +4,9 @@ import cn.edu.tongji.backend.admin.pojo.Student;
 import cn.edu.tongji.backend.admin.pojo.Teacher;
 import cn.edu.tongji.backend.admin.pojo.User;
 import cn.edu.tongji.backend.admin.service.UserService;
-import com.opencsv.CSVReader;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -102,6 +102,27 @@ public class UserController {
         }
 
         return ids;
+    }
+
+    @GetMapping("/getAllUser")
+    public List<User> getAllUser(){
+        return userService.selectAllUser();
+    }
+
+    @DeleteMapping("/deleteUser")
+    public String deleteUser(@RequestParam("u_id") String u_id){
+        User user = userService.findUser(u_id);
+        if(user!=null){
+            userService.deleteUserById(u_id);
+            if(user.getRole()<=2){
+                userService.deleteTeacherById(u_id);
+            }
+            else {
+                userService.deleteStudentById(u_id);
+            }
+        }
+
+        return null;
     }
 
     public boolean insertUser(User user){

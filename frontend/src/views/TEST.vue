@@ -58,7 +58,8 @@
             <LaboratoryPage></LaboratoryPage>
             <BulletinPage></BulletinPage>
         </div>
-        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>
+<!--        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>-->
+        <UserList></UserList>
     </div>
 </template>
 
@@ -74,9 +75,11 @@ import LabCreator from "@/components/LabCreator";
 import LaboratoryPage from "@/views/LaboratoryPage";
 import LabList from "@/components/LabList";
 import BulletinPage from "@/views/BulletinPage";
+import UserList from "@/components/UserList";
 export default {
     name: 'TEST',
     components: {
+        UserList,
         BulletinPage,
         LabList,
         LaboratoryPage,
