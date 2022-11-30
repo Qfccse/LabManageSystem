@@ -19,6 +19,7 @@
 ## Course-service
 - [x] 开创课程
 - [x] 结束课程
+- [x] 根据id和role获取用户有关课程
 
 ## Grade-service
 - [ ] 分配权重计算成绩
