@@ -58,7 +58,7 @@
             <LaboratoryPage></LaboratoryPage>
             <BulletinPage></BulletinPage>
         </div>
-        <FileUploader file-type=".xlsx,.xls" url="/api/admin/postUserFile" :id="1"></FileUploader>
+        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>
     </div>
 </template>
 

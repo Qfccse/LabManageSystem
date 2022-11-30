@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Teacher {
-    private int t_id;
+    private String t_id;
     private String name;
 }
