@@ -1,71 +1,73 @@
 <template>
     <div style="width: 1000px">
         <div>
-            <el-row style="height: 60px">
-                <el-col :span="8">
-                    查找：
-                    <el-input style="width: 80%" v-model="inputText"  suffix-icon="el-icon-search"></el-input>
-                </el-col>
-                <el-col :span="8">
-                    角色：
-                    <el-select v-model="roleValue" placeholder="请选择角色"
-                               @change="click2ChooseRole">
-                        <el-option
-                            v-for="role in roleOptions"
-                            :key="role.index"
-                            :label="role.label"
-                            :value="role.index"
-                        >
-                        </el-option>
-                    </el-select>
-                </el-col>
-                <el-col :span="8">
-                    激活状态：
-                    <el-select v-model="statusValue" placeholder="是否激活"
-                               @change="click2ChooseStatus">
-                        <el-option
-                            v-for="status in statusOptions"
-                            :key="status.index"
-                            :label="status.label"
-                            :value="status.index"
-                        >
-                        </el-option>
-                    </el-select>
-                </el-col>
-            </el-row>
-            <el-row style="font-size: 20px;font-weight: bolder">
-                <el-col :span="3">学工号 </el-col>
-                <el-col :span="4">姓名</el-col>
-                <el-col :span="4">密码</el-col>
-                <el-col :span="3">激活状态 </el-col>
-                <el-col :span="3">角色</el-col>
-                <el-col :span="6">邮箱</el-col>
-                <el-col :span="1">删除</el-col>
-            </el-row>
-            <div v-for="(user,index) in userList" :key="index">
-                <div v-if="user.name.indexOf(inputText)!=-1||user.u_id.indexOf(inputText)!=-1">
-                    <div v-if="((user.status+1===showStatus||showStatus===0)&&(user.role+1===showRole||showRole===0))">
-                        <el-row>
-                            <el-col :span="3"> {{user.u_id}} </el-col>
-                            <el-col :span="4"> {{user.name}} </el-col>
-                            <el-col :span="4">
-                                <el-input style="width: 80%;" type="password"
-                                          v-model="user.password" show-password>
-                                </el-input>
-                            </el-col>
-                            <el-col :span="3"> {{statusList[user.status]}} </el-col>
-                            <el-col :span="3"> {{roleList[user.role]}} </el-col>
-                            <el-col :span="6">
-                                <span v-if="user.email">{{user.email}}</span>
-                                <span v-else>-----</span>
-                            </el-col>
-                            <el-col :span="1" style="text-align: center">
-                                <i class="el-icon-delete-solid" @click="deleteUser(index)"></i>
-                            </el-col>
-                        </el-row>
+            <el-form>
+                <el-row style="height: 60px">
+                    <el-col :span="8">
+                        查找：
+                        <el-input style="width: 80%" v-model="inputText"  suffix-icon="el-icon-search"></el-input>
+                    </el-col>
+                    <el-col :span="8">
+                        角色：
+                        <el-select v-model="roleValue" placeholder="请选择角色"
+                                   @change="click2ChooseRole">
+                            <el-option
+                                v-for="role in roleOptions"
+                                :key="role.index"
+                                :label="role.label"
+                                :value="role.index"
+                            >
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="8">
+                        激活状态：
+                        <el-select v-model="statusValue" placeholder="是否激活"
+                                   @change="click2ChooseStatus">
+                            <el-option
+                                v-for="status in statusOptions"
+                                :key="status.index"
+                                :label="status.label"
+                                :value="status.index"
+                            >
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                </el-row>
+                <el-row style="font-size: 20px;font-weight: bolder">
+                    <el-col :span="3">学工号 </el-col>
+                    <el-col :span="4">姓名</el-col>
+                    <el-col :span="4">密码</el-col>
+                    <el-col :span="3">激活状态 </el-col>
+                    <el-col :span="3">角色</el-col>
+                    <el-col :span="6">邮箱</el-col>
+                    <el-col :span="1">删除</el-col>
+                </el-row>
+                <div v-for="(user,index) in userList" :key="index">
+                    <div v-if="user.name.indexOf(inputText)!=-1||user.u_id.indexOf(inputText)!=-1">
+                        <div v-if="((user.status+1===showStatus||showStatus===0)&&(user.role+1===showRole||showRole===0))">
+                            <el-row>
+                                <el-col :span="3"> {{user.u_id}} </el-col>
+                                <el-col :span="4"> {{user.name}} </el-col>
+                                <el-col :span="4">
+                                    <el-input style="width: 80%;" type="password"
+                                              v-model="user.password" show-password>
+                                    </el-input>
+                                </el-col>
+                                <el-col :span="3"> {{statusList[user.status]}} </el-col>
+                                <el-col :span="3"> {{roleList[user.role]}} </el-col>
+                                <el-col :span="6">
+                                    <span v-if="user.email">{{user.email}}</span>
+                                    <span v-else>-----</span>
+                                </el-col>
+                                <el-col :span="1" style="text-align: center">
+                                    <i class="el-icon-delete-solid" @click="deleteUser(index)"></i>
+                                </el-col>
+                            </el-row>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </el-form>
         </div>
     </div>
 </template>
@@ -220,10 +222,11 @@ export default {
 
 <style scoped>
 .el-row{
-    height: 45px;
+    height: 50px;
     line-height: 40px;
     font-size: 18px;
-    border: 1px solid red;
+    border: 1px solid #DCDFE6;
+    margin-top:-1px
 }
 .el-col{
     /*border: 1px solid gray;*/

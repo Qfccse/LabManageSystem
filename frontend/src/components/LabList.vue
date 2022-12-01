@@ -7,15 +7,6 @@
                 </router-link>
             </el-col>
             <div>
-<!--                <el-col :span="4" v-if="labStatus[index]===0">-->
-<!--                    <i class="el-icon-circle-check"></i>未开始-->
-<!--                </el-col>-->
-<!--                <el-col :span="4" v-else-if="labStatus[index]===1">-->
-<!--                    <i class="el-icon-error"></i>已结束-->
-<!--                </el-col>-->
-<!--                <el-col :span="4" v-else>-->
-<!--                    <i class="el-icon-success"></i>进行中-->
-<!--                </el-col>-->
                 <el-col :span="4">
                      <span v-if="labStatus[index]===0">
                         <i class="el-icon-circle-check" @click="updateLabTime(index)"></i>

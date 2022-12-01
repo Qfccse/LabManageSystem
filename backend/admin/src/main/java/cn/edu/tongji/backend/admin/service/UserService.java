@@ -27,6 +27,14 @@ public class UserService {
         userMapper.insertIntoStudent(student);
     }
 
+    public void addTakes(String s_id,int c_id, int role){
+        userMapper.insertTakes(s_id, c_id, role);
+    }
+
+    public void addTeaches(String s_id,int c_id, int role){
+        userMapper.insertTeaches(s_id, c_id, role);
+    }
+
     public User findUser(String s_id){
       return userMapper.selectUserById(s_id);
     }

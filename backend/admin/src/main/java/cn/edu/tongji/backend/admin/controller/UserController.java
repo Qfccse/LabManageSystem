@@ -32,6 +32,8 @@ public class UserController {
 
     @PostMapping("/postUserFile")
     public List<User> postUserFile(@RequestParam("id") int id,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
+        System.out.println(id);
+
         List<User> ids = new ArrayList<>();
         for (MultipartFile file : multipartFile) {
             System.out.println("file is " + file.getOriginalFilename());
@@ -48,7 +50,7 @@ public class UserController {
                 String data = br.readLine(); //第一行是列名，所以不读
                 while ((data = br.readLine())!=null){
                     System.out.println(data);
-                    String[] userInfo = data.split(",");
+                    String[] userInfo = data.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
                     User user = new User();
                     for (int i = 0; i < userInfo.length; i++) {
                         user.setAttributeByIndex(i,userInfo[i]);
@@ -61,8 +63,7 @@ public class UserController {
                 br.close();
                 isr.close();
             }
-            else
-            {
+            else {
                 Workbook wb;
                 //根据文件后缀（xls/xlsx）进行判断
                 if ( "xls".equals(split[1])){
@@ -83,7 +84,14 @@ public class UserController {
                         int lastCellIndex = row.getLastCellNum();
                         User user = new User();
                         for(int cIndex = firstCellIndex;cIndex<lastCellIndex;cIndex++){
-                            user.setAttributeByIndex(cIndex,row.getCell(cIndex).toString());
+                            if(row.getCell(cIndex)!=null){
+                                //System.out.println(row.getCell(cIndex).toString());
+                                user.setAttributeByIndex(cIndex,row.getCell(cIndex).toString());
+                            }
+                            else {
+                                //System.out.println("null");
+                                user.setAttributeByIndex(cIndex,"");
+                            }
                         }
                         System.out.println(user);
                         if (!insertUser(user)){
@@ -141,6 +149,22 @@ public class UserController {
                 student.setS_id(user.getU_id());
                 student.setName(user.getName());
                 userService.addStudent(student);
+            }
+            String cidList =  user.getCidList();
+            if (cidList!=null&&!cidList.isEmpty()){
+                String[] cidSplit = cidList.split(",");;
+                for (String cid : cidSplit) {
+                    System.out.println(cid);
+                    int role = user.getRole();
+                    if(role>=2){
+                        System.out.println("加入学生");
+                        userService.addTakes(user.getU_id(),Integer.parseInt(cid),role);
+                    }
+                    else {
+                        System.out.println("加入老师");
+                        userService.addTeaches(user.getU_id(),Integer.parseInt(cid),role);
+                    }
+                }
             }
 
             return true;

@@ -35,4 +35,9 @@ public interface UserMapper {
     @Delete("delete from teacher where t_id=#{t_id}")
     public void deleteTeacher(String t_id);
 
+    @Insert("insert into takes values(#{s_id},#{c_id},#{role},null)")
+    public void insertTakes(String s_id,int c_id,int role);
+
+    @Insert("insert into teaches values(#{t_id},#{c_id},#{role})")
+    public void insertTeaches(String t_id,int c_id,int role);
 }

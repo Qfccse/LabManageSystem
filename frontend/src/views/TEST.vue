@@ -57,9 +57,12 @@
             </PDFReader>
             <LaboratoryPage></LaboratoryPage>
             <BulletinPage></BulletinPage>
+            <UserList></UserList>
+            <MainPage></MainPage>
         </div>
-<!--        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>-->
-        <UserList></UserList>
+                <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>
+<!--        <UserList></UserList>-->
+        <!--        <MainPage></MainPage>-->
     </div>
 </template>
 
@@ -76,9 +79,11 @@ import LaboratoryPage from "@/views/LaboratoryPage";
 import LabList from "@/components/LabList";
 import BulletinPage from "@/views/BulletinPage";
 import UserList from "@/components/UserList";
+import MainPage from "@/views/MainPage";
 export default {
     name: 'TEST',
     components: {
+        MainPage,
         UserList,
         BulletinPage,
         LabList,

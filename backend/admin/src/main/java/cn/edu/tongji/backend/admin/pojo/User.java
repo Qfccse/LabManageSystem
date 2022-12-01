@@ -11,6 +11,8 @@ public class User {
     private int role;
     private String email;
 
+    private String cidList;
+
     public void setAttributeByIndex(int index,String content){
         switch (index){
             case 0:
@@ -30,6 +32,12 @@ public class User {
                 break;
             case 5:
                 this.email = content;
+                break;
+            case 6:
+                if(content.contains("\"")){
+                    content = content.split("\"")[1];
+                }
+                this.cidList = content;
                 break;
             default:
                 System.out.println("多余的列");
