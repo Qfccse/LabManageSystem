@@ -25,7 +25,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ### to install vue-pdf
+$\color{#FF3030}{you should install these packages after `npm install` was done!!!}$
 ```
-cnpm i pdfjs-dist@2.5.207 --save
-cnpm i vue-pdf@4.0.0 --save
+cnpm i pdfjs-dist@2.7 --save
+cnpm i vue-pdf@4.2.0 --save
 ```
