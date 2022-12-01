@@ -117,6 +117,26 @@ public class UserController {
         return userService.selectAllUser();
     }
 
+    @GetMapping("/getCourseStudent")
+    public List<Student> getCourseStudent(@RequestParam("c_id")int c_id){
+        return userService.selectCourseStudent(c_id);
+    }
+
+    @GetMapping("/getCourseTeacher")
+    public List<Teacher> getCourseTeacher(@RequestParam("name")String name){
+        return userService.selectCourseTeacher(name);
+    }
+
+    @PostMapping("/postUpdateTakesRole")
+    public void postToUpdateTakes(@RequestParam("s_id")String s_id,@RequestParam("c_id")int c_id,@RequestParam("role")int role){
+        userService.updateTakesRole(s_id, c_id, role);
+    }
+
+    @PostMapping("postUpdateTeachesRole")
+    public void postToUpdateTeaches(@RequestParam("t_id")String t_id,@RequestParam("c_id")int c_id,@RequestParam("role")int role){
+        userService.updateTeachesRole(t_id, c_id, role);
+    }
+
     @DeleteMapping("/deleteUser")
     public String deleteUser(@RequestParam("u_id") String u_id){
         User user = userService.findUser(u_id);
@@ -156,7 +176,7 @@ public class UserController {
                 for (String cid : cidSplit) {
                     System.out.println(cid);
                     int role = user.getRole();
-                    if(role>=2){
+                    if(role>=3){
                         System.out.println("加入学生");
                         userService.addTakes(user.getU_id(),Integer.parseInt(cid),role);
                     }

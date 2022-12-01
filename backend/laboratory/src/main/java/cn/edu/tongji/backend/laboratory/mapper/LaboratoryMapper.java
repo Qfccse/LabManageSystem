@@ -26,4 +26,7 @@ public interface LaboratoryMapper {
 
     @Update("update operates set feedback=#{feedback} where l_id=#{l_id} and s_id=#{s_id}")
     void insertFeedback(Feedback feedback);
+
+    @Select("select * from laboratory where l_id in (select l_id from takes where s_id =#{s_id})")
+    List<Laboratory> selectStuLab(String s_id);
 }

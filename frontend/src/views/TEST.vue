@@ -60,9 +60,15 @@
             <UserList></UserList>
             <MainPage></MainPage>
         </div>
-                <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>
-<!--        <UserList></UserList>-->
+<!--        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>-->
+        <!--        <UserList></UserList>-->
         <!--        <MainPage></MainPage>-->
+        <div style="margin-top: 50px"></div>
+        <h1>计算机组成原理实验8课程名单</h1>
+        <StudentList></StudentList>
+        <div style="margin-top: 50px"></div>
+        <h1>计算机组成原理实验授课教师</h1>
+        <TeacherList></TeacherList>
     </div>
 </template>
 
@@ -80,9 +86,13 @@ import LabList from "@/components/LabList";
 import BulletinPage from "@/views/BulletinPage";
 import UserList from "@/components/UserList";
 import MainPage from "@/views/MainPage";
+import StudentList from "@/components/StudentList";
+import TeacherList from "@/components/TeacherList";
 export default {
     name: 'TEST',
     components: {
+        TeacherList,
+        StudentList,
         MainPage,
         UserList,
         BulletinPage,

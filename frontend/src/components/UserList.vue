@@ -149,30 +149,6 @@ export default {
                             email:resp.data[i].email
                         }
                     )
-                    // if (resp.data[i].role<=2){
-                    //     this.teacherList.push(
-                    //         {
-                    //             u_id:resp.data[i].u_id,
-                    //             name:resp.data[i].name,
-                    //             password:resp.data[i].password,
-                    //             status:resp.data[i].status,
-                    //             role:resp.data[i].role,
-                    //             email:resp.data[i].email
-                    //         }
-                    //     )
-                    // }
-                    // else {
-                    //     this.studentList.push(
-                    //         {
-                    //             u_id:resp.data[i].u_id,
-                    //             name:resp.data[i].name,
-                    //             password:resp.data[i].password,
-                    //             status:resp.data[i].status,
-                    //             role:resp.data[i].role,
-                    //             email:resp.data[i].email
-                    //         }
-                    //     )
-                    // }
                 }
             })
         },

@@ -54,4 +54,20 @@ public class UserService {
     public void deleteTeacherById(String t_id){
         userMapper.deleteTeacher(t_id);
     }
+
+    public List<Student> selectCourseStudent(int c_id){
+        return userMapper.selectCourseStudent(c_id);
+    }
+
+    public List<Teacher> selectCourseTeacher(String name){
+        return userMapper.selectCourseTeacher(name);
+    }
+
+    public void updateTakesRole(String s_id,int c_id,int role){
+        userMapper.updateStudentTakesRole(s_id, c_id, role);
+    }
+
+    public void updateTeachesRole(String t_id,int c_id,int role){
+        userMapper.updateTeacherTeachesRole(t_id, c_id, role);
+    }
 }

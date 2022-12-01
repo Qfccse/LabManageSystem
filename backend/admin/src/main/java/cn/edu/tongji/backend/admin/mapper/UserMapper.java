@@ -7,6 +7,7 @@ import cn.edu.tongji.backend.admin.pojo.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -40,4 +41,29 @@ public interface UserMapper {
 
     @Insert("insert into teaches values(#{t_id},#{c_id},#{role})")
     public void insertTeaches(String t_id,int c_id,int role);
+
+    @Update("update takes set takes.role=#{role} where s_id=#{s_id} and c_id=#{c_id}")
+    public void updateStudentTakesRole(String s_id,int c_id, int role);
+
+    @Update("update teaches set teaches.role=#{role} where t_id=#{t_id} and c_id=#{c_id}")
+    public void updateTeacherTeachesRole(String t_id,int c_id, int role);
+
+    @Select("select DISTINCT student.s_id,student.name,takes.role from " +
+            "student LEFT OUTER JOIN takes on " +
+            "takes.s_id = student.s_id and c_id=8 WHERE c_id;")
+    public List<Student> selectCourseStudent(int c_id);
+
+
+    //@Select("select * from user where u_id in " +
+    //        "(select t_id from teaches where c_id in " +
+    //        "(select c_id from course where course.name like (#{name}+'%')))")
+    //public List<User> selectCourseTeacher(String name);
+    @Select("SELECT teacher.t_id,teacher.name,teaches.c_id,teaches.role " +
+            "from teaches LEFT JOIN  teacher " +
+            "on teacher.t_id=teaches.t_id " +
+            "where c_id in " +
+            "(select c_id from course " +
+            "where course.name=#{name} )")
+    //where course.name like concat('%',#{name},'%')
+    public List<Teacher> selectCourseTeacher(String name);
 }
