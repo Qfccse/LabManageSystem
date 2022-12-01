@@ -73,21 +73,21 @@
 </template>
 
 <script>
-import FileUploader from "@/components/FileUploader";
-import FileDownloader from "@/components/FileDownloader";
-import PDFReader from "@/components/PDFReader";
-import ReportCreator from "@/components/ReportCreator";
-import ReportFiller from "@/components/ReportFiller";
-import ReportReader from "@/components/ReportReader";
+import FileUploader from "@/components/Utils/FileUploader";
+import FileDownloader from "@/components/Utils/FileDownloader";
+import PDFReader from "@/components/Guidebook/PDFReader";
+import ReportCreator from "@/components/Report/ReportCreator";
+import ReportFiller from "@/components/Report/ReportFiller";
+import ReportReader from "@/components/Report/ReportReader";
 import GuidebookPage from "@/views/GuidebookPage";
-import LabCreator from "@/components/LabCreator";
+import LabCreator from "@/components/Laboratory/LabCreator";
 import LaboratoryPage from "@/views/LaboratoryPage";
-import LabList from "@/components/LabList";
+import LabList from "@/components/Laboratory/LabList";
 import BulletinPage from "@/views/BulletinPage";
-import UserList from "@/components/UserList";
+import UserList from "@/components/Admin/UserList";
 import MainPage from "@/views/MainPage";
-import StudentList from "@/components/StudentList";
-import TeacherList from "@/components/TeacherList";
+import StudentList from "@/components/Admin/StudentList";
+import TeacherList from "@/components/Admin/TeacherList";
 export default {
     name: 'TEST',
     components: {

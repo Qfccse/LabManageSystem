@@ -11,12 +11,13 @@
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.10",
-    "pdfjs-dist": "^2.5.207",
+    "pdfjs-dist": "^2.7.570",
     "vue": "^2.6.14",
     "vue-axios": "^3.4.1",
-    "vue-pdf": "^4.0.0",
+    "vue-pdf": "^4.2.0",
     "vue-template-compiler": "^2.6.14",
-    "vuedraggable": "^2.24.3"
+    "vuedraggable": "^2.24.3",
+    "vuex": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

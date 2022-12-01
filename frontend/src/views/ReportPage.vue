@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ReportFiller from "@/components/ReportFiller";
+import ReportFiller from "@/components/Report/ReportFiller";
 export default {
     name: "ReportPage",
     components: {ReportFiller}

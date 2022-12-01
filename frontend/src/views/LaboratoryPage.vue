@@ -37,7 +37,7 @@
 
 <script>
 
-import FeedbackCreator from "@/components/FeedbackCreator";
+import FeedbackCreator from "@/components/Bulletin/FeedbackCreator";
 export default {
     name: "LaboratoryPage",
     components: {FeedbackCreator},

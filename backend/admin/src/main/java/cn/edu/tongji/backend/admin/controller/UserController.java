@@ -3,10 +3,11 @@ package cn.edu.tongji.backend.admin.controller;
 import cn.edu.tongji.backend.admin.pojo.Student;
 import cn.edu.tongji.backend.admin.pojo.Teacher;
 import cn.edu.tongji.backend.admin.pojo.User;
+import cn.edu.tongji.backend.admin.service.StudentService;
+import cn.edu.tongji.backend.admin.service.TeacherService;
 import cn.edu.tongji.backend.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -29,6 +30,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private StudentService studentService;
+
+    @Autowired
+    private TeacherService teacherService;
 
     @PostMapping("/postUserFile")
     public List<User> postUserFile(@RequestParam("id") int id,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
@@ -119,22 +126,22 @@ public class UserController {
 
     @GetMapping("/getCourseStudent")
     public List<Student> getCourseStudent(@RequestParam("c_id")int c_id){
-        return userService.selectCourseStudent(c_id);
+        return studentService.selectCourseStudent(c_id);
     }
 
     @GetMapping("/getCourseTeacher")
     public List<Teacher> getCourseTeacher(@RequestParam("name")String name){
-        return userService.selectCourseTeacher(name);
+        return teacherService.selectCourseTeacher(name);
     }
 
     @PostMapping("/postUpdateTakesRole")
     public void postToUpdateTakes(@RequestParam("s_id")String s_id,@RequestParam("c_id")int c_id,@RequestParam("role")int role){
-        userService.updateTakesRole(s_id, c_id, role);
+        studentService.updateTakesRole(s_id, c_id, role);
     }
 
     @PostMapping("postUpdateTeachesRole")
     public void postToUpdateTeaches(@RequestParam("t_id")String t_id,@RequestParam("c_id")int c_id,@RequestParam("role")int role){
-        userService.updateTeachesRole(t_id, c_id, role);
+        teacherService.updateTeachesRole(t_id, c_id, role);
     }
 
     @DeleteMapping("/deleteUser")
@@ -143,10 +150,10 @@ public class UserController {
         if(user!=null){
             userService.deleteUserById(u_id);
             if(user.getRole()<=2){
-                userService.deleteTeacherById(u_id);
+                teacherService.deleteTeacherById(u_id);
             }
             else {
-                userService.deleteStudentById(u_id);
+                studentService.deleteStudentById(u_id);
             }
         }
 
@@ -162,27 +169,27 @@ public class UserController {
                 Teacher teacher = new Teacher();
                 teacher.setT_id(user.getU_id());
                 teacher.setName(user.getName());
-                userService.addTeacher(teacher);
+                teacherService.addTeacher(teacher);
             }
             else {
                 Student student = new Student();
                 student.setS_id(user.getU_id());
                 student.setName(user.getName());
-                userService.addStudent(student);
+                studentService.addStudent(student);
             }
             String cidList =  user.getCidList();
             if (cidList!=null&&!cidList.isEmpty()){
                 String[] cidSplit = cidList.split(",");;
                 for (String cid : cidSplit) {
-                    System.out.println(cid);
+                    //System.out.println(cid);
                     int role = user.getRole();
                     if(role>=3){
-                        System.out.println("加入学生");
-                        userService.addTakes(user.getU_id(),Integer.parseInt(cid),role);
+                        //System.out.println("加入学生");
+                        studentService.addTakes(user.getU_id(),Integer.parseInt(cid),role);
                     }
                     else {
-                        System.out.println("加入老师");
-                        userService.addTeaches(user.getU_id(),Integer.parseInt(cid),role);
+                        //System.out.println("加入老师");
+                        teacherService.addTeaches(user.getU_id(),Integer.parseInt(cid),role);
                     }
                 }
             }

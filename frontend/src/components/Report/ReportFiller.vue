@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import FileUploader from "@/components/FileUploader";
+import FileUploader from "@/components/Utils/FileUploader";
 export default {
     name: "ReportFiller",
     components: {FileUploader},

@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import PDFReader from "@/components/PDFReader";
-import FileDownloader from "@/components/FileDownloader";
+import PDFReader from "@/components/Guidebook/PDFReader";
+import FileDownloader from "@/components/Utils/FileDownloader";
 export default {
     name: "GuidebookPage",
     components: {FileDownloader, PDFReader},
