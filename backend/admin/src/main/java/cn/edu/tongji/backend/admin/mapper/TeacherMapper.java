@@ -34,7 +34,7 @@ public interface TeacherMapper {
             "on teacher.t_id=teaches.t_id " +
             "where c_id in " +
             "(select c_id from course " +
-            "where course.name=#{name} )")
+            "where course.name=#{name})")
     //where course.name like concat('%',#{name},'%')
     public List<Teacher> selectCourseTeacher(String name);
 }

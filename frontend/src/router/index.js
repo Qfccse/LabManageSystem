@@ -1,5 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+import AdminLayout from "@/layout/AdminLayout";
+import CourseTeacherList from "@/components/Admin/CourseTeacherList";
+import CourseStudentList from "@/components/Admin/CourseStudentList";
+
+import StudentList from "@/components/Admin/StudentList";
+import TeacherList from "@/components/Admin/TeacherList";
+import UserList from "@/components/Admin/UserList";
+
 import HelloWorld from "@/components/HelloWorld";
 import CoursePage from "@/views/CoursePage";
 import LaboratoryPage from "@/views/LaboratoryPage";
@@ -12,6 +21,40 @@ VueRouter.prototype.push = function push(location) {
     return originalPush.call(this, location).catch(err => err)
 }
 const routes = [
+    {
+        path:"/admin",
+        name:"AdminLayout",
+        component:AdminLayout,
+        children:[
+            {
+                path:'teacherCourses',
+                name:"CourseTeacherList",
+                component:CourseTeacherList,
+                children:[
+                    {
+                        path:'/admin/teacherCourses/teachers',
+                        component:TeacherList
+                    },
+                ]
+            },
+            {
+                path:'studentCourses',
+                name:"CourseStudentList",
+                component:CourseStudentList,
+                children:[
+                    {
+                        path:'/admin/studentCourses/students',
+                        component:StudentList
+                    },
+                ]
+            },
+            {
+                path:'user',
+                component:UserList
+            },
+        ]
+    },
+
     {
         path:"/.",
         name:"hello",

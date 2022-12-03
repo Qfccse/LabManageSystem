@@ -24,7 +24,7 @@ public interface StudentMapper {
 
     @Select("select DISTINCT student.s_id,student.name,takes.role from " +
             "student LEFT OUTER JOIN takes on " +
-            "takes.s_id = student.s_id and c_id=8 WHERE c_id;")
+            "takes.s_id = student.s_id and c_id=#{c_id} WHERE c_id;")
     public List<Student> selectCourseStudent(int c_id);
 
 }

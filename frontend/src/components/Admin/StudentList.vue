@@ -1,25 +1,29 @@
 <template>
-    <div>
-        <el-row style="font-weight: bolder;font-size: 20px;">
-            <el-col :span="8">学工号</el-col>
-            <el-col :span="8">姓名</el-col>
-            <el-col :span="8">角色</el-col>
-        </el-row>
-        <el-row v-for="(stu,index) in stuList" :key="index">
-            <el-col :span="8">{{stu.s_id}}</el-col>
-            <el-col :span="8">{{stu.name}}</el-col>
-            <el-col :span="8">
-                <el-select v-model="stuRole[index]" @change="(val)=>click2Change(val,index)">
-                    <el-option
-                        v-for="role in roleOptions"
-                        :key="role.index"
-                        :label="role.label"
-                        :value="role.index"
-                    >
-                    </el-option>
-                </el-select>
-            </el-col>
-        </el-row>
+    <div style="width: 1000px;">
+        <div v-if="stuList.length===0">
+            没有学生
+        </div>
+       <div v-else>
+           <el-row style="font-weight: bolder;font-size: 20px;">
+               <el-col :span="8">学工号</el-col>
+               <el-col :span="8">姓名</el-col>
+               <el-col :span="8">角色</el-col>
+           </el-row>
+           <el-row v-for="(stu,index) in stuList" :key="index">
+               <el-col :span="8">{{stu.s_id}}</el-col>
+               <el-col :span="8">{{stu.name}}</el-col>
+               <el-col :span="8">
+                   <el-select v-model="stuRole[index]" @change="(val)=>click2Change(val,index)">
+                       <el-option
+                           v-for="role in roleOptions"
+                           :key="role.index"
+                           :label="role.label"
+                           :value="role.index" >
+                       </el-option>
+                   </el-select>
+               </el-col>
+           </el-row>
+       </div>
     </div>
 </template>
 
@@ -48,16 +52,23 @@ export default {
     mounted() {
         this.getStuList()
     },
+    watch:{
+        $route(){
+            this.getStuList()
+        }
+    },
     methods:{
         getStuList(){
+            console.log('tu list get' + this.$route.query.c_id)
             this. axios({
                 method:"get",
                 url:"/api/admin/getCourseStudent",
                 params:{
-                    c_id:8
+                    c_id:this.$route.query.c_id
                 }
             }).then(resp =>{
                 console.log(resp.data)
+                this.stuList = []
                 for (let i in resp.data){
                     this.stuList.push({
                         s_id:resp.data[i].s_id,

@@ -1,22 +1,21 @@
 <template>
     <div style="width: 800px;margin:  auto">
-        <h1>XXX实验报告</h1>
+        <div style="font-size: 36px;font-weight: bolder;margin-bottom: 10px">XXX实验报告</div>
         <div style="clear: both">
-            <h3 style="float: left;width: 400px">姓名：{{stu.name}}</h3>
-            <h3 style="float: left ;width: 380px">学号：{{stu.id}}</h3>
+            <div class="row_title">姓名：{{stu.name}}</div>
+            <div class="row_title">学号：{{stu.id}}</div>
         </div>
         <div v-for="(item,index) in this.formList" :key="index" style="clear: both">
-            <h3>{{item.title}}</h3>
-            <template v-if="item.type === 'text'">
+            <div class="row_title">{{item.title}}</div>
+            <div v-if="item.type === 'text'"  style="clear: both">
                 <el-input type="textarea"
                           :autosize="{minRows:3}"
                           v-model="item.content"
                           :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
-            </template>
-            <div v-else>
+            </div>
+            <div v-else style="clear: both">
                 <div v-for="(image,i) in item.imgList" :key="i">
                     <img :src="require('../../../../../LabAssets/' + image)" style="max-width: 700px">
-
                 </div>
                 <el-button @click="receiveFromImages(index)" v-if="item.imgList.length===0">查看实验图片</el-button>
             </div>
@@ -88,5 +87,13 @@ export default {
 </script>
 
 <style scoped>
+.row_title{
+    float: left;
+    width: 50%;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 </style>

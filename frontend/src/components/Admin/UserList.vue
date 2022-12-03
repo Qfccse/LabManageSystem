@@ -1,11 +1,11 @@
 <template>
-    <div style="width: 1000px">
+    <div>
         <div>
             <el-form>
                 <el-row style="height: 60px">
                     <el-col :span="8">
                         查找：
-                        <el-input style="width: 80%" v-model="inputText"  suffix-icon="el-icon-search"></el-input>
+                        <el-input style="width: 60%" v-model="inputText"  suffix-icon="el-icon-search"></el-input>
                     </el-col>
                     <el-col :span="8">
                         角色：
@@ -45,7 +45,7 @@
                 </el-row>
                 <div v-for="(user,index) in userList" :key="index">
                     <div v-if="user.name.indexOf(inputText)!=-1||user.u_id.indexOf(inputText)!=-1">
-                        <div v-if="((user.status+1===showStatus||showStatus===0)&&(user.role+1===showRole||showRole===0))">
+                        <div v-if="((user.status+1===showStatus||showStatus===0)&&(user.role===showRole||showRole===0))">
                             <el-row>
                                 <el-col :span="3"> {{user.u_id}} </el-col>
                                 <el-col :span="4"> {{user.name}} </el-col>
@@ -55,7 +55,7 @@
                                     </el-input>
                                 </el-col>
                                 <el-col :span="3"> {{statusList[user.status]}} </el-col>
-                                <el-col :span="3"> {{roleList[user.role]}} </el-col>
+                                <el-col :span="3"> {{roleList[user.role-1]}} </el-col>
                                 <el-col :span="6">
                                     <span v-if="user.email">{{user.email}}</span>
                                     <span v-else>-----</span>
@@ -78,10 +78,8 @@ export default {
     data(){
         return{
             userList:[],
-            // teacherList:[],
-            // studentList:[],
             statusList:["未激活","已激活"],
-            roleList:["责任教师","教师","课程助教","学生"],
+            roleList:["教师","学生"],
             roleOptions: [
                 {
                     index: 0,
@@ -89,23 +87,13 @@ export default {
                 },
                 {
                     index: 1,
-                    label: '责任教师',
+                    label: '教师',
                 },
                 {
                     index: 2,
-                    label: '教师',
-
-                },
-                {
-                    index: 3,
-                    label: '助教',
-
-                },
-                {
-                    index: 4,
                     label: '学生',
 
-                }
+                },
             ],
             statusOptions:[
                 {
@@ -137,7 +125,7 @@ export default {
                 method:"get",
                 url:"/api/admin/getAllUser",
             }).then(resp =>{
-                // console.log(resp.data)
+                console.log(resp.data)
                 for (let i in resp.data){
                     this.userList.push(
                         {

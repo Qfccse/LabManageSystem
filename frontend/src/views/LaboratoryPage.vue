@@ -54,7 +54,6 @@ export default {
         }
     },
     mounted() {
-
         this.getLab()
         this.showGuidebookList()
     },
@@ -64,7 +63,9 @@ export default {
                 method:"get",
                 url:"/api/laboratory/getLabInfo",
                 params:{
-                    l_id:this.$route.query.l_id
+                    // l_id:this.$route.query.l_id
+                    l_id:1
+
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -83,7 +84,8 @@ export default {
                 method:"get",
                 url:"/api/guidebook/getLabGuidebooks",
                 params:{
-                    l_id:this.$route.query.l_id
+                    // l_id:this.$route.query.l_id
+                    l_id:1
                 }
             }).then(resp =>{
                 console.log(resp.data)

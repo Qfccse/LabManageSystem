@@ -58,17 +58,22 @@
             <LaboratoryPage></LaboratoryPage>
             <BulletinPage></BulletinPage>
             <UserList></UserList>
-            <MainPage></MainPage>
+            <div style="margin-top: 50px"></div>
+            <h1>计算机组成原理实验8课程名单</h1>
+            <StudentList></StudentList>
+            <div style="margin-top: 50px"></div>
+            <h1>计算机组成原理实验授课教师</h1>
+            <TeacherList></TeacherList>
+            <AdminLayout></AdminLayout>
         </div>
-<!--        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>-->
+        <!--        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>-->
         <!--        <UserList></UserList>-->
         <!--        <MainPage></MainPage>-->
-        <div style="margin-top: 50px"></div>
-        <h1>计算机组成原理实验8课程名单</h1>
-        <StudentList></StudentList>
-        <div style="margin-top: 50px"></div>
-        <h1>计算机组成原理实验授课教师</h1>
-        <TeacherList></TeacherList>
+        <!--        <StudentLayout></StudentLayout>-->
+        <!--        <LaboratoryPage></LaboratoryPage>-->
+        <!--        <AdminLayout></AdminLayout>-->
+        <CourseStudentList></CourseStudentList>
+        <CourseTeacherList></CourseTeacherList>
     </div>
 </template>
 
@@ -85,15 +90,19 @@ import LaboratoryPage from "@/views/LaboratoryPage";
 import LabList from "@/components/Laboratory/LabList";
 import BulletinPage from "@/views/BulletinPage";
 import UserList from "@/components/Admin/UserList";
-import MainPage from "@/views/MainPage";
 import StudentList from "@/components/Admin/StudentList";
 import TeacherList from "@/components/Admin/TeacherList";
+import AdminLayout from "@/layout/AdminLayout";
+import CourseStudentList from "@/components/Admin/CourseStudentList";
+import CourseTeacherList from "@/components/Admin/CourseTeacherList";
 export default {
     name: 'TEST',
     components: {
+        CourseTeacherList,
+        CourseStudentList,
+        AdminLayout,
         TeacherList,
         StudentList,
-        MainPage,
         UserList,
         BulletinPage,
         LabList,
@@ -145,7 +154,7 @@ export default {
 
 <style scoped>
 .test{
-    margin: auto;
-    width: 80%;
+    /*margin: auto;*/
+    /*width: 80%;*/
 }
 </style>
