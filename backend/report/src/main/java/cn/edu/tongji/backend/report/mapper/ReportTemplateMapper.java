@@ -13,4 +13,7 @@ public interface ReportTemplateMapper {
 
     @Select("select * from report_template where l_id = #{l_id}")
     List<ReportTemplate> getLabReportTemplate(int l_id);
+
+    @Select("select count(*) from report_template where l_id=#{l_id}")
+    int selectTemplateCount(int l_id);
 }

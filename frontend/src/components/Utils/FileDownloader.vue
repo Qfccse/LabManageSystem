@@ -13,8 +13,8 @@ export default {
             default: ""
         },
         gid:{
-            type: Number,
-            default: 0
+            type: String,
+            default: "0"
         },
         fileName:{
             type: String,
@@ -30,11 +30,12 @@ export default {
     },
     methods:{
         click2Download(){
+            console.log("-------------下载中---------------")
             this. axios({
                 method:"get",
                 url:this.url,
                 params:{
-                    g_id: this.gid
+                    g_id: Number(this.gid)
                 },
                 responseType: 'blob'
             }).then((res)=>{

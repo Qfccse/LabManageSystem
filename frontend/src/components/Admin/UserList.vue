@@ -43,6 +43,7 @@
                     <el-col :span="6">邮箱</el-col>
                     <el-col :span="1">删除</el-col>
                 </el-row>
+
                 <div v-for="(user,index) in userList" :key="index">
                     <div v-if="user.name.indexOf(inputText)!=-1||user.u_id.indexOf(inputText)!=-1">
                         <div v-if="((user.status+1===showStatus||showStatus===0)&&(user.role===showRole||showRole===0))">
@@ -67,6 +68,12 @@
                         </div>
                     </div>
                 </div>
+                <el-pagination
+                    :page-size="20"
+                    :pager-count="11"
+                    layout="prev, pager, next"
+                    :total="1000">
+                </el-pagination>
             </el-form>
         </div>
     </div>

@@ -1,17 +1,18 @@
 <template>
-    <div style="width: 1000px;margin: auto">
+    <div style="width: 1050px;margin: auto">
+        <el-button @click="createReport">123123</el-button>
         <el-row class="lab_name">
             <el-col :span="16">{{lab.name}}</el-col>
             <el-col :span="8">
-                <router-link :to="{name:'ReportPage',query:{l_id:lab.l_id,s_id:'1952168',l_name:lab.name}}">
-                    <el-button type="primary" class="fr" style="margin-top: 20px">完成实验报告</el-button>
-                </router-link>
+<!--                <router-link :to="{}">-->
+                    <el-button type="primary" class="fr" style="margin-top: 20px" @click="click2Fill">完成实验报告</el-button>
+<!--                </router-link>-->
             </el-col>
         </el-row>
         <div style="width: 750px;" class="fl">
             <el-row class="lab_info clear_box">
                 <el-col :span="3" class="lab_ddl">截止时间：</el-col>
-                <el-col :span="8" class="l_time">{{lab.start_time}}</el-col>
+                <el-col :span="8" class="l_time">{{getNowFormatDate(lab.end_time)}}</el-col>
                 <el-col :span="3" class="lab_prop">分数权重：</el-col>
                 <el-col :span="2" class="l_prop">{{lab.proportion}}</el-col>
                 <!--            <el-col :span="6" ><el-button type="success" class="fr">完成实验报告</el-button></el-col>-->
@@ -23,12 +24,14 @@
                 <div style="font-size: 18px">实验指导书</div>
                 <div v-for="(guidebook,index) in guidebookList" :key="index">
                     <router-link :to="{name:'GuidebookPage',query:{g_id:guidebook.g_id,name:guidebook.name}}">
-                        <i class="el-icon-document"></i><a href="#">{{guidebook.name}}</a>
+                        <div class="li_guidebook">
+                            <i class="el-icon-document">&nbsp;</i><a href="#">{{guidebook.name}}</a>
+                        </div>
                     </router-link>
                 </div>
             </div>
         </div>
-        <div class="fl" style="width: 200px;margin-left: 50px;">
+        <div class="fl" style="width: 250px;margin-left: 50px;">
             <FeedbackCreator :lid="lab.l_id" sid="1952168"></FeedbackCreator>
         </div>
     </div>
@@ -41,31 +44,65 @@ import FeedbackCreator from "@/components/Bulletin/FeedbackCreator";
 export default {
     name: "LaboratoryPage",
     components: {FeedbackCreator},
-    props:{
-        lid:{
-            type: Number,
-            default: 1
-        },
-    },
     data(){
         return{
+            l_id:0,
             lab:{},
             guidebookList:[],
         }
     },
     mounted() {
+        // this.l_id = this.$route.query.l_id
+        this.l_id = "1"
         this.getLab()
         this.showGuidebookList()
+        console.log(new Date(this.lab.end_time))
     },
     methods:{
+        fillZero(str){
+            if (str >= 0 && str <= 9) {
+                return  "0" +str
+            }
+            else {
+                return str + ""
+            }
+        },
+        getNowFormatDate(dt) {
+            var date = new Date(dt)
+            var s1 = "-"
+            var s2 = ":"
+            var year = date.getFullYear()
+            var month = this.fillZero(date.getMonth() + 1)
+            var strDate = this.fillZero(date.getDate())
+            var hour = this.fillZero(date.getHours())
+            var mini = this.fillZero(date.getMinutes())
+            var sec = this.fillZero(date.getSeconds())
+            var currentdate = year + s1 + month + s1 + strDate + " " + hour + s2 + mini + s2 + sec;
+            return currentdate;
+        },
+        click2Fill(){
+            if(new Date() >= new Date(this.lab.end_time))
+            {
+                alert("实验已结束")
+                return
+            }
+            this.createReport()
+            this.$router.push({
+                name:'ReportPage',
+                query:{
+                    l_id:this.lab.l_id,
+                    s_id:'1952168',
+                    l_name:this.lab.name
+                }
+            })
+        },
         getLab(){
             this. axios({
                 method:"get",
                 url:"/api/laboratory/getLabInfo",
                 params:{
-                    // l_id:this.$route.query.l_id
-                    l_id:1
-
+                    l_id:this.$route.query.l_id
+                    // l_id:1
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -97,6 +134,26 @@ export default {
                 }
             })
         },
+        createReport(){
+            let report = {
+                r_id:0,
+                s_id:"1952168",
+                l_id:this.lab.l_id,
+                name:this.lab.name,
+                submit_time :new Date(),
+                status:0
+            }
+            this. axios({
+                method:"post",
+                url:"/api/report/postReport",
+                data:report,
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            }).then(resp =>{
+                console.log(resp.data)
+            })
+        }
     }
 }
 </script>
@@ -140,5 +197,11 @@ export default {
     font-weight: bolder;
 }
 .l_time{
+}
+
+.li_guidebook{
+    height: 30px;
+    font-size: 16px;
+    line-height: 30px;
 }
 </style>

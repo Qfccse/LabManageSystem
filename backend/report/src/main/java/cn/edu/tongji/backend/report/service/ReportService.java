@@ -11,11 +11,16 @@ public class ReportService {
     private ReportMapper reportMapper;
 
     public void insertReport(Report report){
+        System.out.println(report);
         reportMapper.insertIntoReport(report);
     }
 
     public int getReportId(int l_id, String s_id){
         return reportMapper.selectIdFromReport(l_id, s_id);
+    }
+
+    public int getReportCount(int l_id, String s_id){
+        return reportMapper.selectCountFromReport(l_id, s_id);
     }
 
     public String[] getReportFormImage(int rf_id){

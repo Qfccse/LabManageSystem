@@ -52,11 +52,11 @@ export default {
     mounted() {
         setTimeout(this.delayClick,200)
     },
-    watch:{
-        $route(){
-            this.gotoStudentList(0)
-        }
-    },
+    // watch:{
+    //     $route(){
+    //         this.gotoStudentList(0)
+    //     }
+    // },
     methods:{
         delayClick(){
             this.gotoStudentList(0)

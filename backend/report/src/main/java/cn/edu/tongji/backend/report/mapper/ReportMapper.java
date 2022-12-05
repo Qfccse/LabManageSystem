@@ -20,6 +20,9 @@ public interface ReportMapper {
     @Select("select r_id from report where l_id=#{l_id} and s_id=#{s_id};")
     int selectIdFromReport(int l_id, String s_id);
 
+    @Select("select count(r_id) from report  where l_id=#{l_id} and s_id=#{s_id}")
+    int selectCountFromReport(int l_id, String s_id);
+
     @Select("select path from report_image where rf_id=#{rf_id}")
     String[] selectImagesFromReportImage(int rf_id);
 }

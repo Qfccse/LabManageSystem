@@ -64,6 +64,9 @@
             <div style="margin-top: 50px"></div>
             <h1>计算机组成原理实验授课教师</h1>
             <TeacherList></TeacherList>
+            <CourseStudentList></CourseStudentList>
+            <CourseTeacherList></CourseTeacherList>
+
             <AdminLayout></AdminLayout>
         </div>
         <!--        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>-->
@@ -72,8 +75,9 @@
         <!--        <StudentLayout></StudentLayout>-->
         <!--        <LaboratoryPage></LaboratoryPage>-->
         <!--        <AdminLayout></AdminLayout>-->
-        <CourseStudentList></CourseStudentList>
-        <CourseTeacherList></CourseTeacherList>
+<!--        <LaboratoryPage></LaboratoryPage>-->
+<!--        <LabList></LabList>-->
+        <ReportCreator></ReportCreator>
     </div>
 </template>
 
@@ -108,7 +112,14 @@ export default {
         LabList,
         LaboratoryPage,
         LabCreator,
-        GuidebookPage, ReportReader, ReportFiller, ReportCreator, PDFReader, FileDownloader, FileUploader},
+        GuidebookPage,
+        ReportReader,
+        ReportFiller,
+        ReportCreator,
+        PDFReader,
+        FileDownloader,
+        FileUploader
+    },
     data(){
         return{
             course:"",

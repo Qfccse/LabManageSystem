@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-row :gutter="20"  style="width: 1000px; border: 1px red solid;margin: auto">
+        <el-row :gutter="20"  style="width: 1050px; border: 1px silver solid;margin: auto">
             <el-col :span="5">
                 <h4>基础组件</h4>
                 <draggable :options="dragOptions" v-model="compList" @end="end1" :move="onMove1">
@@ -147,7 +147,7 @@ export default {
             for (let i in this.formList){
                 dataList.push(
                     {
-                        l_id:1,
+                        l_id:7,
                         t_id:"1",
                         title:this.formList[i].title,
                         order:i,

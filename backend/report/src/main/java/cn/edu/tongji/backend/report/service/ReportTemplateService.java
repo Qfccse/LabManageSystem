@@ -19,4 +19,8 @@ public class ReportTemplateService {
     public List<ReportTemplate> selectLabReportTemplate(int l_id){
         return reportTemplateMapper.getLabReportTemplate(l_id);
     }
+
+    public int selectReportTemplateCount(int l_id){
+        return reportTemplateMapper.selectTemplateCount(l_id);
+    }
 }

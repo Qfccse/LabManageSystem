@@ -7,7 +7,6 @@
                 :sid="this.$route.query.s_id">
             </ReportFiller>
         </div>
-
     </div>
 </template>
 

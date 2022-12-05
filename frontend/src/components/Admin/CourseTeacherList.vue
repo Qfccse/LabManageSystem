@@ -54,11 +54,11 @@ export default {
         // this.gotoTeacherList(this.coursesList[0].name)
         setTimeout(this.delayClick,200)
     },
-    watch:{
-        $route(){
-            this.gotoTeacherList(0)
-        }
-    },
+    // watch:{
+    //     $route(){
+    //         this.gotoTeacherList(0)
+    //     }
+    // },
     methods:{
         delayClick(){
             this.gotoTeacherList(0)

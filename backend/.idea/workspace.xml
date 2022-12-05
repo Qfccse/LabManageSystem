@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/avatars/admin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/avatars/student.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/assets/avatars/teacher.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/CourseStudentList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/CourseTeacherList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/layout/AdminLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/cn/edu/tongji/backend/admin/mapper/StudentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/cn/edu/tongji/backend/admin/mapper/StudentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/cn/edu/tongji/backend/admin/mapper/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/cn/edu/tongji/backend/admin/mapper/TeacherMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/StudentList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/StudentList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/TeacherList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/TeacherList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/PagedUserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportTemplateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportTemplateMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportTemplateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportTemplateService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/UserList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Report/ReportReader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Report/ReportReader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/LaboratoryPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/LaboratoryPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/MainPage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,9 +182,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GuidebookApplication" />
         <item itemvalue="Spring Boot.ReportApplication" />
         <item itemvalue="Spring Boot.GateWayApplication" />
+        <item itemvalue="Spring Boot.GuidebookApplication" />
         <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
       </list>
     </recent_temporary>
@@ -225,7 +216,8 @@
       <workItem from="1669856752446" duration="21815000" />
       <workItem from="1669941559288" duration="2770000" />
       <workItem from="1669988662500" duration="706000" />
-      <workItem from="1670042968781" duration="6160000" />
+      <workItem from="1670042968781" duration="6176000" />
+      <workItem from="1670198686360" duration="5940000" />
     </task>
     <servers />
   </component>

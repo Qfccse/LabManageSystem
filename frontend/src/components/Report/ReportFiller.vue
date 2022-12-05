@@ -27,21 +27,23 @@ export default {
     props:{
         lid:{
             type: Number,
-            default: 0
+            default: 1
         },
         sid:{
             type: String,
-            default: ""
+            default: "1952168"
         },
     },
     data(){
         return{
             formList:[],
             idList:[],
+            endTime:'',
         }
     },
     mounted() {
         // this.receiveFormList()
+        this.endTime = new Date()
         this.receiveReport();
     },
     methods:{
@@ -69,13 +71,57 @@ export default {
                 }
             })
         },
+        getReportDDL(){
+            this. axios({
+                method:"get",
+                url:"/api/laboratory/getLabInfo",
+                params:{
+                    // l_id:this.$route.query.l_id
+                    l_id:1
+                }
+            }).then(resp =>{
+               this.endTime = new Date(resp.data.end_time)
+            })
+        },
+        checkRequired(){
+            let ii = 0
+            for (let i in this.formList){
+                if(this.formList[i].type === 'image'){
+                    // console.log(
+                    //     this.formList[i].required + " - " +
+                    //     this.$refs.saveImage[ii].upload.fileList.length + " - " +
+                    //     this.formList[i].type)
+                    if(this.formList[i].required === "true" &&
+                        this.$refs.saveImage[ii++].upload.fileList.length===0)
+                    {
+                        alert("上传" + this.formList[i].title)
+                        return true
+                    }
+                }
+                else {
+                    // console.log(
+                    //     this.formList[i].required + " - " +
+                    //     this.formList[i].content + " - " +
+                    //     this.formList[i].type)
+                    if(this.formList[i].required === "true"&&  (
+                        this.formList[i].content===null||
+                        this.formList[i].content.length===0))
+                    {
+                        alert("请填写" + this.formList[i].title)
+                        return true
+                    }
+                }
+            }
+
+            return false
+        },
         receiveReport(){
             this. axios({
                 method:"get",
                 url:"/api/report/getReportFiller",
                 params:{
                     //id 可以是lab的id
-                    l_id:this.lid,
+                    l_id:this.$route.query.l_id,
                     s_id:this.sid
                 }
             }).then(resp =>{
@@ -97,6 +143,16 @@ export default {
             })
         },
         saveReport(type){
+            if(this.checkRequired()){
+                return
+            }
+            this.getReportDDL()
+            if(this.endTime < new Date())
+            {
+                alert("实验已结束，无法提交")
+                return
+            }
+            console.log(type)
             this.saveReportForm(type)
             if(type===2){
                 setTimeout(this.saveReportImages,1000)

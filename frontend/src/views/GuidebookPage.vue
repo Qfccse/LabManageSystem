@@ -3,15 +3,13 @@
         <el-col :span="20">
             {{this.$route.query.name}}
         </el-col>
-        <el-col :span="4">
-            <FileDownloader url="/api/guidebook/getGuidebookBytes"
-                            :gid=this.$route.query.g_id
-                            file-name="">
-            </FileDownloader>
-        </el-col>
+        <FileDownloader url="/api/guidebook/getGuidebookBytes"
+                        :gid="this.$route.query.g_id"
+                        :file-name="this.$route.query.name">
+        </FileDownloader>
         <PDFReader
             url="/api/guidebook/getGuidebookBytes"
-            :gid=this.$route.query.g_id
+            :gid="Number(this.$route.query.g_id)"
         >
         </PDFReader>
     </div>
