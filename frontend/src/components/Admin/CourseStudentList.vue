@@ -2,18 +2,32 @@
     <div>
         <el-container style="background-color: white">
             <el-aside style="width: 200px;min-height: 800px;border: 1px red solid">
-                <el-menu
-                         class="el-menu-vertical-demo"
-                         @open="handleOpen"
-                         @close="handleClose"
-                         text-color="#b2aeaf"
-                         active-text-color="#349f50"
-                         default-active="1-0">
-                    <el-menu-item  v-for="(course,index) in coursesList" :key="index" :index="'1-'+ index" @click="gotoStudentList(index)">
-                        <i class="el-icon-document"></i>
-                        <template v-slot:title>{{ course.name }}</template>
-                    </el-menu-item>
-                </el-menu>
+                <div style="height: 600px;overflow-y: auto">
+                    <el-menu
+                        class="el-menu-vertical-demo"
+                        @open="handleOpen"
+                        @close="handleClose"
+                        text-color="#b2aeaf"
+                        active-text-color="#349f50"
+                        default-active="1-0">
+                        <el-menu-item  v-for="(course,index) in coursesList" :key="index" :index="'1-'+ index" @click="gotoStudentList(index)">
+                            <i class="el-icon-document"></i>
+                            <template v-slot:title>{{ course.name }}</template>
+                        </el-menu-item>
+                    </el-menu>
+                </div>
+                <div style="text-align: center;margin-bottom: 20px">
+                    <div style="margin-bottom: 10px">
+                        上传选课名单
+                    </div>
+                    <FileUploader
+                        list-type="text"
+                        :limit=1 file-type=".xlsx,.xls,.csv"
+                        url="/api/admin/postTakesTeaches"
+                        :id="1"
+                        :show="false">
+                    </FileUploader>
+                </div>
             </el-aside>
             <el-container style="margin-left: 20px">
                 <router-view></router-view>
@@ -23,8 +37,10 @@
 </template>
 
 <script>
+import FileUploader from "@/components/Utils/FileUploader";
 export default {
     name: "CourseStudentList",
+    components: {FileUploader},
     data(){
         return{
             coursesList:[
@@ -84,5 +100,15 @@ export default {
 </script>
 
 <style scoped>
+::-webkit-scrollbar
+{
+    width: 3px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: #999;
+}
 
 </style>

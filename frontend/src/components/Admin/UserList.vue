@@ -1,11 +1,16 @@
 <template>
-    <div>
-        <div>
+    <div style="width: 1200px">
+        <div style="min-height: 650px;">
             <el-form>
                 <el-row style="height: 60px">
                     <el-col :span="8">
                         查找：
-                        <el-input style="width: 60%" v-model="inputText"  suffix-icon="el-icon-search"></el-input>
+                        <el-input
+                            @input="search"
+                            style="width: 60%"
+                            v-model="inputText"
+                            suffix-icon="el-icon-search">
+                        </el-input>
                     </el-col>
                     <el-col :span="8">
                         角色：
@@ -43,10 +48,9 @@
                     <el-col :span="6">邮箱</el-col>
                     <el-col :span="1">删除</el-col>
                 </el-row>
-
-                <div v-for="(user,index) in userList" :key="index">
-                    <div v-if="user.name.indexOf(inputText)!=-1||user.u_id.indexOf(inputText)!=-1">
-                        <div v-if="((user.status+1===showStatus||showStatus===0)&&(user.role===showRole||showRole===0))">
+                <div v-for="(user,index) in showData" :key="index">
+<!--                    <div v-if="user.name.indexOf(inputText)!=-1||user.u_id.indexOf(inputText)!=-1">-->
+<!--                        <div v-if="((user.status+1===showStatus||showStatus===0)&&(user.role===showRole||showRole===0))">-->
                             <el-row>
                                 <el-col :span="3"> {{user.u_id}} </el-col>
                                 <el-col :span="4"> {{user.name}} </el-col>
@@ -66,16 +70,23 @@
                                 </el-col>
                             </el-row>
                         </div>
-                    </div>
-                </div>
-                <el-pagination
-                    :page-size="20"
-                    :pager-count="11"
-                    layout="prev, pager, next"
-                    :total="1000">
-                </el-pagination>
+<!--                    </div>-->
+<!--                </div>-->
             </el-form>
         </div>
+        <div v-show="filteredUserList.length>pageSize">
+            <el-pagination
+                style="text-align: center"
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="currentPage"
+                :page-sizes="[30, 25, 20, 15,10]"
+                :page-size="pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total=filteredUserList.length>
+            </el-pagination>
+        </div>
+
     </div>
 </template>
 
@@ -85,6 +96,7 @@ export default {
     data(){
         return{
             userList:[],
+            filteredUserList:[],
             statusList:["未激活","已激活"],
             roleList:["教师","学生"],
             roleOptions: [
@@ -118,15 +130,58 @@ export default {
             ],
             roleValue:0,
             statusValue:0,
+            // 筛选
             inputText: '',
             showRole:0,
             showStatus:0,
+            // 分页
+            pageSize:10,
+            currentPage: 1,
+            showData:[]
         }
     },
     mounted () {
         this.showAllUser()
+        this.getPageData()
     },
     methods:{
+        search(){
+            this.userFilter()
+        },
+        userFilter(){
+            this.filteredUserList = []
+            for(let i in this.userList){
+                let user = this.userList[i]
+                if(user.name.indexOf(this.inputText)!==-1||user.u_id.indexOf(this.inputText)!==-1)
+                {
+                    if((user.status+1)===this.showStatus||this.showStatus===0)
+                    {
+                        if(user.role===this.showRole||this.showRole===0)
+                        {
+                            this.filteredUserList.push(user)
+                        }
+                    }
+                }
+            }
+            this.getPageData()
+        },
+        // 根据分页设置的数据控制每页显示的数据条数及页码跳转页面刷新
+        async getPageData() {
+            let start = (this.currentPage - 1) * this.pageSize;
+            let end = start + this.pageSize;
+            this.showData = this.filteredUserList.slice(start, end);
+            console.log(this.showData.length)
+        },
+        // 分页自带的函数，当pageSize变化时会触发此函数
+        handleSizeChange(val) {
+            this.pageSize = val;
+            this.getPageData();
+        },
+        // 分页自带函数，当currentPage变化时会触发此函数
+        handleCurrentChange(val) {
+            this.currentPage = val;
+            this.getPageData();
+        },
         showAllUser(){
             this. axios({
                 method:"get",
@@ -134,18 +189,23 @@ export default {
             }).then(resp =>{
                 console.log(resp.data)
                 for (let i in resp.data){
-                    this.userList.push(
-                        {
-                            u_id:resp.data[i].u_id,
-                            name:resp.data[i].name,
-                            password:resp.data[i].password,
-                            status:resp.data[i].status,
-                            role:resp.data[i].role,
-                            email:resp.data[i].email
-                        }
-                    )
+                    const user =  {
+                        u_id:resp.data[i].u_id,
+                        name:resp.data[i].name,
+                        password:resp.data[i].password,
+                        status:resp.data[i].status,
+                        role:resp.data[i].role,
+                        email:resp.data[i].email
+                    }
+                    this.userList.push(user)
+                    this.filteredUserList.push(user)
                 }
+                this.getPageData()
             })
+        },
+        showUser(key,f1,f2,pgn){
+            console.log(key,f1,f2,pgn)
+
         },
         deleteUser(index){
             console.log('delete ' + index)
@@ -177,6 +237,7 @@ export default {
                     this.showRole=item.index
                 }
             })
+            this.userFilter()
         },
         click2ChooseStatus(value){
             console.log(value)
@@ -186,6 +247,7 @@ export default {
                     this.showStatus=item.index
                 }
             })
+            this.userFilter()
         },
     }
 }

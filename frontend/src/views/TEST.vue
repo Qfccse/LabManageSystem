@@ -68,16 +68,14 @@
             <CourseTeacherList></CourseTeacherList>
 
             <AdminLayout></AdminLayout>
+            <LoginActivate></LoginActivate>
+
         </div>
-        <!--        <FileUploader file-type=".xlsx,.xls,.csv" url="/api/admin/postUserFile" :id="1"></FileUploader>-->
-        <!--        <UserList></UserList>-->
-        <!--        <MainPage></MainPage>-->
-        <!--        <StudentLayout></StudentLayout>-->
         <!--        <LaboratoryPage></LaboratoryPage>-->
-        <!--        <AdminLayout></AdminLayout>-->
-<!--        <LaboratoryPage></LaboratoryPage>-->
-<!--        <LabList></LabList>-->
-        <ReportCreator></ReportCreator>
+        <!--        <LabList></LabList>-->
+        <!--        <ReportCreator></ReportCreator>-->
+<!--        <AdminLayout></AdminLayout>-->
+        <LoginActivate></LoginActivate>
     </div>
 </template>
 
@@ -99,9 +97,11 @@ import TeacherList from "@/components/Admin/TeacherList";
 import AdminLayout from "@/layout/AdminLayout";
 import CourseStudentList from "@/components/Admin/CourseStudentList";
 import CourseTeacherList from "@/components/Admin/CourseTeacherList";
+import LoginActivate from "@/views/LoginActivate";
 export default {
     name: 'TEST',
     components: {
+        LoginActivate,
         CourseTeacherList,
         CourseStudentList,
         AdminLayout,
