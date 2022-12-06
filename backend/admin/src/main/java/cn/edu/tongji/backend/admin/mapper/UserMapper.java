@@ -24,4 +24,7 @@ public interface UserMapper {
 
     @Delete("delete from user where u_id=#{u_id}")
     public void deleteUser(String u_id);
+
+    //@Select("select * from user where role=#{role} and status=#{status} and user.name like concat('%',#{name},'%')")
+    //public List<User> selectFilterUser(int role,int status, String name);
 }

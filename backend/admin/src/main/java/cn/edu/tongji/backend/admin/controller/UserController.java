@@ -37,6 +37,71 @@ public class UserController {
     @Autowired
     private TeacherService teacherService;
 
+    @PostMapping("/postTakesTeaches")
+    public String postStuTakes(@RequestParam("id") int id,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
+        for (MultipartFile file : multipartFile) {
+            System.out.println("file is " + file.getOriginalFilename());
+            String fileName = file.getOriginalFilename();
+            String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
+            String localFileName = System.currentTimeMillis() + fileSuffix;
+            File excel = new File("C:\\Users\\ASUS\\Desktop\\s\\" + File.separator + localFileName);
+            FileUtils.copyInputStreamToFile(file.getInputStream(), excel);
+            String[] split = excel.getName().split("\\.");  //.是特殊字符，需要转义！
+
+            if("csv".equals(split[1])){
+                InputStreamReader isr = new InputStreamReader(new FileInputStream(excel),"GBK");
+                BufferedReader br  = new BufferedReader(isr);
+                String data = br.readLine(); //第一行是列名，所以不读
+                while ((data = br.readLine())!=null){
+                    String[] userInfo = data.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                    User user = new User();
+                    user.setAttributeByIndex(0,userInfo[0]);
+                    user.setAttributeByIndex(4,userInfo[1]);
+                    user.setAttributeByIndex(6,userInfo[2]);
+                    System.out.println(user);
+                    insertT(user);
+                }
+                br.close();
+                isr.close();
+            }
+            else {
+                Workbook wb;
+                //根据文件后缀（xls/xlsx）进行判断
+                if ( "xls".equals(split[1])){
+                    FileInputStream fiStream = new FileInputStream(excel);   //文件流对象
+                    wb = new HSSFWorkbook(fiStream);
+                }
+                else{
+                    wb = new XSSFWorkbook(new FileInputStream(excel));
+                }
+                //开始解析
+                Sheet sheet = wb.getSheetAt(0);     //读取sheet 0
+                int firstRowIndex = sheet.getFirstRowNum()+1;   //第一行是列名，所以不读
+                int lastRowIndex = sheet.getLastRowNum();
+                for(int rIndex = firstRowIndex; rIndex <= lastRowIndex; rIndex++) {   //遍历行
+                    Row row = sheet.getRow(rIndex);
+                    if (row != null) {
+                        int firstCellIndex = row.getFirstCellNum();
+                        int lastCellIndex = row.getLastCellNum();
+                        User user = new User();
+                        user.setAttributeByIndex(0,row.getCell(firstCellIndex).toString());
+                        user.setAttributeByIndex(4,row.getCell(firstCellIndex +1).toString());
+                        user.setAttributeByIndex(6,row.getCell(firstCellIndex + 2).toString()==null?"":row.getCell(firstCellIndex + 1).toString());
+                        System.out.println(user);
+                        insertT(user);
+                    }
+                }
+                wb.close();
+            }
+            if(excel.delete()) {
+                System.out.println(file.getName() + " is deleted!");
+            }else {
+                System.out.println("Delete operation is failed.");
+            }
+        }
+        return null;
+    }
+
     @PostMapping("/postUserFile")
     public List<User> postUserFile(@RequestParam("id") int id,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
         System.out.println(id);
@@ -177,27 +242,46 @@ public class UserController {
                 student.setName(user.getName());
                 studentService.addStudent(student);
             }
-            String cidList =  user.getCidList();
-            if (cidList!=null&&!cidList.isEmpty()){
-                String[] cidSplit = cidList.split(",");;
-                for (String cid : cidSplit) {
-                    //System.out.println(cid);
-                    int role = user.getRole();
-                    if(role>=3){
-                        //System.out.println("加入学生");
-                        studentService.addTakes(user.getU_id(),Integer.parseInt(cid),role);
-                    }
-                    else {
-                        //System.out.println("加入老师");
-                        teacherService.addTeaches(user.getU_id(),Integer.parseInt(cid),role);
-                    }
-                }
-            }
-
+            //String cidList =  user.getCidList();
+            //if (cidList!=null&&!cidList.isEmpty()){
+            //    String[] cidSplit = cidList.split(",");;
+            //    for (String cid : cidSplit) {
+            //        //System.out.println(cid);
+            //        int role = user.getRole();
+            //        if(role>=3){
+            //            //System.out.println("加入学生");
+            //            studentService.addTakes(user.getU_id(),Integer.parseInt(cid),role);
+            //        }
+            //        else {
+            //            //System.out.println("加入老师");
+            //            teacherService.addTeaches(user.getU_id(),Integer.parseInt(cid),role);
+            //        }
+            //    }
+            //}
+            insertT(user);
             return true;
         }
         else {
             return false;
+        }
+    }
+
+    public void insertT(User user){
+        String cidList =  user.getCidList();
+        boolean flag = true;
+        if (cidList!=null&&!cidList.isEmpty()){
+            String[] cidSplit = cidList.split(",");;
+            for (String cid : cidSplit) {
+                int role = user.getRole();
+                if(role>=3){
+                    //System.out.println("加入学生");
+                    studentService.addTakes(user.getU_id(),Integer.parseInt(cid),role);
+                }
+                else {
+                    //System.out.println("加入老师");
+                    teacherService.addTeaches(user.getU_id(),Integer.parseInt(cid),role);
+                }
+            }
         }
     }
 }
