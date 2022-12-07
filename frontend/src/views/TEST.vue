@@ -69,13 +69,12 @@
 
             <AdminLayout></AdminLayout>
             <LoginActivate></LoginActivate>
-
+            <TeacherLabPage></TeacherLabPage>
         </div>
         <!--        <LaboratoryPage></LaboratoryPage>-->
         <!--        <LabList></LabList>-->
         <!--        <ReportCreator></ReportCreator>-->
-<!--        <AdminLayout></AdminLayout>-->
-        <LoginActivate></LoginActivate>
+        <!--        <AdminLayout></AdminLayout>-->
     </div>
 </template>
 
@@ -98,9 +97,11 @@ import AdminLayout from "@/layout/AdminLayout";
 import CourseStudentList from "@/components/Admin/CourseStudentList";
 import CourseTeacherList from "@/components/Admin/CourseTeacherList";
 import LoginActivate from "@/views/LoginActivate";
+import TeacherLabPage from "@/views/TeacherLabPage";
 export default {
     name: 'TEST',
     components: {
+        TeacherLabPage,
         LoginActivate,
         CourseTeacherList,
         CourseStudentList,

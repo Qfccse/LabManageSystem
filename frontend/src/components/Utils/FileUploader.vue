@@ -17,10 +17,14 @@
             :on-success="handleUploadSuccess"
             :on-remove="handleRemove"
         >
-            <el-button style="margin-left: 10px;" size="small" v-if="this.listType!=='picture-card'">选择文件</el-button>
+            <el-button
+                :icon="icon"
+                :style="buttonStyle"
+                v-if="this.listType!=='picture-card'">
+                <span v-if="icon.length===0">选择文件</span></el-button>
             <i v-else class="el-icon-plus"></i>
         </el-upload>
-        <el-button @click="fileUpload" v-if="show">上传</el-button>
+        <el-button @click="fileUpload" v-if="show||upload.fileList.length!==0">上传</el-button>
     </div>
 </template>
 
@@ -50,6 +54,14 @@ export default {
         show:{
             type:Boolean,
             default:true
+        },
+        icon:{
+            type:String,
+            default:""
+        },
+        buttonStyle:{
+            type:String,
+            default:""
         }
     },
     data() {

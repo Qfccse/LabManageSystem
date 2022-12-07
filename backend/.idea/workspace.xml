@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/PagedUserList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportTemplateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/mapper/ReportTemplateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportTemplateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/java/cn/edu/tongji/backend/report/service/ReportTemplateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/UserList.vue" afterDir="false" />
+    <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="登录后端，管理员导入选课、教学名单">
+      <change afterPath="$PROJECT_DIR$/../frontend/src/views/TeacherLabPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,36 +36,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Java/intellij_idea_workspace/javaee&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;4cc5d539456bc1264f6b2d6f0bc332b2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "corretto-1.8",
+    "last_opened_file_path": "D:/LabManageSystem/backend/login/src",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "08aaa9f2558415478f682e90e24a120e",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "module"
+    ],
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\LabManageSystem\backend\login\src" />
       <recent name="D:\LabManageSystem\backend\admin\src\main\resources" />
       <recent name="D:\LabManageSystem\backend\todo\src\main" />
       <recent name="D:\LabManageSystem\backend\laboratory\src\main\resources" />
       <recent name="D:\LabManageSystem\backend\guidebook\src\main\resources" />
-      <recent name="D:\LabManageSystem\backend\report\src\main\java\cn\edu\tongji\backend\report\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.edu.tongji.backend.admin" />
@@ -86,7 +85,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AdminApplication">
+  <component name="RunManager" selected="Spring Boot.LoginApplication">
     <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="report" />
       <extension name="coverage">
@@ -143,6 +142,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="login" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.tongji.backend.login.LoginApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.tongji.backend.login.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ReportApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="report" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.tongji.backend.report.ReportApplication" />
@@ -176,6 +188,7 @@
       <item itemvalue="Spring Boot.TodoApplication" />
       <item itemvalue="Spring Boot.LaboratoryApplication" />
       <item itemvalue="Spring Boot.TestApplication" />
+      <item itemvalue="Spring Boot.LoginApplication" />
       <item itemvalue="Spring Boot.GuidebookApplication" />
       <item itemvalue="Spring Boot.ReportApplication" />
       <item itemvalue="Spring Boot.GateWayApplication" />
@@ -183,8 +196,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ReportApplication" />
-        <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="Spring Boot.GuidebookApplication" />
+        <item itemvalue="Spring Boot.GateWayApplication" />
+        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
       </list>
     </recent_temporary>
@@ -217,8 +231,17 @@
       <workItem from="1669941559288" duration="2770000" />
       <workItem from="1669988662500" duration="706000" />
       <workItem from="1670042968781" duration="6176000" />
-      <workItem from="1670198686360" duration="5940000" />
+      <workItem from="1670198686360" duration="16048000" />
+      <workItem from="1670287967329" duration="7823000" />
     </task>
+    <task id="LOCAL-00001" summary="登录后端，管理员导入选课、教学名单">
+      <created>1670307696510</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670307696511</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,10 +252,26 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="登录后端，管理员导入选课、教学名单" />
+    <option name="LAST_COMMIT_MESSAGE" value="登录后端，管理员导入选课、教学名单" />
   </component>
 </project>

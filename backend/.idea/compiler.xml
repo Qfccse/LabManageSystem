@@ -13,6 +13,7 @@
         <module name="guidebook" />
         <module name="report" />
         <module name="admin" />
+        <module name="login" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
@@ -23,6 +24,7 @@
       <module name="gateway" options="-parameters" />
       <module name="guidebook" options="-parameters" />
       <module name="laboratory" options="-parameters" />
+      <module name="login" options="-parameters" />
       <module name="report" options="-parameters" />
       <module name="test" options="-parameters" />
       <module name="todo" options="-parameters" />

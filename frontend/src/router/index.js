@@ -11,9 +11,12 @@ import UserList from "@/components/Admin/UserList";
 
 import HelloWorld from "@/components/HelloWorld";
 import CoursePage from "@/views/CoursePage";
+import TeacherLabPage from "@/views/TeacherLabPage";
 import LaboratoryPage from "@/views/LaboratoryPage";
 import GuidebookPage from "@/views/GuidebookPage";
 import ReportPage from "@/views/ReportPage";
+import ReportCreator from "@/components/Report/ReportCreator";
+
 import TEST from "@/views/TEST";
 Vue.use(VueRouter)
 const originalPush = VueRouter.prototype.push
@@ -84,6 +87,18 @@ const routes = [
         path:"/lab",
         name:"Lab",
         component:LaboratoryPage,
+        props:true
+    },
+    {
+        path:"/teacher_lab",
+        name:"TeacherLab",
+        component:TeacherLabPage,
+        props:true
+    },
+    {
+        path:"/template",
+        name:"ReportCreator",
+        component:ReportCreator,
         props:true
     },
 ]
