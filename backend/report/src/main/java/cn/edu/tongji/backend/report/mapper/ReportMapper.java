@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface ReportMapper {
-    @Insert("insert into report values (null,#{s_id},#{l_id},#{name},#{submit_time},#{status})")
+    @Insert("insert into report values (null,#{s_id},#{l_id},#{name},#{status},#{submit_time})")
     @Options(useGeneratedKeys = true, keyProperty = "r_id", keyColumn = "r_id")
     void insertIntoReport(Report report);
 
@@ -25,4 +27,10 @@ public interface ReportMapper {
 
     @Select("select path from report_image where rf_id=#{rf_id}")
     String[] selectImagesFromReportImage(int rf_id);
+
+    @Select("select * from report where l_id=#{l_id}")
+    List<Report> selectLabReport(int l_id);
+
+    @Select("select student.name from student where s_id=#{s_id}")
+    String getStuNameByID(String s_id);
 }

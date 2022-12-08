@@ -29,4 +29,10 @@ public interface ReportFormMapper {
 
     @Insert("insert into report_image values (#{rf_id},#{path},#{file_name})")
     void insertIntoReportImages(int rf_id, String path, String file_name);
+
+    @Select("select rf_id from report_form where r_id=#{r_id} and rt_id=#{rt_id}")
+    int selectRfId(int r_id, int rt_id);
+
+    @Select("select count(rf_id) from report_form where r_id=#{r_id} and rt_id=#{rt_id}")
+    int selectCountReportFormCheck(int r_id, int rt_id);
 }

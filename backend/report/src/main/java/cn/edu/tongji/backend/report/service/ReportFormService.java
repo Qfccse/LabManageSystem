@@ -30,4 +30,12 @@ public class ReportFormService {
     public void insertImage(int rf_id,String path,String file_name){
         reportFormMapper.insertIntoReportImages(rf_id,path,file_name);
     }
+
+    public int checkFormExist(int r_id, int fr_id){
+        return reportFormMapper.selectCountReportFormCheck(r_id, fr_id);
+    }
+
+    public int selectRfTd(int r_id, int fr_id){
+        return reportFormMapper.selectRfId(r_id, fr_id);
+    }
 }

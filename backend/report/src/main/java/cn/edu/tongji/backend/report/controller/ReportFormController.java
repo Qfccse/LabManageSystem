@@ -37,7 +37,7 @@ public class ReportFormController {
         System.out.println(s_id);
         System.out.println(status);
         List<Integer> ids = new ArrayList<Integer>();
-        int update = 1;
+
         int r_id = 0;
         System.out.println(reportForms);
         for (String reportForm : reportForms) {
@@ -45,11 +45,15 @@ public class ReportFormController {
             ReportForm form = JSON.parseObject(reportForm,ReportForm.class);
             System.out.println(form);
             r_id = form.getR_id();
-            if (update==2)
+            int update = reportFormService.checkFormExist(form.getR_id(), form.getRt_id());
+            if (update==0)
             {
+                System.out.println("insert form");
                 reportFormService.insertReportForm(form);
             }
             else {
+                System.out.println("update form");
+                form.setRf_id(reportFormService.selectRfTd(form.getR_id(), form.getRt_id()));
                 reportFormService.updateReportForm(form);
             }
 

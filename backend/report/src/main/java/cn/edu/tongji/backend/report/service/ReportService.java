@@ -5,6 +5,8 @@ import cn.edu.tongji.backend.report.pojo.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReportService {
     @Autowired
@@ -33,5 +35,13 @@ public class ReportService {
 
     public Report selectStuReport(int l_id, String s_id){
         return reportMapper.selectReportById(l_id,s_id);
+    }
+
+    public List<Report> selectLabAllReport(int l_id){
+        return reportMapper.selectLabReport(l_id);
+    }
+
+    public String selectStuName(String s_id){
+        return reportMapper.getStuNameByID(s_id);
     }
 }

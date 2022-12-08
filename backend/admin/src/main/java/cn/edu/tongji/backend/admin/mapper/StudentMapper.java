@@ -26,5 +26,4 @@ public interface StudentMapper {
             "student LEFT OUTER JOIN takes on " +
             "takes.s_id = student.s_id and c_id=#{c_id} WHERE c_id;")
     public List<Student> selectCourseStudent(int c_id);
-
 }

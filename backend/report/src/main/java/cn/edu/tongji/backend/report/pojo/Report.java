@@ -12,4 +12,6 @@ public class Report {
     private String name;
     private Timestamp submit_time;
     private int status;
+    // 非数据库字段
+    private String stu_name;
 }
