@@ -1,6 +1,6 @@
 <template>
     <div style="width: 800px;margin:  auto">
-        <div style="font-size: 36px;font-weight: bolder;margin-bottom: 10px">XXX实验报告</div>
+        <div style="font-size: 36px;font-weight: bolder;margin-bottom: 10px">{{this.$route.query.report}}</div>
         <div style="clear: both">
             <div class="row_title">姓名：{{stu.name}}</div>
             <div class="row_title">学号：{{stu.id}}</div>
@@ -9,15 +9,18 @@
             <div class="row_title">{{item.title}}</div>
             <div v-if="item.type === 'text'"  style="clear: both">
                 <el-input type="textarea"
+                          readonly
                           :autosize="{minRows:3}"
                           v-model="item.content"
-                          :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
+                          :placeholder="item.placeholder?item.placeholder:'该项未填写'"></el-input>
             </div>
             <div v-else style="clear: both">
                 <div v-for="(image,i) in item.imgList" :key="i">
                     <img :src="require('../../../../../LabAssets/' + image)" style="max-width: 700px">
                 </div>
-                <el-button @click="receiveFromImages(index)" v-if="item.imgList.length===0">查看实验图片</el-button>
+                <div v-if="item.imgList.length===0">
+                    未上传图片
+                </div>
             </div>
         </div>
     </div>
@@ -36,18 +39,21 @@ export default {
             show:false,
         }
     },
-    mounted() {
-        this.receiveFormList()
+    async mounted() {
+        this.stu.name = this.$route.query.name
+        this.stu.id = this.$route.query.s_id
+        await this.receiveFormList()
+        await this.getImages()
     },
     methods:{
-        receiveFormList(){
-            this. axios({
+       async receiveFormList(){
+            await this. axios({
                 method:"get",
                 url:"/api/report/getReport",
                 params:{
                     //id 可以是lab的id
-                    l_id:1,
-                    s_id:"1952168"
+                    l_id:this.$route.query.l_id,
+                    s_id:this.$route.query.s_id
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -65,9 +71,16 @@ export default {
                 }
             })
         },
-        receiveFromImages(index){
-            console.log(this.formList[index].rf_id)
-            this. axios({
+        async getImages(){
+           for(let i in this.formList){
+               if(this.formList[i].type==='image'){
+                   await this.receiveFromImages(i)
+               }
+           }
+        },
+        async receiveFromImages(index){
+           console.log(this.formList[index].rf_id)
+           await this. axios({
                 method:"get",
                 url:"/api/report/getFormImages",
                 params:{

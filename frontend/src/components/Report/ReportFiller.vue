@@ -9,7 +9,7 @@
                           :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
             </template>
             <template v-else>
-                <FileUploader ref="saveImage" :show="false" list-type="picture-card" url="/api/report/postReportImages" :id="idList[index]"></FileUploader>
+                <FileUploader ref="saveImage" :show="true" list-type="picture-card" url="/api/report/postReportImages" :id="idList[index]" ></FileUploader>
             </template>
         </div>
         <div style="margin-top: 20px;">
@@ -24,16 +24,6 @@ import FileUploader from "@/components/Utils/FileUploader";
 export default {
     name: "ReportFiller",
     components: {FileUploader},
-    props:{
-        lid:{
-            type: Number,
-            default: 1
-        },
-        sid:{
-            type: String,
-            default: "1952168"
-        },
-    },
     data(){
         return{
             formList:[],
@@ -53,7 +43,7 @@ export default {
                 url:"/api/report/getReportTemplate",
                 params:{
                     //id 可以是lab的id
-                    l_id:1,
+                    l_id:2,
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -71,38 +61,32 @@ export default {
                 }
             })
         },
-        getReportDDL(){
-            this. axios({
+        async getReportDDL(){
+            await this. axios({
                 method:"get",
                 url:"/api/laboratory/getLabInfo",
                 params:{
                     // l_id:this.$route.query.l_id
-                    l_id:1
+                    l_id:2
                 }
             }).then(resp =>{
-               this.endTime = new Date(resp.data.end_time)
+                console.log(this.endTime)
+                return new Date(resp.data.end_time)
             })
+            return new Date()
         },
-        checkRequired(){
+        checkRequired(type){
             let ii = 0
             for (let i in this.formList){
                 if(this.formList[i].type === 'image'){
-                    // console.log(
-                    //     this.formList[i].required + " - " +
-                    //     this.$refs.saveImage[ii].upload.fileList.length + " - " +
-                    //     this.formList[i].type)
-                    if(this.formList[i].required === "true" &&
-                        this.$refs.saveImage[ii++].upload.fileList.length===0)
+                    if(type===2&&(this.formList[i].required === "true" &&
+                        this.$refs.saveImage[ii++].upload.fileList.length===0))
                     {
                         alert("上传" + this.formList[i].title)
                         return true
                     }
                 }
                 else {
-                    // console.log(
-                    //     this.formList[i].required + " - " +
-                    //     this.formList[i].content + " - " +
-                    //     this.formList[i].type)
                     if(this.formList[i].required === "true"&&  (
                         this.formList[i].content===null||
                         this.formList[i].content.length===0))
@@ -122,10 +106,10 @@ export default {
                 params:{
                     //id 可以是lab的id
                     l_id:this.$route.query.l_id,
-                    s_id:this.sid
+                    s_id:this.$route.query.s_id
                 }
             }).then(resp =>{
-                console.log("1234545")
+                console.log("获取到的report form")
                 console.log(resp.data)
                 for(let i in resp.data){
                     this.formList.push(
@@ -143,13 +127,13 @@ export default {
             })
         },
         saveReport(type){
-            if(this.checkRequired()){
+            if(this.checkRequired(type)){
                 return
             }
-            this.getReportDDL()
-            if(this.endTime < new Date())
+
+            if(this.getReportDDL() <= new Date())
             {
-                alert("实验已结束，无法提交")
+                alert( "实验已结束，无法提交")
                 return
             }
             console.log(type)
@@ -165,12 +149,12 @@ export default {
                 dataList.push(
                     {
                         rt_id:this.formList[i].rt_id,
-                        r_id:1,
+                        r_id:this.$route.query.r_id,
                         content:this.formList[i].content
                     }
                 )
             }
-            // console.log(JSON.stringify(dataList))
+            console.log(JSON.stringify(dataList))
             let fd = new FormData()
 
             fd.append("l_id",1)
@@ -180,16 +164,9 @@ export default {
                 fd.append("forms",JSON.stringify({
                     rt_id:this.formList[i].rt_id,
                     rf_id:this.formList[i].rf_id,
-                    r_id:1,
+                    r_id:this.$route.query.r_id,
                     content:this.formList[i].content
                 }))
-                dataList.push(
-                    {
-                        rt_id:this.formList[i].rt_id,
-                        r_id:1,
-                        content:this.formList[i].content
-                    }
-                )
             }
             // fd.append("forms",dataList)
             console.log(fd)
@@ -205,6 +182,7 @@ export default {
                 for (let i in resp.data){
                     this.idList.push(resp.data[i])
                 }
+                console.log("idlist")
                 console.log(this.idList)
                 // console.log(resp.data.id)
             })

@@ -1,12 +1,9 @@
 <template>
     <div style="width: 1050px;margin: auto">
-        <el-button @click="createReport">123123</el-button>
         <el-row class="lab_name">
             <el-col :span="16">{{lab.name}}</el-col>
             <el-col :span="8">
-<!--                <router-link :to="{}">-->
-                    <el-button type="primary" class="fr" style="margin-top: 20px" @click="click2Fill">完成实验报告</el-button>
-<!--                </router-link>-->
+                <el-button type="primary" class="fr" style="margin-top: 20px" @click="click2Fill">完成实验报告</el-button>
             </el-col>
         </el-row>
         <div style="width: 750px;" class="fl">
@@ -49,14 +46,14 @@ export default {
             l_id:0,
             lab:{},
             guidebookList:[],
+            stuRid:0
         }
     },
-    mounted() {
+    async mounted() {
         // this.l_id = this.$route.query.l_id
-        this.l_id = "1"
-        this.getLab()
-        this.showGuidebookList()
-        console.log(new Date(this.lab.end_time))
+        this.l_id = "2"
+        await this.getLab()
+        await this.showGuidebookList()
     },
     methods:{
         fillZero(str){
@@ -77,37 +74,37 @@ export default {
             var hour = this.fillZero(date.getHours())
             var mini = this.fillZero(date.getMinutes())
             var sec = this.fillZero(date.getSeconds())
-            var currentdate = year + s1 + month + s1 + strDate + " " + hour + s2 + mini + s2 + sec;
-            return currentdate;
+            return year + s1 + month + s1 + strDate + " " + hour + s2 + mini + s2 + sec;
         },
-        click2Fill(){
+        async click2Fill(){
             if(new Date() >= new Date(this.lab.end_time))
             {
                 alert("实验已结束")
                 return
             }
-            this.createReport()
-            this.$router.push({
+
+            await this.createReport()
+            await this.$router.push({
                 name:'ReportPage',
                 query:{
                     l_id:this.lab.l_id,
                     s_id:'1952168',
-                    l_name:this.lab.name
+                    r_id:this.stuRid
                 }
             })
         },
-        getLab(){
-            this. axios({
+        async getLab(){
+            await this. axios({
                 method:"get",
                 url:"/api/laboratory/getLabInfo",
                 params:{
-                    l_id:this.$route.query.l_id
-                    // l_id:1
+                    // l_id:this.$route.query.l_id
+                    l_id:2
                 }
             }).then(resp =>{
                 console.log(resp.data)
                 this.lab = {
-                    l_id:Number(this.$route.query.l_id),
+                    l_id:Number(2),
                     name:resp.data.name,
                     start_time:resp.data.start_time,
                     end_time:resp.data.end_time,
@@ -116,13 +113,13 @@ export default {
                 }
             })
         },
-        showGuidebookList(){
-            this. axios({
+        async showGuidebookList(){
+            await this. axios({
                 method:"get",
                 url:"/api/guidebook/getLabGuidebooks",
                 params:{
                     // l_id:this.$route.query.l_id
-                    l_id:1
+                    l_id:2
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -134,16 +131,16 @@ export default {
                 }
             })
         },
-        createReport(){
+        async createReport(){
             let report = {
                 r_id:0,
                 s_id:"1952168",
                 l_id:this.lab.l_id,
-                name:this.lab.name,
+                name:this.lab.name + "报告",
                 submit_time :new Date(),
                 status:0
             }
-            this. axios({
+           await this. axios({
                 method:"post",
                 url:"/api/report/postReport",
                 data:report,
@@ -152,6 +149,7 @@ export default {
                 }
             }).then(resp =>{
                 console.log(resp.data)
+                this.stuRid = resp.data
             })
         }
     }

@@ -75,6 +75,10 @@
         <!--        <LabList></LabList>-->
         <!--        <ReportCreator></ReportCreator>-->
         <!--        <AdminLayout></AdminLayout>-->
+<!--        <ReportCreator></ReportCreator>-->
+<!--        <ReportFiller></ReportFiller>-->
+<!--        <LaboratoryPage></LaboratoryPage>-->
+        <LabReportList></LabReportList>
     </div>
 </template>
 
@@ -98,9 +102,11 @@ import CourseStudentList from "@/components/Admin/CourseStudentList";
 import CourseTeacherList from "@/components/Admin/CourseTeacherList";
 import LoginActivate from "@/views/LoginActivate";
 import TeacherLabPage from "@/views/TeacherLabPage";
+import LabReportList from "@/components/Report/LabReportList";
 export default {
     name: 'TEST',
     components: {
+        LabReportList,
         TeacherLabPage,
         LoginActivate,
         CourseTeacherList,

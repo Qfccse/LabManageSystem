@@ -24,7 +24,7 @@
                 <span v-if="icon.length===0">选择文件</span></el-button>
             <i v-else class="el-icon-plus"></i>
         </el-upload>
-        <el-button @click="fileUpload" v-if="show||upload.fileList.length!==0">上传</el-button>
+        <el-button @click="fileUpload" v-if="show&&upload.fileList.length!==0">上传</el-button>
     </div>
 </template>
 
@@ -49,7 +49,7 @@ export default {
             default:""
         },
         id:{
-
+            type:Number,
         },
         show:{
             type:Boolean,
@@ -89,7 +89,8 @@ export default {
     },
     methods: {
         fileUpload(){
-            console.log(JSON.stringify(this.id))
+            console.log("upload")
+            console.log(this.id)
             let fd = new FormData()
             // 也可以传非文件的数据，例如
             fd.append("id",JSON.stringify(this.id))
@@ -97,6 +98,7 @@ export default {
             for(let i in this.upload.fileList){
                 fd.append('file',this.upload.fileList[i].raw)
             }
+            console.log(this.upload.fileList.length)
             this.axios({
                 method:"post",
                 url:this.url,

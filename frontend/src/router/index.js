@@ -16,6 +16,7 @@ import LaboratoryPage from "@/views/LaboratoryPage";
 import GuidebookPage from "@/views/GuidebookPage";
 import ReportPage from "@/views/ReportPage";
 import ReportCreator from "@/components/Report/ReportCreator";
+import ReportReader from "@/components/Report/ReportReader";
 
 import TEST from "@/views/TEST";
 Vue.use(VueRouter)
@@ -87,19 +88,21 @@ const routes = [
         path:"/lab",
         name:"Lab",
         component:LaboratoryPage,
-        props:true
     },
     {
         path:"/teacher_lab",
         name:"TeacherLab",
         component:TeacherLabPage,
-        props:true
     },
     {
         path:"/template",
         name:"ReportCreator",
         component:ReportCreator,
-        props:true
+    },
+    {
+        path:"/stu_report",
+        name:"ReportReader",
+        component:ReportReader,
     },
 ]
 
