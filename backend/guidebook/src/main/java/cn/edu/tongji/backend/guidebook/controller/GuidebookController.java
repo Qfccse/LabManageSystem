@@ -37,7 +37,7 @@ public class GuidebookController {
         System.out.println(book);
         for (MultipartFile file : multipartFile) {
             System.out.println("file is " + file.getOriginalFilename());
-            String dirPath = "C:\\Users\\ASUS\\Desktop\\ss";
+            String dirPath = "D:\\TJ-LabResource";
             //https://www.jianshu.com/p/dd0f20a6e44f
             String fileName = file.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
@@ -52,7 +52,7 @@ public class GuidebookController {
             file.transferTo(localFile);
 
             book.setName(fileName);
-            book.setPath("s/" + localFileName);
+            book.setPath(localFileName);
             // 保存路径到服务器
             guidebookService.addGuidebook(book);
         }
@@ -63,7 +63,7 @@ public class GuidebookController {
     @GetMapping("/getGuidebookBytes")
     public void download(HttpServletResponse response, @RequestParam("g_id") int g_id){
         Guidebook guidebook = guidebookService.findGuidebook(g_id);
-        File file = new File(guidebook.getPath());
+        File file = new File("D:\\TJ-LabResource" + File.separator + guidebook.getPath());
         //System.out.println(file.exists());
         byte[] buffer = new byte[1024];
         BufferedInputStream bis = null;

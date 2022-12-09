@@ -64,6 +64,7 @@ public class ReportFormController {
         report.setR_id(r_id);
         report.setStatus(status);
         report.setSubmit_time(new Timestamp(new Date().getTime()));
+        System.out.println(status);
         reportService.updateReportStatus(report);
 
         return ids.toString();
@@ -86,7 +87,7 @@ public class ReportFormController {
         System.out.println(id);
         for (MultipartFile file : multipartFile) {
             System.out.println("file is " + file.getOriginalFilename());
-            String dirPath = "D:/LabAssets/ss";
+            String dirPath = "D:/TJ-LabImages";
             //https://www.jianshu.com/p/dd0f20a6e44f
             String fileName = file.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());

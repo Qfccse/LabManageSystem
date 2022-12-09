@@ -87,7 +87,15 @@ public class ReportController {
         int r_id = reportService.getReportId(l_id, s_id);
         System.out.println(r_id);
         List<ReportForm> reportForms = reportFormService.selectLabReportForm(r_id);
-        List<ReportTemplate> reportTemplates = reportTemplateService.selectLabReportTemplate(l_id);
+        int count = reportTemplateService.selectReportTemplateCount(l_id);
+        int l_id_tmp = l_id;
+        if(count==0)
+        {
+            System.out.println("目前实验没有模板，使用默认模板");
+            l_id_tmp = 1;
+        }
+        List<ReportTemplate> reportTemplates = reportTemplateService.selectLabReportTemplate(l_id_tmp);
+        System.out.println(reportTemplates);
         System.out.println("获取 " + l_id + " + " +s_id);
         System.out.println(reportForms);
         System.out.println(reportTemplates );

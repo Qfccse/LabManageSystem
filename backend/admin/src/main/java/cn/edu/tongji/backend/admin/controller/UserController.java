@@ -44,7 +44,7 @@ public class UserController {
             String fileName = file.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
             String localFileName = System.currentTimeMillis() + fileSuffix;
-            File excel = new File("C:\\Users\\ASUS\\Desktop\\s\\" + File.separator + localFileName);
+            File excel = new File("D:\\TJ-LabResource\\tmp" + File.separator + localFileName);
             FileUtils.copyInputStreamToFile(file.getInputStream(), excel);
             String[] split = excel.getName().split("\\.");  //.是特殊字符，需要转义！
 
@@ -112,7 +112,7 @@ public class UserController {
             String fileName = file.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
             String localFileName = System.currentTimeMillis() + fileSuffix;
-            File excel = new File("C:\\Users\\ASUS\\Desktop\\s\\" + File.separator + localFileName);
+            File excel = new File("D:\\TJ-LabResource\\s" + File.separator + localFileName);
             FileUtils.copyInputStreamToFile(file.getInputStream(), excel);
             String[] split = excel.getName().split("\\.");  //.是特殊字符，需要转义！
 

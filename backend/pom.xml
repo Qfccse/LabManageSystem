@@ -16,6 +16,8 @@
     <module>todo</module>
     <module>admin</module>
     <module>login</module>
+    <module>course</module>
+    <module>grade</module>
   </modules>
 
   <packaging>pom</packaging>
