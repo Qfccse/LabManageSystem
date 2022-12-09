@@ -59,7 +59,7 @@
             <template v-slot:title>公告板</template>
           </el-menu-item>
 
-          <el-menu-item index="5">
+          <el-menu-item index="5" disabled>
             <i class="el-icon-setting"></i>
             <template v-slot:title>我的信息</template>
           </el-menu-item>
@@ -164,6 +164,8 @@ export default {
       JSON.stringify({ id: "001", role: "admin" , name: "赵生捷"})
     );
     this.$store.commit("setUserInfo");
+
+    // this.getCoursesAsStudent();
     console.log("layout has been mounted");
   }
 };

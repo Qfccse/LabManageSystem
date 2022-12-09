@@ -1,5 +1,6 @@
 <template>
     <div class="login-register">
+        <Vcode :show="showCode" @success="codeSuccess" @close="codeClose"></Vcode>
         <div>
             <div v-if="choose===0"  class="board">
                 <div style="height: 30px"></div>
@@ -13,7 +14,7 @@
                     <div class="errTips" v-else></div>
                 </div>
                 <div style="text-align: center">
-                    <button class="bbutton" @click="userLogin">登录</button>
+                    <button class="bbutton" @click="clickButton">登录</button>
                 </div>
                 <div style="font-size: 16px;width: 50%;margin: 30px auto auto;">
                     <div style="float: left" @click="changeType(1)">
@@ -51,7 +52,7 @@
                     <input type="password" placeholder="新密码" v-model="user.password" @keydown.enter="register">
                 </div>
                 <div style="text-align: center">
-                    <button class="bbutton" @click="userForget">确定</button>
+                    <button class="bbutton" @click="clickButton">确定</button>
                 </div>
             </div>
             <div v-else class="board">
@@ -80,7 +81,7 @@
                     <input type="password" placeholder="设置密码" v-model="user.password" @keydown.enter="register">
                 </div>
                 <div style="text-align: center">
-                    <button class="bbutton" @click="userActivate">激活</button>
+                    <button class="bbutton" @click="clickButton">激活</button>
                 </div>
             </div>
         </div>
@@ -89,28 +90,33 @@
 
 <script>
 
-
+import Vcode from "vue-puzzle-vcode";
 export default {
     name: 'LoginActivate',
+    components:{
+        Vcode
+    },
     data() {
         return {
             choose:0,
+            content:"获取验证码",
+            totalTime:60,
+            senderDisable:false,
             conflict:{
                 u_id:false,
                 email:false,
                 password:false,
+                code:false,
                 //    后面可以加验证码之类的
             },
-            content:"获取验证码",
-            totalTime:60,
-            senderDisable:false,
             user:{
                 u_id:'',
                 email:'',
                 // 验证码
                 code:"",
                 password:'',
-            }
+            },
+            showCode:false,
         }
     },
     methods: {
@@ -153,17 +159,111 @@ export default {
                     this.senderDisable = false
                 }
             },1000)
+            this.sendCode()
         },
         userLogin() {
-
+            this. axios({
+                method:"post",
+                url:"/api/login/userLogin",
+                params:{
+                    u_id:this.user.u_id,
+                    password: this.user.password
+                }
+            }).then(resp =>{
+                console.log(resp.data)
+            })
         },
         // 激活
         userActivate(){
-
+            this. axios({
+                method:"post",
+                url:"/api/login/userActivate",
+                data:{
+                    u_id:this.user.u_id,
+                    code:this.user.code,
+                    email:this.user.email,
+                    password:this.user.password
+                },
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            }).then(resp =>{
+                console.log(resp.data)
+            })
         },
         // 忘记密码
         userForget(){
+            this. axios({
+                method:"post",
+                url:"/api/login/recoverUserPassword",
+                data:{
+                    u_id:this.user.u_id,
+                    code:this.user.code,
+                    email:this.user.email,
+                    password:this.user.password
+                },
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            }).then(resp =>{
+                console.log(resp.data)
+            })
+        },
+        sendCode(){
+            this. axios({
+                method:"post",
+                url:"/api/login/sendEmail",
+                params:{
+                    email:this.user.email,
+                }
+            }).then(resp =>{
+                console.log(resp.data)
+            })
+        },
+        checkInfo(){
+            if(this.user.u_id.length===0)
+            {
+                return false
+            }
+            else if(this.user.password.length===0)
+            {
+                return false
+            }
+            else if(this.user.email.length===0&&(this.choose!==0))
+            {
+                return false
+            }
+            else if(this.user.code.length===0&&this.choose!==0){
+                return false
+            }
 
+            return true
+        },
+        clickButton(){
+            if(this.checkInfo()){
+                this.showCode = true
+            }
+            else {
+                alert("请填写完整信息")
+            }
+        },
+        codeSuccess(){
+            this.showCode = false
+            if(this.choose === 0){
+                console.log("login")
+                this.userLogin()
+            }else if(this.choose === 1){
+                console.log("activate")
+                this.userActivate()
+            }else if(this.choose === 2){
+                console.log("forget")
+                this.userForget()
+            }else{
+                console.log("bad page iter")
+            }
+        },
+        codeClose(){
+            this.showCode = false
         }
     }
 }

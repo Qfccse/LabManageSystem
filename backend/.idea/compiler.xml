@@ -11,8 +11,10 @@
         <module name="test" />
         <module name="laboratory" />
         <module name="guidebook" />
+        <module name="grade" />
         <module name="report" />
         <module name="admin" />
+        <module name="course" />
         <module name="login" />
         <module name="gateway" />
       </profile>
@@ -21,7 +23,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="admin" options="-parameters" />
+      <module name="course" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="grade" options="-parameters" />
       <module name="guidebook" options="-parameters" />
       <module name="laboratory" options="-parameters" />
       <module name="login" options="-parameters" />

@@ -64,7 +64,7 @@ const routes = [
         path:"/teacher",
         name:"teacher",
         component:TeacherLayout,
-        children:[    
+        children:[
             {
                 path:'coursePage',
                 name:'coursePage',
@@ -95,7 +95,7 @@ const routes = [
         path:"/student",
         name:"student",
         component:StudentLayout,
-        children:[    
+        children:[
             {
                 path:'coursePage',
                 name:'coursePage',
@@ -170,11 +170,11 @@ const routes = [
         ]
     },
     {
-        path:"/.",
+        path:"/",
         component:TEST
     },
-    
-  
+
+
 
 ]
 

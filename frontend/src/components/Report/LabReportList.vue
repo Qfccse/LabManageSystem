@@ -47,7 +47,7 @@ export default {
                 method:"get",
                 url:"/api/report/getLabReport",
                 params:{
-                    l_id:5
+                    l_id:2
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -67,7 +67,7 @@ export default {
             this.$router.push({
                 path: '/teacher/coursePage/reportreader',
                 query:{
-                    l_id:1,
+                    l_id:2,
                     s_id:row.s_id,
                     name:row.stu_name,
                     report:this.reportName,

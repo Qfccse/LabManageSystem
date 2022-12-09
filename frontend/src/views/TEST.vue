@@ -23,11 +23,6 @@
 
 </div>
 
-
-<div style="margin-top: 50px">阅读报告</div>
-            <ReportReader></ReportReader>
-
-
         <div v-if="false">
             <div style="margin-top: 50px" @click="test">普通接口测试</div>
             <div>
@@ -70,7 +65,7 @@
              name:'123',
              path:'123',}"></FileUploader>
             <div style="margin-top: 50px">阅读pdf</div>
-           
+
             <GuidebookPage></GuidebookPage>
             <LabCreator></LabCreator>
             <LabList></LabList>
@@ -100,7 +95,8 @@
         <!--        <LabList></LabList>-->
         <!--        <ReportCreator></ReportCreator>-->
 <!--        <AdminLayout></AdminLayout>-->
-        <!-- <LoginActivate></LoginActivate> -->
+         <LoginActivate></LoginActivate>
+        <el-button @click="test"> 122122</el-button>
     </div>
 </template>
 
@@ -171,21 +167,28 @@ export default {
 
             // 半 restfull风格
             this. axios({
-                method:"get",
-                url:"/api/test/selectById",
+                method:"post",
+                url:"/api/login/changePassword",
                 params:{
-                    id:1
+                    u_id:"1952168",
+                    password:"1952168",
+                    password_new:"-------"
                 }
+                // data:{
+                //     u_id:"12132",
+                //     password:"123132",
+                //     code:"456465",
+                //     email:"123132",
+                // },
+                // headers:{
+                //     'Content-Type': 'application/json'
+                // }
             }).then(resp =>{
-                //设置表格数据
-                this.course = resp.data;
                 console.log(resp.data)
                 console.log(resp.data.id)
             })
         },
-        testUp(){
-            this.$refs.saveImage.fileUpload()
-        }
+
     }
 }
 </script>

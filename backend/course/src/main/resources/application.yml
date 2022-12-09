@@ -1,0 +1,37 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/zy_test?useSSL=false
+    username: root
+    password: zhangyu1944
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: course
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+
+mybatis:
+  # 扫描包  这样在mapper.xml里就可以省略这个路径
+  type-aliases-package: cn.edu.tongji.backend.course.pojo
+  # 用 , 分隔开就行
+  mapper-locations: classpath:mappers/CourseMapper.xml, classpath:mappers/TeachesMapper.xml, classpath:mappers/LaboratoryMapper.xml, classpath:mappers/TakesMapper.xml, classpath:mappers/TodoMapper.xml
+#  configuration:
+#    #进行自动映射时，数据以下划线命名，如数据库返回的"order_address"命名字段是否映射为class的"orderAddress"字段。默认为false
+#    map-underscore-to-camel-case: true
+
+
+#  configuration:
+#    map-underscore-to-camel-case: true
+logging:
+  level:
+    cn.edu.tongji.backend: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:10086/eureka

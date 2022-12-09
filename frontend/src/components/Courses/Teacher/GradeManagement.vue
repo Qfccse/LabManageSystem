@@ -12,7 +12,7 @@
           type="primary"
           @click="dialogFormVisible = true"
           v-if="this.$route.query.role=='HT'"
-          >计算成绩</el-button
+          >分配权重</el-button
         >
       </div>
 
@@ -72,7 +72,7 @@
               :data="scope.row.labScores"
               max-height="450px"
               stripe
-              style="width: 90%"
+              style="width: 90%;  margin-left: 60px"
             >
               <el-table-column prop="l_id" label="实验编号" width="100px">
               </el-table-column>
@@ -88,7 +88,7 @@
                   { text: '未签到', value: '未签到' },
                 ]"
                 :filter-method="filterTag"
-                filter-placement="bottom-end"
+                filter-placement="bottom-end"               
               >
                 <template v-slot="scope">
                   <el-tag

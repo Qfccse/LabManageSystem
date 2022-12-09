@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.edu.tongji.backend.course.mapper.CourseMapper">
+
+    <select id="getAllCourses" resultType="Course">
+        select * from course;
+    </select>
+
+    <!--
+        参数占位符
+        1. #{}  ：会替换成？  防止sql注入
+        2. ￥{} ：拼接sql 存在SQL注入问题
+    -->
+    <select id="getById" resultType="Course">
+        select * from course where c_id = #{id}
+    </select>
+
+<!--    特殊字符问题 例如 < 不能再xml出现
+        1.转义字符
+        2.CDATA区
+ -->
+<!--    <select id="test" resultType="Course">-->
+<!--        select * from course where c_id &lt; #{id}-->
+<!--    </select>-->
+
+<!--    <select id="test" resultType="Course">-->
+<!--        select * from course where c_id-->
+<!--         <![CDATA[-->
+<!--            <-->
+<!--         ]]>-->
+<!--         #{id}-->
+<!--    </select>-->
+
+    <select id="getByCondition" resultType="Course">
+        select * from course
+        # where 1 = 1
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="name != null and name != '' ">
+                and name like #{name}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="getByConditionSingle" resultType="Course">
+        select * from course
+        <where>
+
+            <!--相当于switch case-->
+            <choose>
+                <when test="status != null">
+                    status = #{status}
+                </when>
+            </choose>
+
+        </where>
+    </select>
+
+<!--    添加并且把自动生成的id返回到 对象中-->
+    <insert id="addCourse" useGeneratedKeys="true" keyProperty="c_id">
+        insert into course (name, course.desc, status)
+        values (#{name}, #{desc}, #{status});
+    </insert>
+
+    <update id="updateCourse">
+        update course
+        <set>
+            <if test="status != 0">
+                status = #{status},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="desc != null and desc != ''">
+                course.desc = #{desc},
+            </if>
+        </set>
+        where c_id = #{c_id};
+    </update>
+
+    <delete id="deleteById">
+        delete
+        from course
+        where c_id = #{c_id};
+    </delete>
+
+    <delete id="deleteByIds">
+        delete
+        from course
+        where c_id
+        in (
+            <foreach collection="ids" item="id" separator=","> #{id} </foreach>
+                  );
+    </delete>
+
+    <select id="getAllCoursesAsTeacher" resultType="courseAndRole">
+        select course.c_id, name, course.desc, status, role
+        from teaches, course
+        where t_id = #{t_id} and course.c_id = teaches.c_id;
+    </select>
+
+    <select id="getAllCoursesAsStudent" resultType="courseAndRole">
+        select course.c_id, name, course.desc, status, role
+        from takes, course
+        where s_id = #{s_id} and course.c_id = takes.c_id;
+    </select>
+
+    <update id="updateStatus">
+        update course
+        set status = #{status}
+        where c_id = #{c_id};
+    </update>
+
+</mapper>

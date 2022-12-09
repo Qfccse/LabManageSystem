@@ -169,9 +169,9 @@
             <i class="el-icon-document"></i>
             <template v-slot:title>公告板</template>
           </el-menu-item>
-          <el-menu-item index="4">
+          <el-menu-item index="4" disabled>
             <i class="el-icon-setting"></i>
-            <template v-slot:title>我的信息</template>
+            <template v-slot:title >我的信息</template>
           </el-menu-item>
         </el-menu>
       </el-aside>

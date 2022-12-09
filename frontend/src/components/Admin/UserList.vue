@@ -74,13 +74,13 @@
 <!--                </div>-->
             </el-form>
         </div>
-        <div v-show="filteredUserList.length>pageSize">
+        <div v-show="filteredUserList.length>pageSize" style="margin-top: -70px">
             <el-pagination
                 style="text-align: center"
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
                 :current-page="currentPage"
-                :page-sizes="[30, 25, 20, 15,10]"
+                :page-sizes="[30, 25, 20, 15, 9]"
                 :page-size="pageSize"
                 layout="total, sizes, prev, pager, next, jumper"
                 :total=filteredUserList.length>
@@ -135,7 +135,7 @@ export default {
             showRole:0,
             showStatus:0,
             // 分页
-            pageSize:10,
+            pageSize:9,
             currentPage: 1,
             showData:[]
         }

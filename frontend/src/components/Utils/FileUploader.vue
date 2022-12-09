@@ -49,7 +49,11 @@ export default {
             default:""
         },
         id:{
+            // type:Number,
+        },
+        rfid:{
             type:Number,
+            default: -1,
         },
         show:{
             type:Boolean,
@@ -93,7 +97,12 @@ export default {
             console.log(this.id)
             let fd = new FormData()
             // 也可以传非文件的数据，例如
-            fd.append("id",JSON.stringify(this.id))
+            if (this.rfid == -1 ) {
+                fd.append("id",JSON.stringify(this.id))
+            } else {
+                fd.append("id",JSON.stringify(this.rfid))
+            }
+            
             // 只需要在后端接收一下即可(注意)
             for(let i in this.upload.fileList){
                 fd.append('file',this.upload.fileList[i].raw)

@@ -7,10 +7,10 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import store from './store'
-// /* eslint-disable */
-//
-// // 引入bootstrap
-// // import $ from 'jquery'
+/* eslint-disable */
+
+// 引入bootstrap
+// import $ from 'jquery'
 // import 'bootstrap'
 // import 'jquery/dist/jquery.min'
 // import 'bootstrap/dist/css/bootstrap.min.css'

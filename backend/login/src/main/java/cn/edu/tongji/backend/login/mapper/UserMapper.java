@@ -1,18 +1,13 @@
 package cn.edu.tongji.backend.login.mapper;
 
 import cn.edu.tongji.backend.login.pojo.User;
-import cn.edu.tongji.backend.login.pojo.UserVo;
-import cn.edu.tongji.backend.login.pojo.UserVo2;
 import org.apache.ibatis.annotations.*;
-import org.checkerframework.checker.units.qual.A;
-import org.springframework.stereotype.Repository;
 
 /**
  * mapper的具体表达式
  */
-//@Mapper //标记mapper文件位置，否则在Application.class启动类上配置mapper包扫描
-//@Repository
 public interface UserMapper {
+
     /**
      * 查询用户名是否存在，若存在，不允许注册
      * 注解@Param(value) 若value与可变参数相同，注解可省略
@@ -20,36 +15,31 @@ public interface UserMapper {
      * @param username
      * @return
      */
-    @Select(value = "select u.name,u.password from user u where u.name=#{username}")
-    @Results
-            ({@Result(property = "username",column = "username"),
-              @Result(property = "password",column = "password")})
-    User findUserByName(@Param("username") String username);
+    @Select("select count(*) from user where u_id = #{u_id}")
+    int countUser(String u_id);
 
-    /**
-     * 登录
-     * @param user
-     * @return
-     */
-    @Select("select u_id from user  where u_id = #{u_id} and password = #{password}")
-    String login(User user);
+    @Select("select u_id from user  where u_id = #{u_id} and user.password = #{password}")
+    String checkUserPassword(String u_id, String password);
 
+    @Select("select u_id,status,role,name,email from user where u_id=#{u_id}")
+    User checkDetail(String u_id);
 
-    @Select("select u_id from user  where u_id = #{u_id} and password = #{password}")
-    String login2(UserVo2 userVo2);
+    @Update("update user set email=#{email},user.password=#{password},user.status=#{status} where u_id=#{u_id}")
+    void insertEmailAndStatus(String u_id,String email,String password,int status);
 
-    @Select("select u_id from user  where u_id = #{u_id} and password = #{password}")
-    String check(UserVo user);
+    @Select("select count(*) from user where email=#{email}")
+    int checkEmail(String email);
 
-    @Update("update user set email=#{email},status=1 where u_id=#{u_id}")
-    void insertEmailAndStatus(UserVo userVo);
+    @Update("update user set user.password=#{password_new} where u_id=#{u_id}")
+    void updateUserPassword(String u_id,String password_new);
 
-    @Select("select email from user where email=#{email}")
-    String checkEmail(UserVo user);
+    @Select("select count(*) from user where u_id=#{u_id} and user.password=#{password}")
+    int selectCountUser(String u_id,String password);
 
-    @Select("select * from user where email=#{email}")
-    User findPassword(UserVo userVo);
+    @Select("select status from user where u_id=#{u_id}")
+    int selectUserStatus(String u_id);
 
-    @Update("update user set password=#{newPassword} where u_id=#{u_id}")
-    void changePassword(UserVo2 userVo2);
+    @Update("update user set user.email=#{email} where u_id=u_id")
+    void updateUserEmail(String u_id,String email);
+
 }

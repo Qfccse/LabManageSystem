@@ -15,6 +15,7 @@
     "vue": "^2.6.14",
     "vue-axios": "^3.4.1",
     "vue-pdf": "^4.2.0",
+    "vue-puzzle-vcode": "^1.1.10",
     "vue-template-compiler": "^2.6.14",
     "vuedraggable": "^2.24.3",
     "vuex": "^2.0.0"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.edu.tongji.backend.grade.mapper.MarkMapper">
+
+    <insert id="addMarks">
+        insert into mark (r_id, t_id, score, comment)
+        values (#{r_id}, #{t_id}, #{score}, #{comment});
+    </insert>
+
+    <select id="getLabScores" resultType="labScore">
+        select laboratory.l_id, score, laboratory.name, attend_score, proportion from laboratory, report, mark, operates
+        where c_id=#{c_id} and operates.s_id=#{s_id} and laboratory.l_id=report.l_id and report.r_id=mark.r_id and operates.l_id=laboratory.l_id and operates.s_id=report.s_id;
+    </select>
+
+    <select id="getStudentName" resultType="String">
+        select name from student where s_id=#{s_id};
+    </select>
+
+
+</mapper>

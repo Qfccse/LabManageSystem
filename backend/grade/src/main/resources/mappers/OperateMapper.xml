@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.edu.tongji.backend.grade.mapper.OperateMapper">
+    <update id="giveScore" >
+        update operates
+        set attend_score = 1
+        where l_id=#{l_id} and s_id=#{s_id};
+    </update>
+
+    <select id="getReportById" resultType="Report">
+        select * from report where r_id=#{r_id};
+    </select>
+
+    <update id="updateFeedback">
+        update operates
+        set feedback = #{feedback}
+        where l_id=#{l_id} and s_id=#{s_id};
+    </update>
+
+<!--    <select id="getAttendScores" resultType="integer">-->
+<!--        select attend_score from operates, laboratory-->
+<!--        where c_id=#{c_id} and s_id=#{s_id} and operates.l_id=laboratory.l_id;-->
+<!--    </select>-->
+</mapper>

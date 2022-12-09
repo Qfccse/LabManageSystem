@@ -37,6 +37,15 @@ spring:
           uri: lb://login
           predicates:
             - Path=/login/**
+        - id: course
+          uri: lb://course
+          predicates:
+            - Path=/course/**
+        - id: grade
+          uri: lb://grade
+          predicates:
+            - Path=/grade/**
+
       #          filters:
 #            - AddRequestHeader=Truth, hd is lj # 添加请求头
 #        新增网关路由在这里注册

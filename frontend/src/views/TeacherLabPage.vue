@@ -65,7 +65,7 @@
               :id="{
                 g_id: 0,
                 l_id: this.lab.l_id,
-                t_id: this.lab.t_id,
+                t_id: this.$store.state.userInfo.id,
                 type: 1,
                 name: '',
                 path: '',
@@ -73,7 +73,7 @@
               file-type=".pdf"
               icon="el-icon-upload"
               button-style="border:none"
-              :show="false"
+              :show="true"
             ></FileUploader>
           </div>
         </div>
@@ -82,7 +82,7 @@
         <div v-for="(guidebook, index) in guidebookList" :key="index">
           <router-link
             :to="{
-              name: 'GuidebookPage',
+              path: '/teacher/coursePage/guidebook',
               query: { g_id: guidebook.g_id, name: guidebook.name },
             }"
           >
@@ -129,6 +129,9 @@ export default {
     console.log(new Date(this.lab.end_time));
   },
   methods: {
+    testLab() {
+      console.log(this.lab);
+    },
     fillZero(str) {
       if (str >= 0 && str <= 9) {
         return "0" + str;
@@ -197,14 +200,14 @@ export default {
     // YuRan
     saveEdit() {
       this.edit = true;
-      this.modifylab()
+      this.modifylab();
     },
     startEdit() {
       this.edit = false;
     },
     modifylab() {
-        var lab = { desc: this.lab.desc, l_id: this.lab.l_id}
-        console.log(lab);
+      var lab = { desc: this.lab.desc, l_id: this.lab.l_id };
+      console.log(lab);
       this.axios
         .post("/api/course/labModify", lab)
         .then((response) => {

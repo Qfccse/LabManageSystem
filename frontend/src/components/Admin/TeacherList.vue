@@ -66,11 +66,12 @@ export default {
                 method:"get",
                 url:"/api/admin/getCourseTeacher",
                 params:{
-                   name:this.$route.query.name
+                    name:this.$route.query.name
                 }
             }).then(resp =>{
                 console.log(resp.data)
                 this.teacherList = []
+                this.teacherRole = []
                 for (let i in resp.data){
                     this.teacherList.push({
                         t_id:resp.data[i].t_id,

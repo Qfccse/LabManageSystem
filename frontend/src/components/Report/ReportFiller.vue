@@ -9,7 +9,7 @@
                           :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
             </template>
             <template v-else>
-                <FileUploader ref="saveImage" :show="true" list-type="picture-card" url="/api/report/postReportImages" :id="idList[index]"></FileUploader>
+                <FileUploader ref="saveImage" :show="false" list-type="picture-card" url="/api/report/postReportImages" :rfid="idList[index]"></FileUploader>
             </template>
         </div>
         <div style="margin-top: 20px;">
@@ -43,7 +43,7 @@ export default {
                 url:"/api/report/getReportTemplate",
                 params:{
                     //id 可以是lab的id
-                    l_id:2,
+                    l_id: this.$route.query.l_id,
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -66,14 +66,13 @@ export default {
                 method:"get",
                 url:"/api/laboratory/getLabInfo",
                 params:{
-                    // l_id:this.$route.query.l_id
-                    l_id:2
+                    l_id:this.$route.query.l_id
+                    // l_id:2
                 }
             }).then(resp =>{
                 console.log(this.endTime)
                 return new Date(resp.data.end_time)
             })
-            return new Date()
         },
         checkRequired(type){
             let ii = 0
@@ -125,22 +124,24 @@ export default {
                 }
             })
         },
-        saveReport(type){
+        async saveReport(type){
             if(this.checkRequired(type)){
                 return
             }
-            if(this.getReportDDL() <= new Date())
+            let end = await this.getReportDDL()
+            if(end <= new Date())
             {
                 alert( "实验已结束，无法提交")
                 return
             }
             console.log(type)
-            this.saveReportForm(type)
+            await this.saveReportForm(type)
             if(type===2){
-                setTimeout(this.saveReportImages,1000)
+               await this.saveReportImages()
+                // setTimeout(this.saveReportImages,1000)
             }
         },
-        saveReportForm(type){
+       async saveReportForm(type){
             console.log(type)
             let dataList = []
             for (let i in this.formList){
@@ -154,8 +155,8 @@ export default {
             }
             console.log(JSON.stringify(dataList))
             let fd = new FormData()
-            fd.append("l_id",1)
-            fd.append("s_id","1952166")
+            fd.append("l_id",this.$route.query.l_id)
+            fd.append("s_id",this.$store.state.userInfo.id)
             fd.append("status",type)
             for (let i in this.formList){
                 fd.append("forms",JSON.stringify({
@@ -167,7 +168,7 @@ export default {
             }
             // fd.append("forms",dataList)
             console.log(fd)
-            this. axios({
+            await this. axios({
                 method:"post",
                 url:"/api/report/postReportForm",
                 data:fd,
@@ -184,9 +185,9 @@ export default {
                 // console.log(resp.data.id)
             })
         },
-        saveReportImages(){
+        async saveReportImages(){
             for(let i in this.$refs.saveImage){
-                this.$refs.saveImage[i].fileUpload()
+               await this.$refs.saveImage[i].fileUpload()
             }
         }
     }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.edu.tongji.backend.course.mapper.TodoMapper">
+
+    <select id="getAllTodo" resultType="bulletin">
+        select todo_id, todo.name, todo.`desc`, start_time, end_time, todo.c_id, course.name as c_name, todo.t_id, teacher.name as t_name
+        from todo, teacher, course
+        where todo.c_id=course.c_id and todo.t_id=teacher.t_id;
+    </select>
+
+    <select id="getTodoByCid" resultType="bulletin">
+        select todo_id, todo.name, todo.`desc`, start_time, end_time, todo.c_id, course.name as c_name, todo.t_id, teacher.name as t_name
+        from todo, teacher, course
+        where todo.c_id=course.c_id and todo.t_id=teacher.t_id and todo.c_id=#{c_id};
+    </select>
+
+    <insert id="addTodo" >
+        insert into todo (c_id, t_id, name, `desc`, start_time, end_time)
+        values (#{c_id}, #{t_id}, #{name}, #{desc}, #{start_time}, #{end_time});
+    </insert>
+
+</mapper>

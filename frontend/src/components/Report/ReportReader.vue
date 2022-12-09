@@ -16,7 +16,7 @@
             </div>
             <div v-else style="clear: both">
                 <div v-for="(image,i) in item.imgList" :key="i">
-                     <img :src="require('../../../../../LabAssets/' + image)" style="max-width: 700px">
+                    <img :src="require('../../../../../TJ-LabImages/' + image)" >
                 </div>
                 <div v-if="item.imgList.length===0">
                     未上传图片

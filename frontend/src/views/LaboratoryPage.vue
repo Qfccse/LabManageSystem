@@ -51,6 +51,8 @@
 <script>
 
 import FeedbackCreator from "@/components/Bulletin/FeedbackCreator";
+
+
 export default {
     name: "LaboratoryPage",
     components: {FeedbackCreator},
@@ -59,13 +61,14 @@ export default {
             l_id:0,
             lab:{},
             guidebookList:[],
+            stuRid:0
         }
     },
-    mounted() {
+    async mounted() {
         this.l_id = this.$route.query.l_id
-        this.getLab()
-        this.showGuidebookList()
-        console.log(new Date(this.lab.end_time))
+        // this.l_id = "2"
+        await this.getLab()
+        await this.showGuidebookList()
     },
     methods:{
         fillZero(str){
@@ -86,32 +89,31 @@ export default {
             var hour = this.fillZero(date.getHours())
             var mini = this.fillZero(date.getMinutes())
             var sec = this.fillZero(date.getSeconds())
-            var currentdate = year + s1 + month + s1 + strDate + " " + hour + s2 + mini + s2 + sec;
-            return currentdate;
+            return year + s1 + month + s1 + strDate + " " + hour + s2 + mini + s2 + sec;
         },
-        click2Fill(){
+        async click2Fill(){
             if(new Date() >= new Date(this.lab.end_time))
             {
                 alert("实验已结束")
                 return
             }
-            this.createReport()
-            this.$router.push({
-                path:'/student/coursePage/report',
+            await this.createReport()
+            await this.$router.push({
+                path: '/student/coursePage/report',
                 query:{
                     l_id:this.lab.l_id,
-                    s_id: this.$store.state.userInfo.id,
-                    l_name:this.lab.name
+                    s_id:this.$store.state.userInfo.id,
+                    r_id:this.stuRid
                 }
             })
         },
-        getLab(){
-            this. axios({
+        async getLab(){
+            await this. axios({
                 method:"get",
                 url:"/api/laboratory/getLabInfo",
                 params:{
                     l_id:this.$route.query.l_id
-                    // l_id:1
+                    // l_id:2
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -125,13 +127,13 @@ export default {
                 }
             })
         },
-        showGuidebookList(){
-            this. axios({
+        async showGuidebookList(){
+            await this. axios({
                 method:"get",
                 url:"/api/guidebook/getLabGuidebooks",
                 params:{
                     l_id:this.$route.query.l_id
-                    // l_id:1
+                    // l_id:2
                 }
             }).then(resp =>{
                 console.log(resp.data)
@@ -143,16 +145,16 @@ export default {
                 }
             })
         },
-        createReport(){
+        async createReport(){
             let report = {
                 r_id:0,
-                s_id: this.$store.state.userInfo.id,
+                s_id:this.$store.state.userInfo.id,
                 l_id:this.lab.l_id,
                 name:this.lab.name,
                 submit_time :new Date(),
                 status:0
             }
-            this. axios({
+           await this. axios({
                 method:"post",
                 url:"/api/report/postReport",
                 data:report,
@@ -161,6 +163,7 @@ export default {
                 }
             }).then(resp =>{
                 console.log(resp.data)
+                this.stuRid = resp.data
             })
         }
     }
