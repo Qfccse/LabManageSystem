@@ -35,6 +35,7 @@
                     </div>
                     <div style="float: right;width: 20%">
                     </div>
+
                 </div>
                 <div class="bform" style="clear:both;">
                     <input type="text" placeholder="学号" v-model="user.u_id">
@@ -44,7 +45,7 @@
                     <div class="errTips" v-if="conflict.email">* 邮箱不存在！ *</div>
                     <div class="errTips" v-else></div>
                     <div style="width: 67%;height:40px;line-height: 40px;margin-top: 20px">
-                        <input style="width: 40%;margin-top: 0;float: left" type="email" v-model="user.code">
+                        <input style="width: 45%;margin-top: 0;float: left" type="email" v-model="user.code">
                         <button  class="sender" @click="countDown" :disabled="senderDisable">{{content}}</button>
                     </div>
                     <input type="password" placeholder="新密码" v-model="user.password" @keydown.enter="register">
@@ -73,7 +74,7 @@
                     <div class="errTips" v-if="conflict.email">* 邮箱绑定！ *</div>
                     <div class="errTips" v-else></div>
                     <div style="width: 67%;height:40px;line-height: 40px;margin-top: 20px">
-                        <input style="width: 40%;margin-top: 0;float: left" type="email" v-model="user.code">
+                        <input style="width: 45%;margin-top: 0;float: left" type="email" v-model="user.code">
                         <button  class="sender" @click="countDown" :disabled="senderDisable">{{content}}</button>
                     </div>
                     <input type="password" placeholder="设置密码" v-model="user.password" @keydown.enter="register">
@@ -87,9 +88,11 @@
 </template>
 
 <script>
-export default{
-    name:'LoginActivate',
-    data(){
+
+
+export default {
+    name: 'LoginActivate',
+    data() {
         return {
             choose:0,
             conflict:{
@@ -110,7 +113,7 @@ export default{
             }
         }
     },
-    methods:{
+    methods: {
         changeType(type) {
             this.conflict = {
                 u_id:false,
@@ -166,7 +169,10 @@ export default{
 }
 </script>
 
-<style scoped="scoped">
+
+
+
+<style scoped>
 .btitle{
     font-size: 1.5em;
     font-weight: bold;
@@ -180,7 +186,7 @@ export default{
     border-radius: 20px
 }
 .sender{
-    width: 45%;
+    width: 40%;
     font-size: 14px;
     height: 40px;
     display: inline-block;

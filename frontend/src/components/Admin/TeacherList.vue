@@ -1,7 +1,7 @@
 <template>
     <div>
         <div style="width: 1100px" v-if="teacherList.length===0">
-            null
+            暂无授课教师
         </div>
         <div style="width: 1100px" v-else>
             <el-row style="font-weight: bolder;font-size: 20px;">

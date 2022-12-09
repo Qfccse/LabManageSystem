@@ -9,7 +9,7 @@
                           :placeholder="item.placeholder?item.placeholder:'请输入'"></el-input>
             </template>
             <template v-else>
-                <FileUploader ref="saveImage" :show="true" list-type="picture-card" url="/api/report/postReportImages" :id="idList[index]" ></FileUploader>
+                <FileUploader ref="saveImage" :show="true" list-type="picture-card" url="/api/report/postReportImages" :id="idList[index]"></FileUploader>
             </template>
         </div>
         <div style="margin-top: 20px;">
@@ -96,7 +96,6 @@ export default {
                     }
                 }
             }
-
             return false
         },
         receiveReport(){
@@ -130,7 +129,6 @@ export default {
             if(this.checkRequired(type)){
                 return
             }
-
             if(this.getReportDDL() <= new Date())
             {
                 alert( "实验已结束，无法提交")
@@ -156,7 +154,6 @@ export default {
             }
             console.log(JSON.stringify(dataList))
             let fd = new FormData()
-
             fd.append("l_id",1)
             fd.append("s_id","1952166")
             fd.append("status",type)

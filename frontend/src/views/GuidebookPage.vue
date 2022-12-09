@@ -1,6 +1,6 @@
 <template>
     <div style="width: 800px;margin: auto">
-        <el-col :span="20">
+        <el-col :span="20" style="font-family: 'Helvetica Neue'; font-weight: bolder; font-size: 26px;" >
             {{this.$route.query.name}}
         </el-col>
         <FileDownloader url="/api/guidebook/getGuidebookBytes"

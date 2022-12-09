@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="canvas" style="margin: auto;width: 1200px">
+        <div class="canvas" style="margin: auto;width: 1100px">
             <div class="course_title clearbox"> 计算机组成原理实验</div>
             <div class="course_detail">
                 <div class="fl show_border" style="width: 800px;margin-left: 20px">
@@ -125,7 +125,6 @@ export default {
             ],
         }
     },
-
 }
 </script>
 
@@ -165,7 +164,7 @@ ul, ol{
     font-weight: bolder;
 }
 .canvas{
-    background-color: ghostwhite;
+    /* background-color: #e9eef3; */
     overflow: hidden;
 }
 .course_title{

@@ -98,7 +98,7 @@ export default {
             userList:[],
             filteredUserList:[],
             statusList:["未激活","已激活"],
-            roleList:["教师","学生"],
+            roleList:[" ", "教师"," ", "学生"],
             roleOptions: [
                 {
                     index: 0,

@@ -35,7 +35,7 @@ export default {
         return{
             reportName:"",
             reportList:[],
-            statusList:["未完成","未提交","已提交"],
+            statusList:["未完成","未提交","已提交", "已批改"],
         }
     },
     mounted() {
@@ -65,9 +65,9 @@ export default {
         gotoReport(row){
             console.log(row)
             this.$router.push({
-                name:'ReportReader',
+                path: '/teacher/coursePage/reportreader',
                 query:{
-                    l_id:2,
+                    l_id:1,
                     s_id:row.s_id,
                     name:row.stu_name,
                     report:this.reportName,

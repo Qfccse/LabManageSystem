@@ -1,5 +1,5 @@
 <template>
-    <div class="hello">
+    <div class="hello"  >
         <pdf class="pdf_board"
              ref="pdf"
              :src="pdfUrl"

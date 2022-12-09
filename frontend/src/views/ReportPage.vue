@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div style="width: 800px;margin: auto">
+        <div style="width: 800px;margin-left: 10%">
             <h1>{{ this.$route.query.l_name }}实验报告</h1>
             <ReportFiller
                 :lid="this.$route.query.l_id"

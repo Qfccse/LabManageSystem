@@ -1,7 +1,7 @@
 <template>
     <div style="width: 1000px;">
         <div v-if="stuList.length===0">
-            没有学生
+            暂无选课学生
         </div>
        <div v-else>
            <el-row style="font-weight: bolder;font-size: 20px;">
@@ -82,8 +82,8 @@ export default {
         click2Change(value,index){
             this.roleOptions.forEach(item => {
                 if(item.index===value){
-                    // console.log(item)
-                    // console.log(index)
+                    console.log(item)
+                    console.log(index)
                     this.stuRole[index] = this.roleList[item.index-3]
                     this.stuList[index].role = item.index
                     this. axios({
@@ -91,7 +91,7 @@ export default {
                         url:"/api/admin/postUpdateTakesRole",
                         params:{
                             s_id:this.stuList[index].s_id,
-                            c_id:8,
+                            c_id:this.$route.query.c_id,
                             role:item.index
                         }
                     }).then(resp =>{

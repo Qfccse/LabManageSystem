@@ -147,8 +147,8 @@ export default {
             for (let i in this.formList){
                 dataList.push(
                     {
-                        l_id:7,
-                        t_id:"1",
+                        l_id: this.$route.query.l_id,
+                        t_id: this.$store.state.userInfo.id,
                         title:this.formList[i].title,
                         order:i,
                         placeholder:this.formList[i].placeholder,
@@ -157,7 +157,7 @@ export default {
                     }
                 )
             }
-            console.log(JSON.stringify(dataList))
+            console.log(dataList)
             this. axios({
                 method:"post",
                 url:"/api/report/postReportTemplate",

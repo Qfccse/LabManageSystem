@@ -1,5 +1,33 @@
 <template>
     <div class="test">
+
+<div v-if="false">
+        <PDFReader
+                url="/api/guidebook/getGuidebookBytes"
+                :gid=1
+            >
+            </PDFReader>
+
+            <LabList></LabList>
+
+            <div style="margin-top: 50px">发布报告表单</div>
+            <ReportCreator></ReportCreator>
+
+            <div style="margin-top: 50px">填写报告</div>
+            <ReportFiller></ReportFiller>
+            <div style="margin-top: 50px">阅读报告</div>
+            <ReportReader></ReportReader>
+
+            <LabCreator></LabCreator>
+
+
+</div>
+
+
+<div style="margin-top: 50px">阅读报告</div>
+            <ReportReader></ReportReader>
+
+
         <div v-if="false">
             <div style="margin-top: 50px" @click="test">普通接口测试</div>
             <div>
@@ -26,6 +54,7 @@
             >
             </PDFReader>
 
+
             <div style="margin-top: 50px">发布报告表单</div>
             <ReportCreator></ReportCreator>
             <div style="margin-top: 50px">填写报告</div>
@@ -41,11 +70,7 @@
              name:'123',
              path:'123',}"></FileUploader>
             <div style="margin-top: 50px">阅读pdf</div>
-            <PDFReader
-                url="/api/guidebook/getGuidebookBytes"
-                :gid=7
-            >
-            </PDFReader>
+           
             <GuidebookPage></GuidebookPage>
             <LabCreator></LabCreator>
             <LabList></LabList>
@@ -69,16 +94,13 @@
 
             <AdminLayout></AdminLayout>
             <LoginActivate></LoginActivate>
-            <TeacherLabPage></TeacherLabPage>
+
         </div>
         <!--        <LaboratoryPage></LaboratoryPage>-->
         <!--        <LabList></LabList>-->
         <!--        <ReportCreator></ReportCreator>-->
-        <!--        <AdminLayout></AdminLayout>-->
-<!--        <ReportCreator></ReportCreator>-->
-<!--        <ReportFiller></ReportFiller>-->
-<!--        <LaboratoryPage></LaboratoryPage>-->
-        <LabReportList></LabReportList>
+<!--        <AdminLayout></AdminLayout>-->
+        <!-- <LoginActivate></LoginActivate> -->
     </div>
 </template>
 
@@ -93,7 +115,9 @@ import GuidebookPage from "@/views/GuidebookPage";
 import LabCreator from "@/components/Laboratory/LabCreator";
 import LaboratoryPage from "@/views/LaboratoryPage";
 import LabList from "@/components/Laboratory/LabList";
-import BulletinPage from "@/views/BulletinPage";
+
+
+// import BulletinPage from "@/views/BulletinPage";
 import UserList from "@/components/Admin/UserList";
 import StudentList from "@/components/Admin/StudentList";
 import TeacherList from "@/components/Admin/TeacherList";
@@ -101,13 +125,9 @@ import AdminLayout from "@/layout/AdminLayout";
 import CourseStudentList from "@/components/Admin/CourseStudentList";
 import CourseTeacherList from "@/components/Admin/CourseTeacherList";
 import LoginActivate from "@/views/LoginActivate";
-import TeacherLabPage from "@/views/TeacherLabPage";
-import LabReportList from "@/components/Report/LabReportList";
 export default {
     name: 'TEST',
     components: {
-        LabReportList,
-        TeacherLabPage,
         LoginActivate,
         CourseTeacherList,
         CourseStudentList,
@@ -115,7 +135,7 @@ export default {
         TeacherList,
         StudentList,
         UserList,
-        BulletinPage,
+        // BulletinPage,
         LabList,
         LaboratoryPage,
         LabCreator,

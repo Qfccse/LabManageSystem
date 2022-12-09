@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <h2>反馈课程学习情况</h2>
+    <div style="margin-top: 20px;">
+        
+        <h3>实验反馈</h3>
         <el-input
             type="textarea"
             :autosize="{minRows:3}"

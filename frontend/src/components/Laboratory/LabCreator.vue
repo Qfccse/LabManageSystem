@@ -76,7 +76,6 @@ export default {
     },
     methods:{
         createLab(){
-            this.lab.c_id = 1
             this.lab.start_time = new Date(this.lab.start_time)
             this.lab.end_time = new Date(this.lab.end_time)
             console.log(this.lab)

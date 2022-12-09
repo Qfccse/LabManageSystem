@@ -13,7 +13,7 @@
             :accept="fileType?fileType:'image/*'"
             :show-file-list="true"
             :limit="limit"
-            action='https://jsonplaceholder.typicode.com/posts/'
+            action='https'
             :on-success="handleUploadSuccess"
             :on-remove="handleRemove"
         >

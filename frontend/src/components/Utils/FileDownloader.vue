@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-button @click="click2Download">下载文件</el-button>
+        <el-button @click="click2Download" type="primary">下载文件</el-button>
     </div>
 </template>
 
