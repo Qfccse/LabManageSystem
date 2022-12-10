@@ -2,16 +2,13 @@ package cn.edu.tongji.backend.login.controller;
 
 import cn.edu.tongji.backend.login.pojo.Result;
 import cn.edu.tongji.backend.login.pojo.User;
+import cn.edu.tongji.backend.login.service.MailService;
 import cn.edu.tongji.backend.login.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.Random;
 
 @Slf4j
 @RestController
@@ -20,14 +17,8 @@ import java.util.Random;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @Autowired
-    private JavaMailSender mailSender;
-
-    @Value("${spring.mail.username}")
-    private String from;
-
-
+    private MailService mailService;
 
     @PostMapping(value = "/userLogin")
     public Result<User> login(@RequestParam("u_id") String u_id, @RequestParam("password") String password){
@@ -72,35 +63,9 @@ public class UserController {
 
     @PostMapping("/sendEmail")
     public String sendEmail(@RequestParam("email") String email, HttpSession session){
-        // 60s 存活时间
-        try {
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setSubject("验证码邮件");//主题
-            //生成随机数
-            String code = randomCode();
-            //将随机数放置到session中
-            session.setAttribute("email",email);
-            session.setAttribute("code",code);
-            mailMessage.setText("您收到的验证码是："+ code);//内容
-            mailMessage.setTo(email);//发给谁
-            mailMessage.setFrom(from);//你自己的邮箱
-            mailSender.send(mailMessage);//发送
-            session.setMaxInactiveInterval(60);
-            return "true";
-        }catch (Exception e){
-            e.printStackTrace();
-            return "false";
-        }
+        return mailService.mailAPI(email,session);
     }
 
-    public String randomCode(){
-        StringBuilder str = new StringBuilder();
-        Random random = new Random();
-        for (int i = 0; i < 6; i++) {
-            str.append(random.nextInt(10));
-        }
-        return str.toString();
-    }
 
     @PostMapping("/userActivate")
     public Result<User> userActivate(@RequestBody User user, HttpSession session){
@@ -137,7 +102,7 @@ public class UserController {
                 //将数据写入数据库
                 userService.updateUserEmailStatus(user.getU_id(),user.getEmail(),user.getPassword(),1);
                 result.setMsg("激活成功");
-                result.setErrorCode(999);
+                result.setErrorCode(9);
                 result.setDetail(userService.selectUserInfo(user.getU_id()));
             }
         }
