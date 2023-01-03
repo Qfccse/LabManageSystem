@@ -18,6 +18,7 @@
     <module>login</module>
     <module>course</module>
     <module>grade</module>
+    <module>bulletin</module>
   </modules>
 
   <packaging>pom</packaging>
