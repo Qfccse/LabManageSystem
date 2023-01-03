@@ -54,7 +54,7 @@
 
     </dependencies>
     <build>
-        <finalName>app</finalName>
+        <finalName>guidebook</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

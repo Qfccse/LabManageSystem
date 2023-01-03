@@ -100,7 +100,7 @@ public class UserController {
             }
             else {
                 //将数据写入数据库
-                userService.updateUserEmailStatus(user.getU_id(),user.getEmail(),user.getPassword(),1);
+                userService.updateUserEmailStatus(user.getU_id(), user.getEmail(), user.getPassword(), 1);
                 result.setMsg("激活成功");
                 result.setErrorCode(9);
                 result.setDetail(userService.selectUserInfo(user.getU_id()));

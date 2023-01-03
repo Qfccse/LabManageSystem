@@ -55,7 +55,7 @@
           </el-menu-item>
 
           <el-menu-item index="4" @click="$router.push('/admin/board')">
-            <i class="el-icon-document"></i>
+            <i class="el-icon-data-board"></i>
             <template v-slot:title>公告板</template>
           </el-menu-item>
 
@@ -81,7 +81,7 @@
               ><b>同济大学实验教学课程管理系统</b></el-menu-item
             >
 
-            <el-menu-item index="4" style="float: right">
+            <el-menu-item index="4" style="float: right"  @click="logout">
               <i class="el-icon-unlock"></i>退出登录</el-menu-item
             >
             <!-- <el-menu-item index="3" disabled style="float: right;">消息中心</el-menu-item> -->
@@ -157,15 +157,20 @@ export default {
         path: "/admin/user",
       });
     },
+    logout() {
+      this.$store.commit("clear");
+      sessionStorage.clear();
+      this.$router.push("/login");
+    }
   },
   mounted() {
-    sessionStorage.setItem(
-      "UserInfo",
-      JSON.stringify({ id: "001", role: "admin" , name: "赵生捷"})
-    );
-    this.$store.commit("setUserInfo");
+    // sessionStorage.setItem(
+    //   "UserInfo",
+    //   JSON.stringify({ id: "9527", role: "admin" , name: "郭明暄"})
+    // );
+    // this.$store.commit("setUserInfo");
 
-    // this.getCoursesAsStudent();
+    this.getCoursesAsStudent();
     console.log("layout has been mounted");
   }
 };

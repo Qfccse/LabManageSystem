@@ -10,4 +10,6 @@ public class Guidebook {
     private int type;
     private String name;
     private String path;
+    private String l_name;
+    private String t_name;
 }

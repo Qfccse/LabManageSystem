@@ -26,6 +26,7 @@ public class ReportController {
     @Autowired
     private ReportTemplateService reportTemplateService;
 
+
     @GetMapping("/getLabReport")
     public List<Report> getLabReport(@RequestParam("l_id") int l_id){
         System.out.println("获取实验 " + l_id + " 的全部report");

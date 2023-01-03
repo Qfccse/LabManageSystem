@@ -13,7 +13,7 @@ public interface ReportMapper {
     @Options(useGeneratedKeys = true, keyProperty = "r_id", keyColumn = "r_id")
     void insertIntoReport(Report report);
 
-    @Update("update report set report.status=#{status},submit_time=#{submit_time} where r_id=#{r_id}")
+    @Update("update report set status=#{status},submit_time=#{submit_time} where r_id=#{r_id}")
     void updateReport(Report report);
 
     @Select("select * from report where s_id=#{s_id} and l_id=#{l_id}")

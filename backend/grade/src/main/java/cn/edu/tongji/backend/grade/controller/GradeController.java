@@ -5,6 +5,7 @@ import cn.edu.tongji.backend.grade.pojo.Laboratory;
 import cn.edu.tongji.backend.grade.pojo.Mark;
 import cn.edu.tongji.backend.grade.pojo.Operates;
 import cn.edu.tongji.backend.grade.pojo.info.CourseGrade;
+import cn.edu.tongji.backend.grade.pojo.info.NewMark;
 import cn.edu.tongji.backend.grade.pojo.tools.Message;
 import cn.edu.tongji.backend.grade.service.GradeService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,10 +28,17 @@ public class GradeController {
 
     //教师批阅报告并打分
     @PostMapping("/markReport")
-    public ResponseEntity<HashMap<String, Object>> markReport(@RequestBody Mark mark) {
-        Message message = gradeService.addMark(mark);
+    public ResponseEntity<HashMap<String, Object>> markReport(@RequestBody NewMark newMark) {
+        Message message = gradeService.addMark(newMark);
         return new ResponseEntity<>(message.getMap(), HttpStatus.OK);
     }
+
+    @PostMapping("/getComment")
+    public ResponseEntity<HashMap<String, Object>> getComment(@RequestBody NewMark newMark) {
+        Message message = gradeService.getMark(newMark);
+        return new ResponseEntity<>(message.getMap(), HttpStatus.OK);
+    }
+
 
 
     /**
@@ -73,7 +81,5 @@ public class GradeController {
         Message message = gradeService.getCourseGrades(c_id);
         return new ResponseEntity<>(message.getMap(), HttpStatus.OK);
     }
-
-
 
 }

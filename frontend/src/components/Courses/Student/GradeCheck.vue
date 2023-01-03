@@ -49,6 +49,9 @@
      
       <el-table-column prop="score" label="报告成绩" width="200px">
       </el-table-column>
+
+      <el-table-column prop="comment" label="教师评语" width="200px">
+      </el-table-column>
     </el-table>
    
  </div>
@@ -80,6 +83,7 @@ export default {
         )
         .then((response) => {
           console.log("this is grade");
+          console.log(response.data.grade);
           this.grade = response.data.grade;
           this.grade.labScores.forEach(element => {
             if (element.attend_score == 1) {

@@ -44,7 +44,7 @@
                 <el-col :span="colspan.left">分数权重：</el-col>
                 <el-col :span="colspan.right"><el-input v-model="lab.proportion"></el-input></el-col>
             </el-row>
-            <el-row :gutter="gutter"><el-button @click="createLab">创建</el-button></el-row>
+            <el-row :gutter="gutter"><el-button @click="click2CreateLabTodo">创建</el-button></el-row>
         </el-form>
     </div>
 </template>
@@ -88,7 +88,35 @@ export default {
                 },
             }).then(resp =>{
                 console.log(resp.data)
+                this.$message.success("实验添加成功!")
             })
+        },
+        createTodo(){
+            console.log('create todo')
+            let todo = {
+                todo_id:0,
+                c_id: this.lab.c_id,
+                t_id:this.$store.state.userInfo.id,
+                name:this.lab.name,
+                desc:"请在截止期日前完成实验项目",
+                start_time: new Date(this.lab.start_time),
+                end_time: new Date(this.lab.end_time),
+                type:2,
+            }
+            this. axios({
+                method:"post",
+                url:"/api/bulletin/addBulletin",
+                data:todo,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }).then(resp =>{
+                console.log(resp.data)
+            })
+        },
+        click2CreateLabTodo(){
+            this.createLab()
+            this.createTodo()
         }
     }
 }

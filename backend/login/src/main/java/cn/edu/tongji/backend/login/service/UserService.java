@@ -41,7 +41,7 @@ public class UserService {
         return userMapper.selectUserStatus(u_id);
     }
 
-    public void updateUserEmailStatus(String u_id,String email,String password,int status){
+    public void updateUserEmailStatus(String u_id, String email,String password,int status){
         userMapper.insertEmailAndStatus(u_id, email, password,status);
     }
 

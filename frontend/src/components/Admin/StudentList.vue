@@ -3,27 +3,27 @@
         <div v-if="stuList.length===0">
             暂无选课学生
         </div>
-        <div v-else>
-            <el-row style="font-weight: bolder;font-size: 20px;">
-                <el-col :span="8">学工号</el-col>
-                <el-col :span="8">姓名</el-col>
-                <el-col :span="8">角色</el-col>
-            </el-row>
-            <el-row v-for="(stu,index) in stuList" :key="index">
-                <el-col :span="8">{{stu.s_id}}</el-col>
-                <el-col :span="8">{{stu.name}}</el-col>
-                <el-col :span="8">
-                    <el-select v-model="stuRole[index]" @change="(val)=>click2Change(val,index)" >
-                        <el-option
-                            v-for="role in roleOptions"
-                            :key="role.index"
-                            :label="role.label"
-                            :value="role.index" >
-                        </el-option>
-                    </el-select>
-                </el-col>
-            </el-row>
-        </div>
+       <div v-else>
+           <el-row style="font-weight: bolder;font-size: 20px;">
+               <el-col :span="8">学工号</el-col>
+               <el-col :span="8">姓名</el-col>
+               <el-col :span="8">角色</el-col>
+           </el-row>
+           <el-row v-for="(stu,index) in stuList" :key="index">
+               <el-col :span="8">{{stu.s_id}}</el-col>
+               <el-col :span="8">{{stu.name}}</el-col>
+               <el-col :span="8">
+                   <el-select v-model="stuRole[index]" @change="(val)=>click2Change(val,index)">
+                       <el-option
+                           v-for="role in roleOptions"
+                           :key="role.index"
+                           :label="role.label"
+                           :value="role.index" >
+                       </el-option>
+                   </el-select>
+               </el-col>
+           </el-row>
+       </div>
     </div>
 </template>
 
@@ -31,23 +31,23 @@
 export default {
     name: "StudentList",
     data(){
-        return{
-            stuList:[],
-            stuRole:[],
-            roleOptions: [
-                {
-                    index: 3,
-                    label: '助教',
+      return{
+          stuList:[],
+          stuRole:[],
+          roleOptions: [
+              {
+                  index: 3,
+                  label: '助教',
 
-                },
-                {
-                    index: 4,
-                    label: '学生',
+              },
+              {
+                  index: 4,
+                  label: '学生',
 
-                }
-            ],
-            roleList:['助教','学生'],
-        }
+              }
+          ],
+          roleList:['助教','学生'],
+      }
     },
     mounted() {
         this.getStuList()
@@ -55,7 +55,6 @@ export default {
     watch:{
         $route(){
             this.getStuList()
-            this. click2Change()
         }
     },
     methods:{
@@ -70,7 +69,6 @@ export default {
             }).then(resp =>{
                 console.log(resp.data)
                 this.stuList = []
-                this.stuRole = []
                 for (let i in resp.data){
                     this.stuList.push({
                         s_id:resp.data[i].s_id,
@@ -84,8 +82,8 @@ export default {
         click2Change(value,index){
             this.roleOptions.forEach(item => {
                 if(item.index===value){
-                    console.log(item)
-                    console.log(index)
+                    // console.log(item)
+                    // console.log(index)
                     this.stuRole[index] = this.roleList[item.index-3]
                     this.stuList[index].role = item.index
                     this. axios({
@@ -93,15 +91,15 @@ export default {
                         url:"/api/admin/postUpdateTakesRole",
                         params:{
                             s_id:this.stuList[index].s_id,
-                            c_id:this.$route.query.c_id,
+                            c_id:8,
                             role:item.index
                         }
                     }).then(resp =>{
                         console.log(resp.data)
+                        this.$message.success("角色变更成功!")
                     })
                 }
             })
-            this.$forceUpdate()
         }
     }
 }

@@ -3,14 +3,14 @@
     <el-aside width="150px">
 
     <el-col :span="24" >
-    <el-menu 
+    <el-menu
       default-active="1"
       class="el-menu-vertical-demo"
       active-text-color="#FFFFFF"
       >
-    
 
-   
+
+
       <el-menu-item index="1" @click="gotoMainPage">
         <template  v-slot:title>
           <i class="el-icon-location"></i>
@@ -19,46 +19,54 @@
       </el-menu-item>
 
 
-      
+
 
       <el-menu-item index="2" @click="gotoMessage">
         <template  v-slot:title>
-          <i class="el-icon-location"></i>
+          <i class="el-icon-postcard"></i>
           <span>课程公告</span>
         </template>
       </el-menu-item>
 
       <el-menu-item index="3"  @click="gotoLabDirectory" >
         <template  v-slot:title>
-          <i class="el-icon-location" ></i>
+          <i class="el-icon-s-operation" ></i>
           <span>实验目录</span>
         </template>
       </el-menu-item>
 
+      <el-menu-item index="7"
+          @click="gotoFileList">
+          <template  v-slot:title>
+            <i class="el-icon-files"></i>
+            <span>课程文件</span>
+          </template>
+        </el-menu-item>
+
 
       <el-menu-item index="4" @click="gotoFeedback">
         <template  v-slot:title>
-          <i class="el-icon-location"></i>
+          <i class="el-icon-notebook-1"></i>
           <span>学生反馈</span>
         </template>
       </el-menu-item>
 
       <el-menu-item index="5" @click="gotoFaculty">
         <template  v-slot:title>
-          <i class="el-icon-location"></i>
+          <i class="el-icon-s-custom"></i>
           <span>课程人员</span>
         </template>
       </el-menu-item>
 
       <el-menu-item index="6" @click="gotoGrade">
         <template  v-slot:title>
-          <i class="el-icon-location"></i>
+          <i class="el-icon-s-data"></i>
           <span>成绩管理</span>
         </template>
       </el-menu-item>
-      
 
-      
+
+
     </el-menu>
   </el-col>
 
@@ -73,8 +81,8 @@
 export default {
     name: "TeacherCourseLayout",
     data() {
-        return{    
-                    
+        return{
+
         }
     },
     computed: {
@@ -84,7 +92,7 @@ export default {
         } else {
           return undefined
         }
-      },  
+      },
     },
     methods: {
       gotoMainPage() {
@@ -141,7 +149,14 @@ export default {
           }
         });
       },
-
+      gotoFileList() {
+        this.$router.push({
+          path: '/teacher/coursePage/fileList',
+          query: {
+           c_id: this.$store.state.c_id,
+          }
+        });
+      }
     }
 
 }

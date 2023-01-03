@@ -169,6 +169,7 @@ export default {
                 //设置表格数据
                 console.log(resp.data)
                 console.log(resp.data.id)
+                this.$message.success("模板设置成功!")
             })
 
         },

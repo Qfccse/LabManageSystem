@@ -3,18 +3,19 @@
         <div style="min-height: 650px;">
             <el-form>
                 <el-row style="height: 60px">
-                    <el-col :span="8">
+                    <el-col :span="5">
                         查找：
                         <el-input
                             @input="search"
-                            style="width: 60%"
+                            style="width: 70%"
                             v-model="inputText"
                             suffix-icon="el-icon-search">
                         </el-input>
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="5">
                         角色：
                         <el-select v-model="roleValue" placeholder="请选择角色"
+                                   style="width: 60%"
                                    @change="click2ChooseRole">
                             <el-option
                                 v-for="role in roleOptions"
@@ -25,9 +26,10 @@
                             </el-option>
                         </el-select>
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="6">
                         激活状态：
                         <el-select v-model="statusValue" placeholder="是否激活"
+                                   style="width: 60%"
                                    @change="click2ChooseStatus">
                             <el-option
                                 v-for="status in statusOptions"
@@ -37,6 +39,24 @@
                             >
                             </el-option>
                         </el-select>
+                    </el-col>
+                    <el-col :span="8">
+                        <div style="float: left">
+                            导入用户：
+                        </div>
+                        <FileUploader
+                            list-type="text"
+                            style="float: left"
+                            :limit="1"
+                            icon="el-icon-upload"
+                            :show="false"
+                            :file-lis-to-right="true"
+                            file-type=".xlsx,.xls,.csv"
+                            url="/api/admin/postUserFile"
+                            :id="1"
+                        >
+                        </FileUploader>
+<!--                        <i class="el-icon-arrow-right" style="float: right;font-size: 30px;height: 60px;line-height: 50px"></i>-->
                     </el-col>
                 </el-row>
                 <el-row style="font-size: 20px;font-weight: bolder">
@@ -91,8 +111,10 @@
 </template>
 
 <script>
+import FileUploader from "@/components/Utils/FileUploader";
 export default {
     name: "UserList",
+    components: {FileUploader},
     data(){
         return{
             userList:[],
@@ -261,7 +283,5 @@ export default {
     border: 1px solid #DCDFE6;
     margin-top:-1px
 }
-.el-col{
-    /*border: 1px solid gray;*/
-}
+
 </style>

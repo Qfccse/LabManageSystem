@@ -7,7 +7,7 @@
       </div>
       <div class="line fl"></div>
 
-<!-- 
+<!--
       <div>操作
             <el-button size="mini" onClick={()=>this.dialogFormVisible=true}   style="margin-left: 80px;"
             type="primary" plain>添加课程</el-button>  </div> -->
@@ -21,7 +21,7 @@
                      <el-form :model="newBulletin">
                        <el-form-item label="公告主题:" label-width="120px">
                          <el-input v-model="newBulletin.name" autocomplete="off"  style="width: 90%;"></el-input>
-                       </el-form-item>     
+                       </el-form-item>
                        <el-form-item label="公告内容:" label-width="120px">
                           <el-input
                             style="width: 90%;"
@@ -30,17 +30,17 @@
                             placeholder="请输入内容"
                             v-model="newBulletin.desc">
                           </el-input>
-                       </el-form-item>                                                         
+                       </el-form-item>
                      </el-form>
 
                      <div style="margin-top: 40px;">
-                      <el-button type="primary" 
-                        @click="dialogFormVisible = false; addTodo()"  
+                      <el-button type="primary"
+                        @click="dialogFormVisible = false; addTodo()"
                         style="margin-left: 400px; "
                       >确 定</el-button>
 
-                      
-                       
+
+
                      </div>
                  </el-dialog>
 
@@ -92,6 +92,7 @@ export default {
           t_id: this.$store.state.userInfo.id,
           desc: '',
           name: '',
+          type:1,
         },
     };
   },
@@ -106,10 +107,11 @@ export default {
         console.log(response);
         this.$message.success("添加公告成功!")
         this.getCourses();
+        this.getTodos();
       }).catch(function (response) {
         this.$message.error("添加公告失败!")
         console.log(response); //发生错误时执行的代码
-          
+
       });
       this.newBulletin.desc= '',
       this.newBulletin.name= '',

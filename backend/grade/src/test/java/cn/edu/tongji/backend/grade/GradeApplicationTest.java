@@ -3,6 +3,7 @@ package cn.edu.tongji.backend.grade;
 import cn.edu.tongji.backend.grade.mapper.OperateMapper;
 import cn.edu.tongji.backend.grade.pojo.Mark;
 import cn.edu.tongji.backend.grade.pojo.Takes;
+import cn.edu.tongji.backend.grade.pojo.info.NewMark;
 import cn.edu.tongji.backend.grade.service.GradeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,11 +38,18 @@ public class GradeApplicationTest {
         mark.setScore(100);
         mark.setComment("非常好");
 
-        gradeService.addMark(mark);
+//        gradeService.addMark();
     }
 
 
+    @Test
+    public void testGetMark() {
+        NewMark newMark = new NewMark();
+        newMark.setL_id(4);;
+        newMark.setS_id("2053677");
 
+        gradeService.getMark(newMark);
+    }
 
 
 }

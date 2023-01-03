@@ -40,7 +40,7 @@ public class UserController {
     @PostMapping("/postTakesTeaches")
     public String postStuTakes(@RequestParam("id") int id,@RequestParam("file") MultipartFile[]  multipartFile) throws IOException {
         for (MultipartFile file : multipartFile) {
-            System.out.println("file is " + file.getOriginalFilename());
+            System.out.println("post takes teaches file is " + file.getOriginalFilename());
             String fileName = file.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
             String localFileName = System.currentTimeMillis() + fileSuffix;
@@ -54,6 +54,7 @@ public class UserController {
                 String data = br.readLine(); //第一行是列名，所以不读
                 while ((data = br.readLine())!=null){
                     String[] userInfo = data.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                    System.out.println(userInfo);
                     User user = new User();
                     user.setAttributeByIndex(0,userInfo[0]);
                     user.setAttributeByIndex(4,userInfo[1]);
@@ -86,7 +87,7 @@ public class UserController {
                         User user = new User();
                         user.setAttributeByIndex(0,row.getCell(firstCellIndex).toString());
                         user.setAttributeByIndex(4,row.getCell(firstCellIndex +1).toString());
-                        user.setAttributeByIndex(6,row.getCell(firstCellIndex + 2).toString()==null?"":row.getCell(firstCellIndex + 1).toString());
+                        user.setAttributeByIndex(6,row.getCell(firstCellIndex + 2).toString()==null?"":row.getCell(firstCellIndex + 2).toString());
                         System.out.println(user);
                         insertT(user);
                     }
@@ -204,7 +205,7 @@ public class UserController {
         studentService.updateTakesRole(s_id, c_id, role);
     }
 
-    @PostMapping("postUpdateTeachesRole")
+    @PostMapping("/postUpdateTeachesRole")
     public void postToUpdateTeaches(@RequestParam("t_id")String t_id,@RequestParam("c_id")int c_id,@RequestParam("role")int role){
         teacherService.updateTeachesRole(t_id, c_id, role);
     }
@@ -274,11 +275,11 @@ public class UserController {
             for (String cid : cidSplit) {
                 int role = user.getRole();
                 if(role>=3){
-                    //System.out.println("加入学生");
+                    System.out.println("加入学生");
                     studentService.addTakes(user.getU_id(),Integer.parseInt(cid),role);
                 }
                 else {
-                    //System.out.println("加入老师");
+                    System.out.println("加入老师");
                     teacherService.addTeaches(user.getU_id(),Integer.parseInt(cid),role);
                 }
             }

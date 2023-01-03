@@ -12,6 +12,7 @@ const store = new Vuex.Store({
         c_id: 0,
         l_id: 0,
         roleInCourse: '',
+        c_name: '',
     },
     mutations:{
         setUserInfo(state){
@@ -25,6 +26,15 @@ const store = new Vuex.Store({
         },
         setCourseRole(state, role) {
             state.roleInCourse=role;
+        },
+        setCourseName(state, name) {
+            state.c_name=name;
+        },
+        clear(state) {
+            state.c_id = 0;
+            state.l_id = 0;
+            state.roleInCourse = '';
+            state.userInfo = null;
         }
     }
 })

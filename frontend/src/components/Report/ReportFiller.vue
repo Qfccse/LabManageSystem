@@ -1,7 +1,11 @@
 <template>
     <div style="width: 800px;margin:  auto">
         <div v-for="(item,index) in this.formList" :key="index">
-            <h3>{{item.title}}</h3>
+
+            <div style="clear: both">
+                <h3>{{item.title}}</h3>
+            </div>
+            <div style="clear: both">
             <template v-if="item.type === 'text'">
                 <el-input type="textarea"
                           :autosize="{minRows:3}"
@@ -11,8 +15,12 @@
             <template v-else>
                 <FileUploader ref="saveImage" :show="false" list-type="picture-card" url="/api/report/postReportImages" :rfid="idList[index]"></FileUploader>
             </template>
+
+            
+            </div>
+
         </div>
-        <div style="margin-top: 20px;">
+        <div style="margin-top: 30px; clear:both;">
             <el-button type="primary" @click="saveReport(1)">保存</el-button>
             <el-button type="success" @click="saveReport(2)">提交</el-button>
         </div>
@@ -73,6 +81,7 @@ export default {
                 console.log(this.endTime)
                 return new Date(resp.data.end_time)
             })
+            return new Date()
         },
         checkRequired(type){
             let ii = 0
@@ -124,24 +133,22 @@ export default {
                 }
             })
         },
-        async saveReport(type){
+        saveReport(type){
             if(this.checkRequired(type)){
                 return
             }
-            let end = await this.getReportDDL()
-            if(end <= new Date())
+            if(this.getReportDDL() <= new Date())
             {
                 alert( "实验已结束，无法提交")
                 return
             }
             console.log(type)
-            await this.saveReportForm(type)
+            this.saveReportForm(type)
             if(type===2){
-               await this.saveReportImages()
-                // setTimeout(this.saveReportImages,1000)
+                setTimeout(this.saveReportImages,1000)
             }
         },
-       async saveReportForm(type){
+        saveReportForm(type){
             console.log(type)
             let dataList = []
             for (let i in this.formList){
@@ -168,7 +175,7 @@ export default {
             }
             // fd.append("forms",dataList)
             console.log(fd)
-            await this. axios({
+            this. axios({
                 method:"post",
                 url:"/api/report/postReportForm",
                 data:fd,
@@ -185,9 +192,9 @@ export default {
                 // console.log(resp.data.id)
             })
         },
-        async saveReportImages(){
+        saveReportImages(){
             for(let i in this.$refs.saveImage){
-               await this.$refs.saveImage[i].fileUpload()
+                this.$refs.saveImage[i].fileUpload()
             }
         }
     }

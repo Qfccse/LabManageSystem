@@ -178,8 +178,8 @@ export default {
         method: "get",
         url: "/api/guidebook/getLabGuidebooks",
         params: {
-          // l_id:this.$route.query.l_id
-          l_id: 1,
+          l_id:this.$route.query.l_id
+          // l_id: 1,
         },
       }).then((resp) => {
         console.log(resp.data);

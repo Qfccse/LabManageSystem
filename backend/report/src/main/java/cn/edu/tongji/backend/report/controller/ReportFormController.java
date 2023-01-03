@@ -64,7 +64,6 @@ public class ReportFormController {
         report.setR_id(r_id);
         report.setStatus(status);
         report.setSubmit_time(new Timestamp(new Date().getTime()));
-        System.out.println(status);
         reportService.updateReportStatus(report);
 
         return ids.toString();

@@ -6,6 +6,7 @@ import cn.edu.tongji.backend.grade.mapper.OperateMapper;
 import cn.edu.tongji.backend.grade.mapper.TakesMapper;
 import cn.edu.tongji.backend.grade.pojo.*;
 import cn.edu.tongji.backend.grade.pojo.info.CourseGrade;
+import cn.edu.tongji.backend.grade.pojo.info.NewMark;
 import cn.edu.tongji.backend.grade.pojo.tools.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,12 +30,7 @@ public class GradeService {
     @Autowired
     private TakesMapper takesMapper;
 
-    public Message addMark(Mark mark) {
-        Message message = new Message();
-        markMapper.addMarks(mark);
-        message.set("added", 1);
-        return message;
-    }
+
 
     public Message getAttendScore(HashMap<String, String> map) {
         int r_id = Integer.parseInt(map.get("r_id"));
@@ -118,6 +114,43 @@ public class GradeService {
         }
 
         message.set("grades", grades);
+
+        return message;
+    }
+
+    public Message addMark(NewMark newMark) {
+        Message message = new Message();
+        int r_id = markMapper.getRid(newMark);
+
+        Mark mark = new Mark();
+        mark.setR_id(r_id);
+        mark.setComment(newMark.getComment());
+        mark.setScore(newMark.getScore());
+        mark.setT_id(newMark.getT_id());
+        markMapper.addMarks(mark);
+
+        markMapper.changeReportStatus(r_id);
+        message.set("added", 1);
+        return message;
+    }
+
+    public Message getMark(NewMark newMark) {
+        Message message = new Message();
+        int r_id = markMapper.getRid(newMark);
+
+        //检查一下装填  如果已批改 就返回
+        int status = markMapper.getReportStatus(r_id);
+
+        if(status == 3) {
+            Mark mark = markMapper.getMark(r_id);
+
+            message.set("mark", mark);
+            message.set("marked", 1);
+        }
+        else
+        {
+            message.set("marked", 0);
+        }
 
         return message;
     }

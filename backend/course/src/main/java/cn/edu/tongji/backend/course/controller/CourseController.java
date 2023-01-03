@@ -8,7 +8,6 @@ import cn.edu.tongji.backend.course.pojo.tools.Message;
 import cn.edu.tongji.backend.course.pojo.tools.STATUS;
 import cn.edu.tongji.backend.course.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -170,5 +169,4 @@ public class CourseController {
         Message message = courseService.addTodo(todo);
         return new ResponseEntity<>(message.getMap(), HttpStatus.OK);
     }
-
 }

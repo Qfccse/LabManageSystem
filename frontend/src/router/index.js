@@ -26,6 +26,7 @@ import GradeManagement from "@/components/Courses/Teacher/GradeManagement"
 import GradeCheck from "@/components/Courses/Student/GradeCheck"
 import GradeTA from "@/components/Courses/Student/GradeTA"
 
+
 //登陆界面
 import LoginActivate from "@/views/LoginActivate"
 
@@ -47,7 +48,9 @@ import ReportCreator from "@/components/Report/ReportCreator";
 import ReportReader from "@/components/Report/ReportReader";
 import LabReportList from "@/components/Report/LabReportList";
 import ReportPage from "@/views/ReportPage";
-import TEST from "@/views/TEST";
+import GuidebookList from "@/components/Guidebook/GuidebookList"
+import TodoCalendar from "@/components/Bulletin/TodoCalendar";
+// import TEST from "@/views/TEST";
 
 
 
@@ -81,13 +84,19 @@ const routes = [
                     {path:"report", component: ReportPage},
                     {path:"createReport", component: ReportCreator},
                     {path:"reportlist", component:LabReportList},
-                    {path:"reportreader", component:ReportReader}
+                    {path:"reportreader", component:ReportReader},
+                    {path:"fileList", component:GuidebookList}
                 ]
             },
             {
                 path:'board',
                 name:'board',
                 component: BulletinBoard
+            },
+            {
+                path:'calendar',
+                name:'calendar',
+                component: TodoCalendar
             }
         ]
     },
@@ -111,12 +120,19 @@ const routes = [
                     {path:'lab', component: LaboratoryPage},
                     {path:"guidebook", component: GuidebookPage},
                     {path:"report", component: ReportPage},
+                    {path:"reportlist", component:LabReportList},
+                    {path:"fileList", component:GuidebookList}
                 ]
             },
             {
                 path:'board',
                 name:'board',
                 component: BulletinBoard
+            },
+            {
+                path:'calendar',
+                name:'calendar',
+                component: TodoCalendar
             }
         ]
     },
@@ -129,6 +145,10 @@ const routes = [
         path: "/login",
         name: "login",
         component: LoginActivate
+    },
+    {
+        path:"/",
+        component: TodoCalendar,
     },
     //张宇   管理员
     {
@@ -168,10 +188,6 @@ const routes = [
                 component: BulletinBoard
             }
         ]
-    },
-    {
-        path:"/",
-        component:TEST
     },
 
 

@@ -16,7 +16,7 @@
         where c_id=#{c_id} and laboratory.l_id=operates.l_id and operates.s_id=student.s_id;
     </select>
 
-    <select id="getFeedbackAsStudent" resultType="courseFeedBack">
+    <select id="getFeedbackAsStudent" resultType="CourseFeedBack">
         select operates.l_id, student.s_id , student.name as s_name, laboratory.name as l_name, feedback
         from laboratory, operates, student
         where c_id=#{c_id} and laboratory.l_id=operates.l_id and operates.s_id=student.s_id  and student.s_id=#{s_id};

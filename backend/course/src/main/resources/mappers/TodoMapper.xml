@@ -19,8 +19,8 @@
     </select>
 
     <insert id="addTodo" >
-        insert into todo (c_id, t_id, name, `desc`, start_time, end_time)
-        values (#{c_id}, #{t_id}, #{name}, #{desc}, #{start_time}, #{end_time});
+        insert into todo (c_id, t_id, name, `desc`, start_time, end_time,type)
+        values (#{c_id}, #{t_id}, #{name}, #{desc}, #{start_time}, #{end_time},#{type});
     </insert>
 
 </mapper>

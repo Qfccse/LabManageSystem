@@ -3,7 +3,7 @@
     <div class="course_intro">
       <div class="sec_title fl">
         <div class="_title">公 告 板</div>
-        <div class="_title_e">Course Introduction</div>
+        <div class="_title_e">Bulletin Board</div>
       </div>
       <div class="line fl"></div>
     </div>

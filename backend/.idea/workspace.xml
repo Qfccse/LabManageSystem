@@ -4,47 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="合并模块后的后端，代传grade、course模块">
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidebook/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/guidebook/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laboratory/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/login/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/LoginApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/LoginApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/pojo/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/pojo/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/pojo/UserVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/pojo/UserVo2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/service/MailService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/cn/edu/tongji/backend/login/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/resources/static/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/resources/static/templates/regist.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/report/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/CourseStudentList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/CourseStudentList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/CourseTeacherList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/CourseTeacherList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/PagedUserList.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/StudentList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/StudentList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/TeacherList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/TeacherList.vue" afterDir="false" />
+    <list default="true" id="a7c52862-b371-4757-8a79-65b03710bb13" name="变更" comment="优化login代码">
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/cn/edu/tongji/backend/admin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/cn/edu/tongji/backend/admin/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/UserList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Courses/Teacher/GradeManagement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Courses/Teacher/GradeManagement.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Report/LabReportList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Report/LabReportList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Report/ReportFiller.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Report/ReportFiller.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Report/ReportReader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Report/ReportReader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Courses/LabDirectory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Courses/LabDirectory.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Utils/FileUploader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Utils/FileUploader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/layout/AdminLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/layout/AdminLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/layout/StudentLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/layout/StudentLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/layout/TeacherLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/layout/TeacherLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/LaboratoryPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/LaboratoryPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/LoginActivate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/LoginActivate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/TEST.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/views/TeacherLabPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/TeacherLabPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +47,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "corretto-1.8",
-    "last_opened_file_path": "D:/LabManageSystem/backend/login",
+    "last_opened_file_path": "C:/Users/ASUS/Desktop/LabManageSystem/Back-End",
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -248,10 +212,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.LoginApplication" />
-        <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="Spring Boot.ReportApplication" />
+        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.GuidebookApplication" />
+        <item itemvalue="Spring Boot.GateWayApplication" />
         <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
       </list>
     </recent_temporary>
@@ -289,7 +253,14 @@
       <workItem from="1670415907577" duration="8725000" />
       <workItem from="1670460236094" duration="8022000" />
       <workItem from="1670547068799" duration="7330000" />
-      <workItem from="1670568594247" duration="8905000" />
+      <workItem from="1670568594247" duration="9290000" />
+      <workItem from="1670667080386" duration="5016000" />
+      <workItem from="1670680421548" duration="113000" />
+      <workItem from="1670681203899" duration="2448000" />
+      <workItem from="1670811027567" duration="809000" />
+      <workItem from="1670927179047" duration="5298000" />
+      <workItem from="1671024572062" duration="1278000" />
+      <workItem from="1671062376178" duration="14513000" />
     </task>
     <task id="LOCAL-00001" summary="登录后端，管理员导入选课、教学名单">
       <created>1670307696510</created>
@@ -312,7 +283,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670548918023</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="优化login代码">
+      <created>1670682903320</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670682903320</updated>
+    </task>
+    <task id="LOCAL-00005" summary="优化login代码">
+      <created>1670682926425</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670682926425</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +330,7 @@
     <MESSAGE value="登录后端，管理员导入选课、教学名单" />
     <MESSAGE value="修复bug" />
     <MESSAGE value="合并模块后的后端，代传grade、course模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="合并模块后的后端，代传grade、course模块" />
+    <MESSAGE value="优化login代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化login代码" />
   </component>
 </project>

@@ -11,13 +11,34 @@
         values (#{r_id}, #{t_id}, #{score}, #{comment});
     </insert>
 
+    <select id="getMark" resultType="mark">
+        select *
+        from mark
+        where r_id=#{r_id};
+    </select>
+
     <select id="getLabScores" resultType="labScore">
-        select laboratory.l_id, score, laboratory.name, attend_score, proportion from laboratory, report, mark, operates
+        select laboratory.l_id, score, laboratory.name, attend_score, proportion, comment from laboratory, report, mark, operates
         where c_id=#{c_id} and operates.s_id=#{s_id} and laboratory.l_id=report.l_id and report.r_id=mark.r_id and operates.l_id=laboratory.l_id and operates.s_id=report.s_id;
     </select>
 
     <select id="getStudentName" resultType="String">
         select name from student where s_id=#{s_id};
+    </select>
+
+    <select id="getRid" resultType="int">
+        select r_id from report where s_id=#{s_id} and l_id=#{l_id};
+    </select>
+
+    <update id="changeReportStatus" >
+        update report
+        set status = 3
+        where r_id=#{r_id};
+    </update>
+
+    <select id="getReportStatus" resultType="integer">
+        select status
+        from report where r_id=#{r_id};
     </select>
 
 

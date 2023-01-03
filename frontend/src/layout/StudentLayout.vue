@@ -12,7 +12,7 @@
                 width: 60px;
                 margin-top: 20px;
                 border-radius: 50%;
-              "        
+              "
               @click="testVuex"
             />
             <h5
@@ -82,7 +82,7 @@
                              </template>
                            </el-table-column>
 
-                           
+
                            <el-table-column label="操作" width="150">
                            <template v-slot="scope">
                              <el-button
@@ -92,10 +92,10 @@
                                @click="gotoCourseAsStudent(scope.row)">查看详情</el-button>
                            </template>
                            </el-table-column>
-                           
+
                          </el-table>
 
-                <template v-slot:reference> 
+                <template v-slot:reference>
                   <el-menu-item
                     index="1-1">
                     <i class="el-icon-document"></i>
@@ -153,8 +153,8 @@
                            </template>
                            </el-table-column>
                            </el-table>
-                <template v-slot:reference> 
-                
+                <template v-slot:reference>
+
             <el-menu-item index="1-2">
               <i class="el-icon-document"></i>
               <template v-slot:title>助教</template>
@@ -163,12 +163,16 @@
           </el-popover>
 
           </el-submenu>
-        
+
 
           <el-menu-item index="3" @click="($router.push('/student/board'))">
-            <i class="el-icon-document"></i>
+            <i class="el-icon-data-board"></i>
             <template v-slot:title>公告板</template>
           </el-menu-item>
+            <el-menu-item index="5"  @click="($router.push('/teacher/calendar'))">
+                <i class="el-icon-date"></i>
+                <template v-slot:title>日历</template>
+            </el-menu-item>
           <el-menu-item index="4" disabled>
             <i class="el-icon-setting"></i>
             <template v-slot:title >我的信息</template>
@@ -191,11 +195,11 @@
               ><b>同济大学实验教学课程管理系统</b></el-menu-item
             >
 
-            <el-menu-item index="4"  style="float: right;">
+            <el-menu-item index="4"  style="float: right;" @click="logout">
               <i class="el-icon-unlock"></i>退出登录</el-menu-item
             >
-           
-            
+
+
           </el-menu>
         </el-header>
 
@@ -222,9 +226,10 @@ export default {
   },
   methods: {
     testVuex() {
-      alert(this.$store.state.userInfo.role + "   " + this.$store.state.userInfo.id 
-      + "\n"  + this.Name + "  " + this.Id + "\n"  + this.$store.state.c_id + "  " 
-      + this.$store.state.l_id + "  "  + this.$store.state.roleInCourse)
+      alert(this.$store.state.userInfo.role + "   " + this.$store.state.userInfo.id
+      + "\n"  + this.Name + "  " + this.Id + "\n"  + this.$store.state.c_id + "  "
+      + this.$store.state.l_id + "  "  + this.$store.state.roleInCourse + "  "
+      + this.$store.state.c_name)
     },
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
@@ -242,7 +247,7 @@ export default {
       // eslint-disable-next-line
       this.axios
         .get(
-          "http://localhost:8085/course/getAllCoursesById/" +
+          "/api/course/getAllCoursesById/" +
             this.$store.state.userInfo.role +
             "/" +
             this.$store.state.userInfo.id
@@ -253,12 +258,12 @@ export default {
         //            this.$store.state.userInfo.role +
         //            "/" +
         //            this.$store.state.userInfo.id
-               
+
         //     })
         .then((response) => {
           console.log(response.data);
           this.StudentCourseList = response.data.CoursesAsStudent;
-          
+
           this.StudentCourseList.forEach(element => {
             if (element.status == 1) {
               element.status = "进行中"
@@ -266,7 +271,7 @@ export default {
               element.status = "未开课"
             } else {
               element.status = "已结课"
-            } 
+            }
           });
 
           this.TACourseList = response.data.CoursesAsTA;
@@ -278,7 +283,7 @@ export default {
               element.status = "未开课"
             } else {
               element.status = "已结课"
-            } 
+            }
           });
 
         })
@@ -293,23 +298,29 @@ export default {
     },
     gotoCourseAsStudent(row) {
       this.$store.commit('setCurrentCid', row.c_id);
-      this.$store.commit('setCourseRole', 'Student');
+      this.$store.commit('setCourseName', row.name);
       this.$router.push('/student/coursePage/mainpage?c_id=' + this.$store.state.c_id);
     },
     gotoCourseAsTA(row) {
       this.$store.commit('setCurrentCid', row.c_id);
-      this.$store.commit('setCourseRole', 'TA');
+      this.$store.commit('setCourseName', row.name);
       this.$router.push('/student/coursePage/mainpage?c_id=' + this.$store.state.c_id);
+    },
+    logout() {
+      this.$store.commit("clear");
+      sessionStorage.clear();
+      this.$router.push("/login");
     }
-   
+
   },
+
   mounted() {
-    //先把vuex初始化一下  以后这步应该在登录界面做
-    sessionStorage.setItem(
-      "UserInfo",
-      JSON.stringify({ id: "2053677", role: "student" , name: "于然"})
-    );
-    this.$store.commit("setUserInfo");
+    // //先把vuex初始化一下  以后这步应该在登录界面做
+    // sessionStorage.setItem(
+    //   "UserInfo",
+    //   JSON.stringify({ id: "2053677", role: "student" , name: "于然"})
+    // );
+    // this.$store.commit("setUserInfo");
 
     this.getCoursesAsStudent();
     console.log("layout has been mounted");

@@ -63,9 +63,10 @@
         <!--    <scope>test</scope>-->
         <!--</dependency>-->
 
+
     </dependencies>
     <build>
-        <finalName>app</finalName>
+        <finalName>laboratory</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,30 +1,48 @@
 <template>
     <div class="file_uploader">
-        <el-upload
-            :on-preview="handlePictureCardPreview"
-            :disabled="upload.isUploading"
-            :multiple="false"
-            :on-change="handleFileChange"
-            :before-remove="handleFileRemove"
-            :auto-upload="false"
-            :file-list="upload.fileList"
-            :class="{ hide: uploadDisabled }"
-            :list-type="listType"
-            :accept="fileType?fileType:'image/*'"
-            :show-file-list="true"
-            :limit="limit"
-            action='https'
-            :on-success="handleUploadSuccess"
-            :on-remove="handleRemove"
-        >
-            <el-button
-                :icon="icon"
-                :style="buttonStyle"
-                v-if="this.listType!=='picture-card'">
-                <span v-if="icon.length===0">选择文件</span></el-button>
-            <i v-else class="el-icon-plus"></i>
-        </el-upload>
-        <el-button @click="fileUpload" v-if="show&&upload.fileList.length!==0">上传</el-button>
+        <div style="float:left;">
+            <el-upload
+                :on-preview="handlePictureCardPreview"
+                :disabled="upload.isUploading"
+                :multiple="false"
+                :on-change="handleFileChange"
+                :before-remove="handleFileRemove"
+                :auto-upload="false"
+                :file-list="upload.fileList"
+                :class="{ hide: uploadDisabled }"
+                :list-type="listType"
+                :accept="fileType?fileType:'image/*'"
+                :limit="limit"
+                action='https'
+                :on-success="handleUploadSuccess"
+                :on-remove="handleRemove"
+                :show-file-list="fileLisToRight===false"
+            >
+                <el-button
+                    :icon="icon"
+                    :style="buttonStyle"
+                    v-if="this.listType!=='picture-card'">
+                    <span v-if="icon.length===0">选择文件</span></el-button>
+                <i v-else class="el-icon-plus"></i>
+            </el-upload>
+            <el-button @click="fileUpload" v-if="show&&upload.fileList.length!==0">上传</el-button>
+        </div>
+        <div style="float: left;height: 50px;line-height: 50px"
+             v-if="this.fileLisToRight===true&&this.upload.fileList.length!==0">
+            <span style="width: 130px;
+            display: inline-block;
+            float: left;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: #1593f9;
+            overflow: hidden">
+                {{ this.upload.fileList[0].raw.name }}
+            </span>
+            <i class="el-icon-close" @click="fileRemove"></i>
+        </div>
+        <div style="float: left" v-if="this.fileLisToRight===true&&this.upload.fileList.length!==0">
+            <el-button @click="fileUpload" style="border: none;margin-top: 5px">上传</el-button>
+        </div>
     </div>
 </template>
 
@@ -66,6 +84,10 @@ export default {
         buttonStyle:{
             type:String,
             default:""
+        },
+        fileLisToRight:{
+            type:Boolean,
+            default:false,
         }
     },
     data() {
@@ -92,6 +114,10 @@ export default {
 
     },
     methods: {
+        fileRemove(){
+            this.upload.fileList = []
+            this.uploadDisabled = false
+        },
         fileUpload(){
             console.log("upload")
             console.log(this.id)
@@ -102,7 +128,7 @@ export default {
             } else {
                 fd.append("id",JSON.stringify(this.rfid))
             }
-            
+
             // 只需要在后端接收一下即可(注意)
             for(let i in this.upload.fileList){
                 fd.append('file',this.upload.fileList[i].raw)

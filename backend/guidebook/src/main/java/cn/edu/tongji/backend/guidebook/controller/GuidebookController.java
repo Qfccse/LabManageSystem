@@ -25,6 +25,17 @@ public class GuidebookController {
         return guidebookService.findAllGuidebook(l_id);
     }
 
+    @GetMapping("/getCourseGuidebooks")
+    public List<Guidebook> getCourseGuidebooks(@RequestParam("c_id") int c_id){
+        List<Guidebook> courseGuidebook = guidebookService.findCourseGuidebook(c_id);
+        return courseGuidebook;
+    }
+
+    @PostMapping("/postGuidebookNewName")
+    public void postGuidebookNewName(@RequestParam("g_id") int g_id,@RequestParam("name")String name){
+        guidebookService.renewGuidebookName(g_id,name);
+    }
+
     @DeleteMapping("/deleteGuidebook")
     public void removeGuidebook(@RequestParam("g_id")int g_id){
         guidebookService.deleteGuidebook(g_id);

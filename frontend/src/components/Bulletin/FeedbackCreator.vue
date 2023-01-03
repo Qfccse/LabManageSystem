@@ -16,24 +16,34 @@
 <script>
 export default {
     name: "FeedbackCreator",
-    props:{
-        lid:{
-            type: Number,
-            default: 1
-        },
-        sid:{
-            type: String,
-            default: "*****"
-        },
-    },
+    // props:{
+    //     lid:{
+    //         type: Number,
+    //         default: 1
+    //     },
+    //     sid:{
+    //         type: String,
+    //         default: "*****"
+    //     },
+    // },
     data(){
         return{
+            lid: this.$route.query.l_id,
+            sid: this.$store.state.userInfo.id,
             feedback:"",
         }
     },
     methods:{
         sendFeedback(){
-            console.log(this.feedback)
+            // console.log(this.feedback)
+            // var data= {
+            //         l_id:this.lid,
+            //         s_id:this.sid,
+            //         feedback:this.feedback
+            //     }
+
+            // console.log(data);
+
             this. axios({
                 method:"post",
                 url:"/api/laboratory/postFeedback",
@@ -47,6 +57,7 @@ export default {
                 },
             }).then(resp =>{
                 console.log(resp.data)
+                this.$message.success("反馈提交成功!")
             })
         }
     }

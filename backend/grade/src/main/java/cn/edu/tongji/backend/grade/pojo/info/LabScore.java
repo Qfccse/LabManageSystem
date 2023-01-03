@@ -11,6 +11,8 @@ public class LabScore {
 
     private int proportion;
 
+    private String comment;
+
     public int getL_id() {
         return l_id;
     }
@@ -49,5 +51,13 @@ public class LabScore {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

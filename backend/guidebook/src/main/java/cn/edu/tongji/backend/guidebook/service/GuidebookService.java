@@ -27,4 +27,12 @@ public class GuidebookService {
     public void deleteGuidebook(int g_id){
         guidebookMapper.deleteGuidebook(g_id);
     }
+
+    public List<Guidebook> findCourseGuidebook(int c_id){
+        return  guidebookMapper.selectCourseGuidebook(c_id);
+    }
+
+    public void renewGuidebookName(int g_id,String name){
+        guidebookMapper.updateGuidebookName(g_id,name);
+    }
 }

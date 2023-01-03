@@ -92,6 +92,7 @@ export default {
             //     type: "error",
             //     offset: "8",
             // });
+            this.$message.error("服务器连接失败!")
           });
         },
         modifyCourse() {
